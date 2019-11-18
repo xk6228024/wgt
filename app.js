@@ -4,7 +4,7 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs123123', logs)
+    wx.setStorageSync('logs123123123123123', logs)
 
     // 登录
     wx.login({
@@ -34,6 +34,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    picUrl: "http://supervision-32596.oss-cn-hangzhou.aliyuncs.com", // icon 图片 url
+    staticUrl: "https://mobile.jinchehui.com", //静态资源页面 url
+    url: 'http://192.168.1.80:8080', // 彪哥地址url
   }
 })

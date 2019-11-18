@@ -1,0 +1,11 @@
+/* 键盘 */
+.keyboard_box{width: 100%;overflow: hidden;position: fixed;bottom: 0;left: 0; z-index: 999}
+.keyboard_car{width: 100%;padding: 20rpx 6rpx;overflow: hidden;background: rgba(210,213,219,0.5)}
+.keyboard_line{width: 100%;overflow: hidden;display: flex;padding: 10rpx 0;align-items: center;justify-content:center}
+.btn_key{width: 63rpx;height: 84rpx;box-shadow:0px 3rpx 1rpx 0px rgba(0,0,1,0.2);border-radius:10rpx;background: rgba(255,255,255,0.8);text-align: center;line-height: 84rpx;margin: 0 9rpx 0 5rpx;font-size: 42rpx; }
+.keyboard_car .active {background-color: #e4e7ed;}
+.btn_switch{width: 100rpx;height: 84rpx;background: #fff;color: #fff;font-size: 34rpx;border-radius:10rpx;margin: 0 9rpx 0 5rpx;box-shadow:0px 3rpx 1rpx 0px rgba(0,0,1,0.2);justify-content: center;align-items: center;text-align: center;}
+.btn_switch image{width: 52rpx;height: 36rpx;}
+.btn_switch text{width: 68rpx;height: 48rpx;color: #FF626C; font-size: 34rpx;margin: 0 9rpx 0 5rpx;}
+.flex{display: flex}
+.disabledNo {background: rgba(0,120,212,.4)}

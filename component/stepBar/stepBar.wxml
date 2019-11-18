@@ -1,0 +1,17 @@
+<view class='step_box'>
+
+  <view class='step_item'>
+    <view class='step_ms  {{index===0?"step_line_pd":""}}' wx:for="{{stepText}}" wx:key="index" >
+      <view class='step_line {{activeStep>=index+1 ? "step_line_active": ""}}'></view>
+      <view class='step_round {{activeStep>=index+1 ? "step_round_active": ""}}'></view>
+    </view>
+    <view class='step_ms step_line_pd'>
+      <view class='step_line {{activeStep==stepText.length ? "step_line_active": ""}}'></view>
+    </view>
+  </view>
+
+  <view class='step_item_te'>
+    <text class='step_te {{activeStep>=index+1 ? "step_te_active": ""}}' wx:for="{{stepText}}" wx:key="index">{{item}}</text>
+  </view>
+  
+</view>

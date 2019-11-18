@@ -1,0 +1,20 @@
+.mask{width: 100%; height: 100%; position: fixed; top: 0; left: 0;right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); z-index: 9000; display: flex;
+justify-content: center; align-items: center;
+}
+.modalDlg{width: 560rpx; background: #FFF; border-radius: 8rpx; position: relative; z-index: 9999}
+.modalDlg_box {display: flex; flex-direction: column;}
+.modalDlg_tit {text-align: center;  font-size: 36rpx; color: #383838; padding: 55rpx 0 30rpx;}
+.modalDlg_text {text-align: center; font-size: 30rpx; color: #999999; padding-bottom: 36rpx;}
+.modalDlg_btns {display: flex; height: 100rpx; border-top: 1rpx solid #D2D3D5; width: 100%;}
+.modalDlg_btn{color: #0078D4;font-size: 36rpx;text-align: center; width: 50%; box-sizing: border-box; height: 100rpx; line-height: 100rpx;}
+.btnBack {color: #7B7B7B; border-right: 1rpx solid #D2D3D5;}
+.noshow_title {font-size: 36rpx; color: #7B7B7B; padding: 76rpx 0 80rpx;}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.w100 {
+  width: 100%;
+}

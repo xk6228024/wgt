@@ -1,10 +1,369 @@
-/**app.wxss**/
-.container {
-  height: 100%;
+/* -----------------------盒子布局------------------------ */
+
+/* 通用 盒子横向布局 */
+
+.common_v_row {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+}
+
+/* 通用 盒子竖向布局 */
+
+.common_v_column {
   display: flex;
   flex-direction: column;
+  background: #fff;
+}
+
+/* 通用靠左布局*/
+
+.common_v_start {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+}
+
+/* 通用靠右布局 */
+
+.common_v_end {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* -----------------------模块化样式------------------------ */
+
+/* ----上传图片部分样式---- */
+.common_v_upload {
+  height: 120rpx;
+  width: 100%;
+  display: flex;
+  padding-bottom: 24rpx;
+}
+
+.common_v_upload_block {
+  display: inline-block;
+  position: relative;
+  margin-right: 32rpx;
+}
+
+.common_iv_del {
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  top: -22rpx;
+  right: -22rpx;
+  z-index: 888;
+}
+
+/*  ----单元格显示样式===cells样式---- */
+
+/* 通用 盒子横向布局 100高度*/
+.common_v_row100h {
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  align-items: center;
+}
+
+/* 通用 盒子横向布局 72高度*/
+.common_v_row72h {
+  height: 72rpx;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  align-items: center;
+}
+
+/* 通用 靠左的文字 180宽度*/
+.common_tv_left180w {
+  width: 180rpx;
+  float: left;
+  font-size: 28rpx;
+  color: #666;
+  height: 52rpx;
+  line-height: 52rpx;
+  overflow: hidden;
+  margin-left: 32rpx;
+}
+
+/* 通用 中部的文字 单行显示缩略 */
+
+.common_tv_center {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666;
+  height: 52rpx;
+  line-height: 52rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0 16rpx;
+}
+
+/* 通用 靠右的文字 */
+
+.common_tv_right {
+  float: right;
+  font-size: 28rpx;
+  color: #666;
+  height: 52rpx;
+  line-height: 52rpx;
+  overflow: hidden;
+  margin-right: 32rpx;
+}
+
+/* 通用 靠右的图片 */
+
+.common_iv_right {
+  width: 44rpx;
+  height: 44rpx;
+  float: right;
+  overflow: hidden;
+  margin-right: 32rpx;
+}
+
+/* -----------------------字体------------------------ */
+
+/* 通用标题36rpx */
+
+.common_tv_bold36s {
+  font-size: 36rpx;
+  color: #333;
+  font-weight: bold;
+  margin-left: 32rpx;
+}
+
+/* 通用标题34rpx */
+
+.common_tv_bold34s {
+  font-size: 34rpx;
+  color: #333;
+  font-weight: bold;
+  margin-left: 32rpx;
+}
+
+/* 通用普通字体333颜色 */
+
+.common_tv_tips333c {
+  font-size: 28rpx;
+  color: #333;
+  height: 52rpx;
+  line-height: 52rpx;
+}
+
+/* 通用普通字体666颜色 */
+
+.common_tv_tips666c {
+  font-size: 28rpx;
+  color: #666;
+  height: 52rpx;
+  line-height: 52rpx;
+}
+
+/* 通用普通字体999颜色 */
+
+.common_tv_tips999c {
+  font-size: 28rpx;
+  color: #999;
+  height: 52rpx;
+  line-height: 52rpx;
+}
+
+/* 通用黄色样式字体 */
+
+.common_tv_yellow {
+  font-size: 28rpx;
+  color: #ffa419;
+  height: 52rpx;
+  line-height: 52rpx;
+}
+
+/* 通用蓝色样式字体 */
+
+.common_tv_blue {
+  font-size: 28rpx;
+  color: #007aff;
+  height: 52rpx;
+  line-height: 52rpx;
+}
+
+/* 通用红色样式字体 */
+
+.common_tv_red {
+  font-size: 28rpx;
+  color: #ff626c;
+  height: 52rpx;
+  line-height: 52rpx;
+}
+
+/* 单行显示 */
+
+.tv_ellipsis1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+}
+
+/* 字体缩略 2行*/
+
+.tv_ellipsis2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+}
+
+/* -----------------------图片------------------------ */
+
+/* 通用图片大小 44rpx  一般小图标*/
+
+.common_iv44 {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+/* 通用图片大小 88rpx  一般图标*/
+
+.common_iv88 {
+  width: 88rpx;
+  height: 88rpx;
+}
+
+/* 通用图片大小 120rpx 上传图片用的 */
+
+.common_iv120 {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+/* 通用图片大小 180rpx 一般图片用的 */
+
+.common_iv180 {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+/* 通用头像图片 圆角 96rpx */
+.common_iv_head {
+  width: 96rpx;
+  height: 96rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(204, 204, 204, 1);
+  border-radius: 50%;
+}
+
+
+/* -----------------------按钮------------------------ */
+
+/* 通用主按钮 适用灰色背景*/
+
+.common_button_gray {
+  width: 560rpx;
+  height: 94rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid rgba(0, 122, 255, 1);
+  color: #007aff;
+  font-size: 36rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 通用主按钮 活动状态 */
+
+.common_button_action {
+  width: 684rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, rgba(26, 200, 251, 1) 0%, rgba(20, 183, 252, 1) 0%, rgba(0, 122, 255, 1) 100%);
+  border-radius: 8rpx;
+  color: #fff;
+  font-size: 36rpx;
+  line-height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -----------------------分割线and其他------------------------ */
+
+/* 通用输入控件 */
+
+.common_input .placeholder {
+}
+
+/* 重写输入控件的占位符 字体大小和颜色 */
+
+.placeholder {
+  color: #ccc;
+  font-size: 28rpx;
+  z-index: 1;
+}
+
+/* 通用分割线 24rpx*/
+
+.common_v_line24 {
+  width: 100%;
+  height: 24rpx;
+  background: #eee;
+}
+
+/* 通用分割线 1rpx*/
+
+.common_v_line {
+  width: 100%;
+  height: 1rpx;
+  background: #eee;
+}
+
+/* 通用分割线 1rpx margin-left32*/
+
+.common_v_line32 {
+  width: 718rpx;
+  height: 1rpx;
+  background: #eee;
+  margin-left: 32rpx;
+}
+
+/* 通用各种margin */
+
+.mar_t24 {
+  margin-top: 24rpx;
+}
+
+.mar_t54 {
+  margin-top: 54rpx;
+}
+
+.mar_r16 {
+  margin-right: 16rpx;
+}
+
+.mar_l24 {
+  margin-left: 24rpx;
+}
+
+.mar_r24 {
+  margin-right: 24px;
+}
+
+.mar_l32 {
+  margin-left: 32rpx;
+}
+
+.mar_r32 {
+  margin-right: 32rpx;
+}
+
+.mar_b15 {
+  margin-bottom: 15rpx;
+}

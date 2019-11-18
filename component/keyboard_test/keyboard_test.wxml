@@ -1,0 +1,112 @@
+<!-- <view style='width500rpx;height:88rpx;background:#fff;'  bindtap='keyIn'>{{inputPassword}}</view>  -->
+<view class='keyboard_box' hidden="{{passwordInputHiddenProvince}}">
+  <view class='keyboard_car'>
+    <view class='keyboard_line'>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="京">京</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="津">津</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="渝">渝</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="沪">沪</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="冀">冀</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="晋">晋</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="辽">辽</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="吉">吉</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="黑">黑</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="苏">苏</view>
+    </view>
+    <view class='keyboard_line'>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="浙">浙</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="皖">皖</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="闽">闽</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="赣">赣</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="鲁">鲁</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="豫">豫</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="鄂">鄂</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="湘">湘</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="粤">粤</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="琼">琼</view>
+    </view>
+    <view class='keyboard_line'>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="川">川</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="贵">贵</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="云">云</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="陕">陕</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="甘">甘</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="青">青</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="蒙">蒙</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="桂">桂</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="宁">宁</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="新">新</view>
+    </view>
+    <view class='keyboard_line'>
+      <view class='btn_switch flex' hover-class='active' catchtap='close' hover-stay-time='100'>
+        <text>关闭</text>
+      </view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="藏">藏</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="使">使</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="领">领</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="警">警</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="学">学</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="港">港</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="挂">挂</view>
+      <view class='btn_switch flex' hover-class='active' hover-stay-time='100' catchtap='clear'>
+        <image src='{{icon_car_del}}'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='keyboard_box' hidden="{{passwordInputHiddenNum}}">
+  <view class='keyboard_car'>
+    <view class='keyboard_line'>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="1">1</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="2">2</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="3">3</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="4">4</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="5">5</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="6">6</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="7">7</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="8">8</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="9">9</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="0">0</view>
+    </view>
+    <view class='keyboard_line'>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="Q">Q</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="W">W</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="E">E</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="R">R</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="T">T</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="Y">Y</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="U">U</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="I">I</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="O">O</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="P">P</view>
+    </view>
+    <view class='keyboard_line'>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="A">A</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="S">S</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="D">D</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="F">F</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="G">G</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="H">H</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="J">J</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="K">K</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="L">L</view>
+    </view>
+    <view class='keyboard_line'>
+      <view class='btn_switch flex' hover-class='active' catchtap='close' hover-stay-time='100'>
+        <text>关闭</text>
+        <!-- <text>切换</text> -->
+      </view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="Z">Z</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="X">X</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="C">C</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="V">V</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="B">B</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="N">N</view>
+      <view class='btn_key' hover-class='active' hover-stay-time='100' catchtap='inputPassword' data-key="M">M</view>
+      <view class='btn_switch flex' hover-class='active' hover-stay-time='100' catchtap='clear'>
+        <image src='{{icon_car_del}}'></image>
+      </view>
+    </view>
+  </view>
+</view>

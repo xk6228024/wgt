@@ -1,0 +1,11 @@
+.step_box {width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center;align-items: center; background: #FFF;}
+.step_ms {display: flex; justify-content: center;align-items: center; flex-grow: 1}
+.step_item {display: flex; justify-content: center;align-items: center; padding: 0 20rpx;width: 100%;}
+.step_line { height: 6rpx; background: #DADADA; flex: 1; min-width: 30rpx;}
+.step_line_pd {flex-grow: 0.5;}
+.step_line_active { background: #F7B501;}
+.step_round {width: 36rpx; height: 36rpx; background: #DADADA; border-radius: 50%; margin: 4rpx;}
+.step_round_active {background: #F7B501}
+.step_item_te {display: flex; justify-content: center;align-items: center; padding: 0 20rpx; width: 100%;}
+.step_te {font-size: 24rpx; color: #333333;  text-align: center; display: inline-block; width: 24%; margin-top: 24rpx;}
+.step_te_active {color: #333333;}

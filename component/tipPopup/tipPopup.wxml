@@ -1,0 +1,12 @@
+<view class="mask" catchtouchmove="preventTouchMove" hidden="{{showPopup}}">
+  <view class="modalDlg" hidden="{{showPopup}}">
+    <view class='modalDlg_box'>
+      <view class='modalDlg_tit' wx:if="{{showTitle}}">{{title}}</view>
+      <view class='modalDlg_text {{showTitle?"":"noshow_title"}}'>{{concents}}</view>
+    </view>
+    <view class='modalDlg_btns'>
+      <view class='modalDlg_btn btnBack' catchtap="toCancelBtn" wx:if="{{showCancelBtn}}">{{cancelBtnText}}</view>
+      <view class='modalDlg_btn {{!showCancelBtn?"w100":""}}' catchtap="toSureBtn" style='color:{{sureBtnColor}}'>{{sureBtnText}}</view>
+    </view>
+  </view>
+</view>

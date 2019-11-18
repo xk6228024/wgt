@@ -1,0 +1,9 @@
+<view class='main_box' hidden="{{hiddenPopUp}}" catchtap='toClose'>
+  <view class='main_box_bottom'>
+    <scroll-view scroll-y="true" style="height:{{allData.length>5?'500':allData.length*100}}rpx" class='main_list'>
+      <view class='item_li line_bot' wx:for="{{allData}}" wx:key="{{index}}" catchtap='tochooseLi' data-itemData='{{item}}'>{{item.optionName}}</view>
+    </scroll-view>
+    <view class="item_mar"> </view>
+    <view class='item_li' catchtap='toClose'>取消</view>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<view class='nav-header-box' style='height:{{titleBarHeight}}px; padding-top:{{statusBarHeight}}px; background:{{navbarData.bgc}};'>
+  <view class='flexAligncer'>
+    <view class='back-icon' wx:if="{{navbarData.showCapsule == 1}}" bindtap='toBack'>
+      <image class='to-back' src='./icon_back_white.png' wx:if="{{navbarData.backColor == 1}}"></image>
+      <image class='to-back' src='./icon_back_black.png' wx:if="{{navbarData.backColor == 0}}"></image>
+    </view>
+    <view  class='back-icon' wx:if="{{navbarData.showCapsule == 0}}"></view>
+    <view class="nav-tit flex1" style='height:{{titleBarHeight}}px;line-height:{{titleBarHeight}}px; color:{{navbarData.backColor==0?"#333333":"#FFFFFF"}}'>{{navbarData.title}}</view>
+  </view>
+</view>
