@@ -1,2 +1,16 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../verifyEnterpriseList/verifyEnterpriseList">
+现场勘验
+</button>
+
+<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../enterpriseFileRecordList/enterpriseFileRecordList">
+备案企业
+</button>
+
+<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../fileRecordAuditList/fileRecordAuditList">
+备案审核
+</button>
+
+<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../vehicleFiles/vehicleFiles">
+车辆档案
+</button>

@@ -1,66 +1,40 @@
 // pages/mine/mine.js
+var netUtil = require('../../utils/NetUtil.js');
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    loginOutUrl: app.globalData.url + '/app/vehicle/list',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  pageJumpEvent: function(e){
+    let pageurl = e.currentTarget.dataset.pageurl
+    wx.navigateTo({
+      url: pageurl,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  loginOutEvent: function(e){
+    
+    let param = {
+      token: 'token'
+    };
+    param.userName = 'name';
+    netUtil.doPost(this.data.loginOutUrl, param).then(
 
+      //请求成功code==200回调
+      function (res) {
+        console.log('success:' + JSON.stringify(res.data));
+
+      },
+      //请求失败回调
+      function (msg) {
+        console.log('error:' + JSON.stringify(msg));
+      }
+    )
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

@@ -1,3 +1,5 @@
 <!--pages/mine/mine.wxml-->
 
-<button bindtap=""></button>
+<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../personalData/personalData">个人信息</button>
+
+<button class="mar_t24" bindtap="loginOutEvent">退出登录</button>
