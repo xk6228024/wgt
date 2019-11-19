@@ -1,2 +1,38 @@
 <!--pages/personalData/personalData.wxml-->
-<text>pages/personalData/personalData.wxml</text>
+<view class="common_v_between100">
+  <text class="common_tv_left180w">头像:</text>
+  <image class="common_iv_right"></image>
+</view>
+<view class="common_v_line"></view>
+
+<view class="common_v_between100">
+  <text class="common_tv_left180w">账号:</text>
+  <text class="common_tv_right">12</text>
+</view>
+<view class="common_v_line"></view>
+
+<view class="common_v_between100">
+  <text class="common_tv_left180w">姓名:</text>
+  <text class="common_tv_right">12</text>
+</view>
+<view class="common_v_line"></view>
+
+<view class="common_v_between100">
+  <text class="common_tv_left180w">手机号:</text>
+  <text class="common_tv_right">12</text>
+</view>
+<view class="common_v_line"></view>
+
+<view class="common_v_between100">
+  <text class="common_tv_left180w">邮箱:</text>
+  <text class="common_tv_right">12</text>
+</view>
+<view class="common_v_line"></view>
+
+<view class="common_v_between100">
+  <text class="common_tv_left180w">角色:</text>
+  <text class="common_tv_right">12</text>
+</view>
+<view class="common_v_line"></view>
+
+
