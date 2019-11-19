@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/home/home",
     "pages/login/login",
     "pages/mine/mine",
     "pages/personalData/personalData",
@@ -14,7 +14,8 @@
     "pages/fileRecordAuditList/fileRecordAuditList",
     "pages/fileRecordAuditDetail/fileRecordAuditDetail",
 
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/index/index"
   ],
 "window": {
   "backgroundTextStyle": "light",
@@ -27,7 +28,7 @@
   "selectedColor": "#007AFF",
   "list": [
     {
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/home/home",
       "text": "首页",
       "iconPath": "/images/icon_coupon_gray.png",
       "selectedIconPath": "/images/icon_coupon_blue.png"
