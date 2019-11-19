@@ -3,6 +3,17 @@
     "pages/index/index",
     "pages/login/login",
     "pages/mine/mine",
+    "pages/personalData/personalData",
+    "pages/vehicleFiles/vehicleFiles",
+    "pages/vehicleDetailInfo/vehicleDetailInfo",
+    "pages/vehicleRepairRecord/vehicleRepairRecord",
+    "pages/verifyEnterpriseList/verifyEnterpriseList",
+    "pages/verifyingEnterprise/verifyingEnterprise",
+    "pages/enterpriseFileRecordList/enterpriseFileRecordList",
+    "pages/enterpriseFileRecordDetail/enterpriseFileRecordDetail",
+    "pages/fileRecordAuditList/fileRecordAuditList",
+    "pages/fileRecordAuditDetail/fileRecordAuditDetail",
+
     "pages/logs/logs"
   ],
 "window": {
