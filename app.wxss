@@ -29,19 +29,34 @@
   /* border-bottom: solid 1rpx #000; */
 }
 
+/* 通用布局 100rpx高度 灰色背景*/
+
+.common_v_between100_gray {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f5f5f5;
+  /* border-bottom: solid 1rpx #000; */
+}
+
 /* 通用靠左布局*/
 
 .common_v_start {
   width: 100%;
+  height: 100rpx;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border-bottom: solid 1rpx #f5f5f5;
 }
 
 /* 通用靠右布局 */
 
 .common_v_end {
   width: 100%;
+  height: 100rpx;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -50,6 +65,7 @@
 /* -----------------------模块化样式------------------------ */
 
 /* ----上传图片部分样式---- */
+
 .common_v_upload {
   height: 120rpx;
   width: 100%;
@@ -75,6 +91,7 @@
 /*  ----单元格显示样式===cells样式---- */
 
 /* 通用 盒子横向布局 100高度*/
+
 .common_v_row100h {
   height: 100rpx;
   width: 100%;
@@ -85,6 +102,7 @@
 }
 
 /* 通用 盒子横向布局 72高度*/
+
 .common_v_row72h {
   width: 100%;
   height: 72rpx;
@@ -94,16 +112,19 @@
   align-items: center;
 }
 
-/* 通用 靠左的文字 180宽度*/
-.common_tv_left180w {
-  width: 180rpx;
+/* 通用 靠左的文字 370宽度*/
+
+.common_tv_left370w {
+  width: 370rpx;
   float: left;
-  font-size: 28rpx;
-  color: #666;
+  font-size: 30rpx;
+  color: #404d66;
   height: 52rpx;
   line-height: 52rpx;
+  margin-left: 30rpx;
   overflow: hidden;
-  margin-left: 32rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* 通用 中部的文字 单行显示缩略 */
@@ -111,7 +132,7 @@
 .common_tv_center {
   flex: 1;
   font-size: 28rpx;
-  color: #666;
+  color: #404d66;
   height: 52rpx;
   line-height: 52rpx;
   overflow: hidden;
@@ -123,13 +144,12 @@
 /* 通用 靠右的文字 */
 
 .common_tv_right {
-  float: right;
   font-size: 28rpx;
-  color: #666;
-  height: 52rpx;
+  color: #404d66;
+  height: 40rpx;
   line-height: 52rpx;
   overflow: hidden;
-  margin-right: 32rpx;
+  margin-right: 40rpx;
 }
 
 /* 通用 靠右的图片 */
@@ -139,7 +159,44 @@
   height: 44rpx;
   float: right;
   overflow: hidden;
-  margin-right: 32rpx;
+  margin-right: 30rpx;
+}
+
+/* -- 搜索模块 -- */
+
+.common_v_search {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.common_v_search_bg {
+  width: 690rpx;
+  height: 58rpx;
+  background: rgba(61, 139, 255, 0.2);
+  border-radius: 29rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.common_mar_search {
+  margin-left: 30rpx;
+  margin-right: 20rpx;
+}
+
+.placeholderStyle {
+  color: #3d8bff;
+}
+
+/* 选择器 */
+
+.common_iv_arrow {
+  width: 12rpx;
+  height: 8rpx;
+  margin-left: 11rpx;
 }
 
 /* -----------------------字体------------------------ */
@@ -148,54 +205,76 @@
 
 .common_tv_bold36s {
   font-size: 36rpx;
-  color: #333;
+  color: #404d66;
   font-weight: bold;
   margin-left: 32rpx;
 }
 
 /* 通用标题34rpx */
 
-.common_tv_bold34s {
-  font-size: 34rpx;
-  color: #333;
+.common_tv_bold30s {
+  font-size: 30rpx;
+  color: #404d66;
   font-weight: bold;
   margin-left: 32rpx;
 }
 
-/* 通用普通字体333颜色 */
+/* 通用普通字体 26大小 */
 
-.common_tv_tips333c {
-  font-size: 28rpx;
-  color: #333;
-  height: 52rpx;
-  line-height: 52rpx;
+.common_tv_tips26 {
+  font-size: 26rpx;
+  height: 37rpx;
+  color: #404d66;
+  line-height: 37rpx;
+  margin-left: 30rpx;
 }
 
-/* 通用普通字体666颜色 */
+/* 通用普通字体 28大小 */
 
-.common_tv_tips666c {
+.common_tv_tips28 {
   font-size: 28rpx;
-  color: #666;
-  height: 52rpx;
-  line-height: 52rpx;
+  height: 40rpx;
+  color: #404d66;
+  line-height: 40rpx;
+  margin-left: 30rpx;
 }
 
-/* 通用普通字体999颜色 */
+/* 通用普通字体 30大小 */
 
-.common_tv_tips999c {
-  font-size: 28rpx;
-  color: #999;
+.common_tv_tips30 {
   height: 52rpx;
+  font-size: 30rpx;
+  color: #404d66;
   line-height: 52rpx;
+  margin-left: 30rpx;
+}
+
+/* 通用普通字体 30大小 */
+
+.common_tv_tips32 {
+  height: 52rpx;
+  font-size: 32rpx;
+  color: #404d66;
+  line-height: 52rpx;
+  margin-left: 30rpx;
 }
 
 /* 通用黄色样式字体 */
 
 .common_tv_yellow {
   font-size: 28rpx;
-  color: #ffa419;
-  height: 52rpx;
-  line-height: 52rpx;
+  color: #faad14;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+/* 通用绿色样式字体 */
+
+.common_tv_green {
+  font-size: 28rpx;
+  color: #52c41a;
+  height: 40rpx;
+  line-height: 40rpx;
 }
 
 /* 通用蓝色样式字体 */
@@ -240,6 +319,27 @@
 
 /* -----------------------图片------------------------ */
 
+/* 通用图片 下一步箭头 */
+
+.common_iv_next {
+  width: 14rpx;
+  height: 26rpx;
+  margin-right: 30rpx;
+}
+
+.common_iv_up {
+  width: 26rpx;
+  height: 14rpx;
+  margin-right: 30rpx;
+}
+
+/* 通用图片大小 30rpx  一般小图标*/
+
+.common_iv30 {
+  width: 30rpx;
+  height: 30rpx;
+}
+
 /* 通用图片大小 44rpx  一般小图标*/
 
 .common_iv44 {
@@ -269,6 +369,7 @@
 }
 
 /* 通用头像图片 圆角 96rpx */
+
 .common_iv_head {
   width: 96rpx;
   height: 96rpx;
@@ -276,7 +377,6 @@
   border: 1px solid rgba(204, 204, 204, 1);
   border-radius: 50%;
 }
-
 
 /* -----------------------按钮------------------------ */
 
@@ -309,12 +409,21 @@
   align-items: center;
 }
 
-/* -----------------------分割线and其他------------------------ */
+/* 通用 蓝色边框小按钮 */
 
-/* 通用输入控件 */
-
-.common_input .placeholder {
+.common_button_radius_blue {
+  width: 130rpx;
+  height: 42rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 21rpx;
+  border: 2rpx solid rgba(24, 91, 189, 1);
+  font-size: 24rpx;
+  color: rgba(24, 91, 189, 1);
+  line-height: 42rpx;
+  text-align: center;
 }
+
+/* -----------------------分割线and其他------------------------ */
 
 /* 重写输入控件的占位符 字体大小和颜色 */
 
@@ -326,27 +435,27 @@
 
 /* 通用分割线 24rpx*/
 
-.common_v_line24 {
+.common_v_line20 {
   width: 100%;
-  height: 24rpx;
-  background: #eee;
+  height: 20rpx;
+  background: #f5f5f5;
 }
 
 /* 通用分割线 1rpx*/
 
-.common_v_line {
+.common_v_line750 {
   width: 100%;
   height: 1rpx;
-  background: #eee;
+  background: #f5f5f5;
 }
 
 /* 通用分割线 1rpx margin-left32*/
 
-.common_v_line32 {
-  width: 718rpx;
+.common_v_line720 {
+  width: 720rpx;
   height: 1rpx;
-  background: #eee;
-  margin-left: 32rpx;
+  background: #f5f5f5;
+  margin-left: 30rpx;
 }
 
 /* 通用各种margin */
