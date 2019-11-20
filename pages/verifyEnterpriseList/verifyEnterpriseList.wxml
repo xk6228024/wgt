@@ -1,2 +1,5 @@
-<!--pages/verifyEnterpriseList/verifyEnterpriseList.wxml-->
-<text>pages/verifyEnterpriseList/verifyEnterpriseList.wxml</text>
+<view class="common_v_search">
+  <view class="common_v_search_bg">
+    <input bindinput='searchInput' placeholder="请输入" placeholder-class="placeholder" maxlength='18' value="{{search}}" />
+  </view>
+</view>

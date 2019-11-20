@@ -1,1 +1,14 @@
 /* pages/verifyEnterpriseList/verifyEnterpriseList.wxss */
+.common_v_search{
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.common_v_search_bg{
+  width: 686rpx;
+  height: 60rpx;
+  
+}
