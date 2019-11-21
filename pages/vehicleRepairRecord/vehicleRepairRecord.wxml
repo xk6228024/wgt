@@ -1,1 +1,76 @@
+<!--pages/vehicleRepairRecord/vehicleRepairRecord.wxml-->
+
+<view class="common_v_column">
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">故障信息</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">送修日期</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">送修里程</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">结算日期</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">结算编号</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">维修企业名称</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+</view>
+
+<view class="common_v_line20"></view>
+<!-- <view class="common_v_line750"></view> -->
+<!-- 维修项目 -->
+<block wx:if = "{{repairItemArray.length != 0}}">
+  <view class="common_v_between100" bindtap="openRepairItem">
+    <text class="tv_titleFont tv_leftTitle">维修项目</text>
+    <image wx:if="{{openRepairItem}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'>
+    </image>
+    <image wx:if="{{!openRepairItem}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'>
+    </image>
+  </view>
+  <view class="common_v_line750"></view>
+  <block wx:if = "{{openRepairItem == true}}" wx:for = "{{repairItemArray}}">
+    <view class="common_v_between100_gray">
+      <text class="tv_titleFont tv_row">{{item.name}}</text>
+      <text class="tv_titleFont tv_row">{{item.value}}</text>
+    </view>
+    <view class="v_line"></view>
+  </block>
+</block>
+<!-- 维修配件 -->
+<block wx:if = "{{repairParts.length != 0}}">
+  <view class="common_v_between100" bindtap="openRepairParts">
+    <text class="tv_titleFont tv_leftTitle">维修配件</text>
+    <image wx:if="{{openRepairParts}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'>
+    </image>
+    <image wx:if="{{!openRepairParts}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'>
+    </image>
+  </view>
+  <view class="common_v_line750"></view>
+  <block wx:if = "{{openRepairParts == true}}" wx:for = "{{repairParts}}">
+    <view class="common_v_between100_gray">
+      <text class="tv_titleFont tv_row">{{item.name}}</text>
+      <text class="tv_titleFont tv_row">{{item.value}}</text>
+    </view>
+    <view class="v_line"></view>
+  </block>
+</block>
+
+
 

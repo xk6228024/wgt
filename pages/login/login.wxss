@@ -1,1 +1,56 @@
 /* pages/login/login.wxss */
+
+page {
+  background: #F5F5F5;
+}
+
+.iv_logo{
+  width: 214rpx;
+  height: 227rpx;
+  margin-top: 107rpx;
+  margin-left: 268rpx;
+}
+
+.v_bg{
+  margin-left: 32rpx;
+  margin-top: 106rpx;
+  margin-right: 32rpx;
+  height: 172rpx;
+  border-radius: 6rpx;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.v_inputBg{
+  height: 86rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tv_title{
+  margin-left: 30rpx;
+  width: 150rpx;
+  font: 32rpx;
+  color: #404D66;
+  height: 100%;
+  line-height: 86rpx;
+}
+
+.v_input{
+  margin-left: 0;
+  margin-right: 30RPX;
+  height: 100%;
+  line-height: 86rpx;
+}
+.v_line{
+  margin-left: 30rpx;
+  margin-right: 0;
+  height: 2rpx;
+  background: #F5F5F5;
+}
+
+.margin_top{
+  margin-top: 60rpx;
+}

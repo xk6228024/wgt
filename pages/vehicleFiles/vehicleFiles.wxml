@@ -1,2 +1,34 @@
 <!--pages/vehicleFiles/vehicleFiles.wxml-->
-<text>pages/vehicleFiles/vehicleFiles.wxml</text>
+
+<!-- 搜索 -->
+<view class="v_bgColor common_v_search">
+  <view class="common_v_search_bg">
+    <image class='common_mar_search common_iv30' mode='scaleToFill' src='{{icon_search}}'></image>
+    <input bindinput='searchInput' placeholder="请输入企业名称查询" placeholder-class="placeholderStyle" maxlength='18' value="{{search}}" />
+  </view>
+</view>
+
+<block wx:for = "{{lisArray}}">
+  <view class="common_v_line20"></view>
+  <view class="v_cell" bindtap="cellTapEvent" data-vehicleid = "{{item}}">
+    <view class="v_carInfo">
+      <view class="v_carPlate">
+        <text class='tv_plate {{item!= "白色"?"plateFontWhite":"plateFontBlack"}}'>33444
+        </text>
+        <image class="iv_plate" mode='scaleToFill' src='{{plateBgImage[item]}}'></image>
+      </view>
+      <text class="tv_middle">55</text>
+      <text class="tv_right">34</text>
+    </view>
+
+    <view class="common_v_line720"></view>
+
+    <view class="v_carBrand">
+      <view class="v_brandBg">
+        <image class="iv_brand"></image>
+        <text class="tv_left">777</text>
+      </view>
+      <text class="tv_right">555</text>
+    </view>
+  </view>
+</block>

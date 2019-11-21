@@ -1,2 +1,62 @@
 <!--pages/vehicleDetailInfo/vehicleDetailInfo.wxml-->
-<text>pages/vehicleDetailInfo/vehicleDetailInfo.wxml</text>
+
+<!-- 基本信息 -->
+<view class="v_vehicleInfoBg">
+  <view class="v_sectionHeader">
+    <text class="tv_titleFont tv_leftTitle tv_bold">基本信息</text>
+  </view>
+  <view class="common_v_line750"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">车牌号码</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">车牌颜色</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">品牌车系车型</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">VIN码</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">车辆类型</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">车主名称</text>
+    <text class="tv_subTitleFont tv_row">3123</text>
+  </view>
+  <view class="v_line"></view>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_leftTitle">联系电话</text>
+    <text class="tv_subTitleFont tv_row">312323213213213123123213123</text>
+  </view>
+</view>
+
+<view class="common_v_line20"></view>
+
+<block wx:if = "{{hasRecord == true}}">
+  <view class="v_sectionHeader">
+    <text class="tv_titleFont tv_leftTitle tv_bold">维修记录</text>
+  </view>
+  <view class="common_v_line750"></view>
+  <!-- 维修记录列表 -->
+  <block wx:for = "{{lisArray}}">
+    <view class="common_v_between100" bindtap="cellTapEvent" data-repairid = "{{item}}">
+      <text class="tv_titleFont tv_row">2132134234324324234234324234324234234234234</text>
+      <image class="iv_arrow" mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+    <view class="v_line"></view>
+  </block>
+
+</block>
+

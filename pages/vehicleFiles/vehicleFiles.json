@@ -1,3 +1,6 @@
 {
+  "navigationBarTitleText": "车辆档案",
+  "navigationBarBackgroundColor": "#185BBD",
+  "navigationBarTextStyle": "white",
   "usingComponents": {}
 }

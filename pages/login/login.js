@@ -1,11 +1,13 @@
 // pages/login/login.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    icon_loginLogo: app.globalData.picUrl + '/icon_loginLogo.png',
   },
 
   /**

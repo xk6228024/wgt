@@ -1,5 +1,13 @@
 <!--pages/mine/mine.wxml-->
 
-<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../personalData/personalData">个人信息</button>
+<view class="v_bg" bindtap="pageJumpEvent" data-pageurl="../personalData/personalData">
+  <image class="iv_userHeader"></image>
+  <view class="v_infoBg">
+    <text class="tv_userName">12312332423432432423423423423423424234234432</text>
+    <text class="tv_userRole">123123</text>
+  </view>
+  <image class="iv_arrow" mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+</view>
 
-<button class="mar_t24" bindtap="loginOutEvent">退出登录</button>
+<view class="v_loginOut" bindtap="loginOutEvent">退出登录</view>
+

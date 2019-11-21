@@ -1,2 +1,17 @@
 <!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<image class="iv_logo" mode='scaleToFill' src='{{icon_loginLogo}}'></image>
+<view class="v_bg">
+  <view class="v_inputBg">
+    <text class="tv_title">账号</text>
+    <input class="v_input" bindinput='motorInput' placeholder="请输入" placeholder-class="placeholder" maxlength='18' value="{{motor}}" ></input>
+  </view>
+
+  <view class="v_line"></view>
+
+  <view class="v_inputBg">
+    <text class="tv_title">密码</text>
+    <input class="v_input" bindinput='motorInput' placeholder="请输入" placeholder-class="placeholder" maxlength='18' value="{{motor}}"></input>
+  </view>
+</view>
+
+<button class="margin_top common_button_action">登 录</button>

@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "我的资料",
-  "navigationBarBackgroundColor": "#EEEEEE",
-  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#185BBD",
+  "navigationBarTextStyle": "white",
   "usingComponents": {}
 }

@@ -1,16 +1,39 @@
 <!--pages/home/home.wxml-->
-<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../verifyEnterpriseList/verifyEnterpriseList">
-现场勘验
-</button>
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{false}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="{{indicatorActiveColor}}" indicator-color="{{indicatorColor}}" style='height:278rpx'>
+    <block wx:for="{{bannerUrls}}" wx:key="index">
+      <swiper-item>
+        <image class='iv_banner' mode='scaleToFill' src='{{item}}'>
+        </image>
+      </swiper-item>
+    </block> 
+</swiper>
 
-<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../enterpriseFileRecordList/enterpriseFileRecordList">
-备案企业
-</button>
+<view class="v_lineView"></view>
 
-<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../fileRecordAuditList/fileRecordAuditList">
-备案审核
-</button>
+<view class="v_menu">
+  <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../verifyEnterpriseList/verifyEnterpriseList">
+    <image class="iv_menu" mode='scaleToFill' src='{{icon_verifyEnterprise}}'></image>
+    <text class="tv_menu">现场勘验</text>
+  </view>
 
-<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../vehicleFiles/vehicleFiles">
-车辆档案
+  <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../enterpriseFileRecordList/enterpriseFileRecordList">
+    <image class="iv_menu" mode='scaleToFill' src='{{icon_enterpriseFileRecord}}'></image>
+    <text class="tv_menu">备案企业</text>
+  </view>
+
+  <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../fileRecordAuditList/fileRecordAuditList">
+    <image class="iv_menu" mode='scaleToFill' src='{{icon_fileRecordAudit}}'></image>
+    <text class="tv_menu">备案审核</text>
+  </view>
+</view>
+
+<view class="v_line2px"></view>
+
+<view class="v_item" bindtap="pageJumpEvent" data-pageurl="../vehicleFiles/vehicleFiles">
+  <image class="iv_menu" mode='scaleToFill' src='{{icon_vehicleFiles}}'></image>
+  <text class="tv_menu">车辆档案</text>
+</view>
+
+<button class="mar_t24" bindtap="pageJumpEvent" data-pageurl="../login/login" >
+登录
 </button>

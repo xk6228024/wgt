@@ -1,18 +1,46 @@
 // pages/vehicleRepairRecord/vehicleRepairRecord.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    repairid: '',
+    icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
+    icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
+    openRepairItem: false,
+    openRepairParts: false,
+    repairItemArray: [
+      {
+        name: '2we',
+        value: '213123',
+      },
+      {
+        name: '2we',
+        value: '213123',
+      }
+    ],
+    repairParts: [
+      {
+        name: '2we',
+        value: '213123',
+      }, 
+      {
+        name: '2we',
+        value: '213123',
+      }
+    ],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      repairid: options.repairid,
+    })
+    console.log('2131232====' + this.data.repairid);
   },
 
   /**
@@ -62,5 +90,17 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  openRepairItem: function () {
+    this.setData({
+      openRepairItem: !this.data.openRepairItem
+    })
+  },
+
+  openRepairParts: function () {
+    this.setData({
+      openRepairParts: !this.data.openRepairParts
+    })
+  },
 })

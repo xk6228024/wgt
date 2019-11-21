@@ -1,36 +1,36 @@
 <!--pages/personalData/personalData.wxml-->
-<view class="common_v_between100">
-  <text class="common_tv_left180w">头像:</text>
-  <image class="common_iv_right"></image>
+<view class="v_bgColor v_cell138rpx">
+  <text class="tv_left">头像:</text>
+  <image class="iv_size common_iv_right"></image>
 </view>
 <view class="common_v_line"></view>
 
-<view class="common_v_between100">
-  <text class="common_tv_left180w">账号:</text>
+<view class="v_bgColor common_v_between100">
+  <text class="tv_left">账号:</text>
   <text class="common_tv_right">12</text>
 </view>
 <view class="common_v_line"></view>
 
-<view class="common_v_between100">
-  <text class="common_tv_left180w">姓名:</text>
+<view class="v_bgColor common_v_between100">
+  <text class="tv_left">姓名:</text>
   <text class="common_tv_right">12</text>
 </view>
 <view class="common_v_line"></view>
 
-<view class="common_v_between100">
-  <text class="common_tv_left180w">手机号:</text>
+<view class="v_bgColor common_v_between100">
+  <text class="tv_left">手机号:</text>
   <text class="common_tv_right">12</text>
 </view>
 <view class="common_v_line"></view>
 
-<view class="common_v_between100">
-  <text class="common_tv_left180w">邮箱:</text>
+<view class="v_bgColor common_v_between100">
+  <text class="tv_left">邮箱:</text>
   <text class="common_tv_right">12</text>
 </view>
 <view class="common_v_line"></view>
 
-<view class="common_v_between100">
-  <text class="common_tv_left180w">角色:</text>
+<view class="v_bgColor common_v_between100">
+  <text class="tv_left">角色:</text>
   <text class="common_tv_right">12</text>
 </view>
 <view class="common_v_line"></view>

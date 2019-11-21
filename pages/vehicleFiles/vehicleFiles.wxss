@@ -1,1 +1,112 @@
 /* pages/vehicleFiles/vehicleFiles.wxss */
+
+page{
+  background: #F5F5F5;
+}
+
+.v_bgColor{
+  background: white;
+}
+
+.v_cell{
+  height: 202rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  align-items: center;
+}
+
+.v_carInfo{
+  height: 100rpx;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.v_carPlate{
+  margin-left: 30rpx;
+  width: 190rpx;
+  height: 55rpx;
+  flex-shrink: 0;
+}
+.iv_plate{
+  width: 100%;
+  height: 100%;
+}
+
+.tv_plate{
+  font: 24rpx bold;
+  width: 190rpx;
+  height: 55rpx;  
+  line-height: 55rpx;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  z-index: 100;
+  position: absolute;
+}
+
+.plateFontWhite{
+  color: white;
+}
+
+.plateFontBlcak{
+  color: #323B4E;
+}
+
+.tv_middle{
+  width: 334rpx;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  
+}
+
+.tv_right{
+  margin-right: 30rpx;
+  text-align: right;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  width: 173rpx;
+}
+.tv_left{
+  margin-left: 16rpx;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  flex-shrink: 10;
+  max-width: 300rpx;
+}
+
+.v_carBrand{
+  height: 100rpx;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iv_brand {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  background: red;
+}
+
+.v_brandBg{
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+
+

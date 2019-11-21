@@ -8,6 +8,7 @@ Page({
    */
   data: {
     loginOutUrl: app.globalData.url + '/app/vehicle/list',
+    icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
   },
 
   pageJumpEvent: function(e){

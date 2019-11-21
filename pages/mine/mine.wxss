@@ -1,1 +1,80 @@
 /* pages/mine/mine.wxss */
+page{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background: #F5F5F5;
+  align-items: center;
+}
+
+.v_bg{
+  height: 176rpx;
+  width: 100%;
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+
+.iv_userHeader{
+  margin-left: 32rpx;
+  width: 118rpx;
+  height: 118rpx;
+  flex-shrink: 0;
+  background: red;
+}
+
+.v_infoBg{
+  margin-left: 30rpx;
+  height: 100%;
+  width: 496rpx;
+  margin-right: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.iv_arrow{
+  margin-right: 30rpx;
+  width: 14rpx;
+  height: 26rpx;
+  flex-shrink: 0;
+}
+.tv_userName{
+  font: 32rpx;
+  font-weight: bold;
+  color: #404D66;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+
+.tv_userRole{
+  font: 20rpx;
+  color: #3C94FF;
+  overflow: hidden;
+  border-radius: 18rpx;
+  border: 2rpx solid rgba(24, 91, 189, 1);
+  height: 36rpx;
+  width: 130rpx;
+  margin-top: 17rpx;
+  text-align: center;
+  line-height: 36rpx;
+}
+
+.v_loginOut{
+  width: 686rpx;
+  height: 86rpx;
+  border-radius: 12rpx;
+  background: white;
+  position: fixed;
+  bottom: 60rpx;
+  flex-shrink: 3;
+  font: 32rpx;
+  color: #404D66;
+  line-height: 86rpx;
+  text-align: center;
+}
