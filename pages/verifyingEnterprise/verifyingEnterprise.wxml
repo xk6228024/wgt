@@ -35,14 +35,14 @@
 
   <view wx:if="{{premisesOpen}}">
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='经营场地' data-item='接待室'>
-      <view class="common_tv_tips30">接待室</view>
+      <view class="common_tv_tips30_gray">接待室</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
 
     <view class="common_v_line720"></view>
 
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
-      <view class="common_tv_tips30">停车场</view>
+      <view class="common_tv_tips30_gray">停车场</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
   </view>
@@ -60,14 +60,14 @@
 
   <view wx:if="{{equipmentOpen}}">
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='设施设备' data-item='万用表'>
-      <view class="common_tv_tips30">万用表</view>
+      <view class="common_tv_tips30_gray">万用表</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
 
     <view class="common_v_line720"></view>
 
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
-      <view class="common_tv_tips30">气缸压力表</view>
+      <view class="common_tv_tips30_gray">气缸压力表</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
   </view>
@@ -85,14 +85,14 @@
 
   <view wx:if="{{technicianOpen}}">
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
-      <view class="common_tv_tips30">机修人员</view>
+      <view class="common_tv_tips30_gray">机修人员</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
 
     <view class="common_v_line720"></view>
 
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
-      <view class="common_tv_tips30">质量检验员</view>
+      <view class="common_tv_tips30_gray">质量检验员</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
   </view>
@@ -111,14 +111,14 @@
 
   <view wx:if="{{managementOpen}}">
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
-      <view class="common_tv_tips30">业务工作流程</view>
+      <view class="common_tv_tips30_gray">业务工作流程</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
 
     <view class="common_v_line720"></view>
 
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
-      <view class="common_tv_tips30">服务质量承诺</view>
+      <view class="common_tv_tips30_gray">服务质量承诺</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
   </view>
@@ -136,7 +136,7 @@
 
   <view wx:if="{{environmentOpen}}">
     <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
-      <view class="common_tv_tips30">有害物质存储区的隔离、控制措施</view>
+      <view class="common_tv_tips30_gray">有害物质存储区的隔离、控制措施</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
 

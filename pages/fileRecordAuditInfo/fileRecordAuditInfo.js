@@ -1,45 +1,40 @@
-//获取应用实例
-const app = getApp()
-
+// pages/fileRecordAuditInfo/fileRecordAuditInfo.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array: [
-      {
-        message: '专业修车100年',
-        vehicleId: '1234567'
-      }, {
-        message: '专业修车200年',
-        vehicleId: '7654321',
-      }, {
-        message: '专业修车300年',
-        vehicleId: '7654321',
-      }
+    name: '',
+    imgUrls: [
+      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
+      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
     ],
-    verify: true,
-    icon_search: app.globalData.picUrl + '/icon_search.png',
-    icon_arrow_down_gray: app.globalData.picUrl + '/icon_arrow_down_gray.png',
-    icon_arrow_up_blue: app.globalData.picUrl + '/icon_arrow_up_blue.png',
-    icon_location: app.globalData.picUrl + '/icon_location.png',
-  },
-  //跳转勘验详情
-  toDetail: function (e) {
-
-    let id = e.currentTarget.dataset.id
-    wx.navigateTo({
-      url: '../fileRecordAuditDetail/fileRecordAuditDetail?id=' + id,
-    })
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("options+++++++++++name==", options.name)
+    wx.setNavigationBarTitle({
+      title: options.name
+    })
 
+    this.setData({
+      name: options.name,
+    })
+  },
+
+  //图片点击事件
+  imgBigView: function (e) {
+    var imgList = e.currentTarget.dataset.list; //获取data-src
+    //图片预览
+    wx.previewImage({
+      current: imgList, // 当前显示图片的http链接
+      urls: this.data.imgUrls // 需要预览的图片http链接列表
+    })
   },
 
   /**

@@ -28,7 +28,7 @@
 </view>
 
 <!-- 列表 -->
-<view class="v_list_main" wx:if="{{array.length > 0}}" wx:for="{{array}}" bindtap='toDetail' data-id='{{array.vehicleId}}'>
+<view class="v_list_main" wx:if="{{array.length > 0}}" wx:for="{{array}}" data-id='{{array.vehicleId}}'>
 
   <view class="common_v_line20"></view>
 
@@ -55,11 +55,11 @@
     <view class="tv_ellipsis2 tv_location">深圳市 南山区 大新路创新大厦1号</view>
 
     <block wx:if='{{!verify}}'>
-      <view class="marleft220 common_button_radius_blue" >勘验</view>
+      <view class="marleft220 common_button_radius_blue" bindtap='toDetail'>勘验</view>
     </block>
     <block wx:else>
-      <view class="marleft62 common_button_radius_blue">再次勘验</view>
-      <view class="marleft20 common_button_radius_blue">勘验记录</view>
+      <view class="marleft62 common_button_radius_blue" bindtap='toDetail'>再次勘验</view>
+      <view class="marleft20 common_button_radius_blue" bindtap="record">勘验记录</view>
     </block>
 
   </view>

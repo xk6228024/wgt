@@ -1,6 +1,4 @@
-//获取应用实例
-const app = getApp()
-
+// pages/verifyEnterpriseRecord/verifyEnterpriseRecord.js
 Page({
 
   /**
@@ -19,18 +17,13 @@ Page({
         vehicleId: '7654321',
       }
     ],
-    verify: true,
-    icon_search: app.globalData.picUrl + '/icon_search.png',
-    icon_arrow_down_gray: app.globalData.picUrl + '/icon_arrow_down_gray.png',
-    icon_arrow_up_blue: app.globalData.picUrl + '/icon_arrow_up_blue.png',
-    icon_location: app.globalData.picUrl + '/icon_location.png',
   },
   //跳转勘验详情
   toDetail: function (e) {
 
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../fileRecordAuditDetail/fileRecordAuditDetail?id=' + id,
+      url: '../verifyingEnterprise/verifyingEnterprise?id=' + id,
     })
 
   },

@@ -35,6 +35,17 @@ Page({
 
   },
 
+  //跳转勘验记录
+  record: function (e) {
+
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../verifyEnterpriseRecord/verifyEnterpriseRecord?id=' + id,
+    })
+
+  },
+  
+
   /**
    * 生命周期函数--监听页面加载
    */

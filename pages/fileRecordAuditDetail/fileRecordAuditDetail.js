@@ -1,10 +1,68 @@
-// pages/fileRecordAuditDetail/fileRecordAuditDetail.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    specializedOpen: false,
+    detectionOpen: false,
+    universalOpen: false,
+    currentIndex: 1,
+    icon_location: app.globalData.picUrl + '/icon_location.png',
+    icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
+    icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
+  },
+
+  // 切换
+  changeCurrent: function (e) {
+    this.setData({
+      currentIndex: e.currentTarget.dataset.indexs
+    })
+    if (this.data.currentIndex === '1') {
+      this.setData({
+
+      })
+    } else if (this.data.currentIndex === '2') {
+      this.setData({
+
+      })
+    } else if (this.data.currentIndex === '3') {
+      this.setData({
+
+      })
+    }
+    // this.getStateData()
+  },
+
+  // 专用设备
+  specialized: function () {
+    this.setData({
+      specializedOpen: !this.data.specializedOpen
+    })
+  },
+  //检测设备
+  detection: function () {
+    this.setData({
+      detectionOpen: !this.data.detectionOpen
+    })
+  },
+  //通用
+  universal: function () {
+    this.setData({
+      universalOpen: !this.data.universalOpen
+    })
+  },
+
+  // 跳转
+  toJumpS: function (e) {
+
+    let jumpway = e.currentTarget.dataset.jumpway
+    let name = e.currentTarget.dataset.name
+    wx.navigateTo({
+      url: jumpway + '?name=' + name,
+    })
 
   },
 

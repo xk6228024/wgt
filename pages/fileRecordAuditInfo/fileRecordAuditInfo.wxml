@@ -1,0 +1,317 @@
+<!-- 企业信息 -->
+<view class="v_main" wx:if="{{name =='企业信息'}}">
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">营业执照（副本）</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">法人身份证</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">铺面正面照（含招牌）</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">铺面内部照</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">场地 土地 产权</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+</view>
+
+
+<!-- 人员信息 -->
+<view class="v_main" wx:if="{{name =='人员信息'}}">
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">学历 技术职称 职业资格</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+</view>
+
+
+<!-- 维修管理制度 -->
+<view class="v_main" wx:if="{{name =='维修管理制度'}}">
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">维修 检测 计量设备</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">组织管理机构</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">质量管理制度</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">经营管理制度</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">安全环保制度</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+    <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">维修工时费价格单</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">门店项目价格表</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+</view>
+
+
+<!-- 环境保护措施 -->
+<view class="v_main" wx:if="{{name =='环境保护措施'}}">
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">废油回收承诺书</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">环境影响报告表</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">固体废物 废油回收点</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">环境影响登记表</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">外协漆房合同</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+    <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">固体废物承诺书</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+</view>
+
+
+<!-- 危险货物运输车辆经营材料 -->
+<view class="v_main" wx:if="{{name =='危险货物运输车辆经营材料'}}">
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">专用维修车间 设备 设施</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">突发事件应急预案</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">安全管理人员汇总表</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+  <!--------------------------------->
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">安全操作规程材料</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+
+</view>
+
+
+<!-- 其他 -->
+<view class="v_main" wx:if="{{name =='其他'}}">
+  <view class="common_v_start80">
+    <view class="common_tv_bold30s">消防设施照片</view>
+  </view>
+
+  <view class="v_img_bg">
+    <view class='v_img_row' wx:for="{{imgUrls}}">
+      <image class='iv_info' mode='scaleToFill' data-list='{{item}}' src='{{item}}' catchtap='imgBigView'></image>
+    </view>
+  </view>
+  <view class="common_v_line20"></view>
+</view>

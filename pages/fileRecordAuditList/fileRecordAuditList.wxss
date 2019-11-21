@@ -1,1 +1,49 @@
-/* pages/fileRecordAuditList/fileRecordAuditList.wxss */
+page {
+  background: #fff;
+}
+
+/* 选择栏 样式 */
+
+.v_select {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.v_select_tips {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 列表 */
+
+.iv_location {
+  width: 28rpx;
+  height: 36rpx;
+  margin-left: 30rpx;
+}
+
+.v_location {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  align-items: center;
+}
+
+.tv_location {
+  width: 300rpx;
+  font-size: 26rpx;
+  color: rgba(64, 77, 102, 1);
+  line-height: 37rpx;
+  margin-left: 20rpx;
+}
+
+.marleft220 {
+  margin-left: 220rpx;
+}

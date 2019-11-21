@@ -1,0 +1,7 @@
+<view  wx:if="{{array.length > 0}}" wx:for="{{array}}" data-id='{{array.vehicleId}}'>
+  <view class="common_v_between100">
+    <view class="common_tv_left370w">2019-10-12</view>
+    <view class="mar_r30 common_button_radius_blue" bindtap='toDetail' >修改勘验</view>
+  </view>
+  <view class="common_v_line720"></view>
+</view>

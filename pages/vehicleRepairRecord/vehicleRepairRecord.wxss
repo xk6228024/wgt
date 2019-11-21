@@ -1,1 +1,4 @@
-/* pages/vehicleRepairRecord/vehicleRepairRecord.wxss */
+page {
+  background: #F5F5F5;
+}
+

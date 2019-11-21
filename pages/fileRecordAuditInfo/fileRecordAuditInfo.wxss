@@ -1,0 +1,25 @@
+page {
+  background: #F5F5F5;
+}
+
+.v_main{
+  background: #fff;
+}
+
+.iv_info{
+  width: 218rpx;
+  height: 160rpx;
+}
+
+.v_img_bg{
+  background: #fff;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.v_img_row {
+  display: inline-block;
+  position: relative;
+  margin-right: 18rpx;
+  margin-top: 20rpx;
+}

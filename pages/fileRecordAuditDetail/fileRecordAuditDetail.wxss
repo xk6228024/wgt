@@ -1,1 +1,80 @@
-/* pages/fileRecordAuditDetail/fileRecordAuditDetail.wxss */
+page {
+  background: #F5F5F5;
+}
+
+/* 企业信息 */
+.v_list_info {
+  width: 100%;
+  height: 220rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.iv_location {
+  width: 28rpx;
+  height: 36rpx;
+  margin-left: 30rpx;
+}
+
+.tv_location {
+  width: 650rpx;
+  font-size: 26rpx;
+  color: rgba(64, 77, 102, 1);
+  line-height: 37rpx;
+  margin-left: 20rpx;
+}
+
+/* tabs部分 */
+.v_tabs {
+  width: 100%;
+  height: 80rpx;
+  overflow: hidden;
+  background: #fff;
+  border-bottom: solid 1rpx #F5F5F5;
+}
+
+.v_tabs_colunm {
+  height: inherit;
+  float: left;
+  width: 33.3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.v_tabs_items {
+  font-size: 30rpx;
+  color: #404D66;
+  margin-top: 20rpx;
+}
+
+.v_tabs_items.active {
+  font-size: 30rpx;
+  color: #185BBD;
+  font-weight: bold;
+  margin-top: 20rpx;
+}
+
+.tabs_line {
+  width: 40rpx;
+  height: 6rpx;
+  background: #185BBD;
+  border-radius: 4rpx;
+  margin-top: 15rpx;
+}
+
+/* 各种信息 */
+.v_base{
+  background: #fff;
+}
+
+.btn_mar {
+  margin-top: 60rpx;
+  margin-left: 32rpx;
+}
+
+.btn_mar_white{
+  margin: 30rpx 0 30rpx 32rpx;
+}
+

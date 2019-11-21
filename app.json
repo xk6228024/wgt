@@ -14,6 +14,8 @@
     "pages/fileRecordAuditList/fileRecordAuditList",
     "pages/fileRecordAuditDetail/fileRecordAuditDetail",
     "pages/verifyEnterpriseUpload/verifyEnterpriseUpload",
+    "pages/fileRecordAuditInfo/fileRecordAuditInfo",
+    "pages/verifyEnterpriseRecord/verifyEnterpriseRecord",
 
     "pages/logs/logs",
     "pages/index/index"

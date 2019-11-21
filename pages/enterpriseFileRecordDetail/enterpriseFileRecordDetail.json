@@ -1,3 +1,6 @@
 {
+  "navigationBarTitleText": "企业详情",
+  "navigationBarBackgroundColor": "#185BBD",
+  "navigationBarTextStyle": "white",
   "usingComponents": {}
 }
