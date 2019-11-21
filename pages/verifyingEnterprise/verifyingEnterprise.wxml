@@ -1,2 +1,151 @@
-<!--pages/verifyingEnterprise/verifyingEnterprise.wxml-->
-<text>pages/verifyingEnterprise/verifyingEnterprise.wxml</text>
+<!-- 企业信息 -->
+<view class="v_list_info">
+
+  <view class="common_v_between100">
+    <view class="common_tv_left370w">深圳市机动车汽修厂</view>
+    <view class="common_tv_right">一类企业</view>
+  </view>
+
+  <view class="common_v_line720"></view>
+
+  <view class="common_v_row100h">
+    <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
+    <view class="tv_ellipsis2 tv_location">深圳市 南山区 大新路创新大厦1号</view>
+    <image class='marleft267 iv_navigation' mode='scaleToFill' src='{{icon_navigation}}'></image>
+  </view>
+
+  <view class="common_v_line20"></view>
+</view>
+
+<!-- 勘验项目 -->
+<view class="common_v_start">
+  <view class="v_coulomn_line"></view>
+  <view class="common_tv_bold30s">勘验项目</view>
+</view>
+
+<!-- 经营场地 -->
+<view>
+  <view class="common_v_between100" bindtap="premises">
+    <view class="common_tv_tips32">经营场地</view>
+    <image wx:if="{{premisesOpen}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+    <image wx:if="{{!premisesOpen}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+  </view>
+
+  <view class="common_v_line720"></view>
+
+  <view wx:if="{{premisesOpen}}">
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='经营场地' data-item='接待室'>
+      <view class="common_tv_tips30">接待室</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+
+    <view class="common_v_line720"></view>
+
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
+      <view class="common_tv_tips30">停车场</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+  </view>
+</view>
+
+<!-- 设施设备 -->
+<view>
+  <view class="common_v_between100" bindtap="equipment">
+    <view class="common_tv_tips32">设施设备</view>
+    <image wx:if="{{equipmentOpen}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+    <image wx:if="{{!equipmentOpen}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+  </view>
+
+  <view class="common_v_line720"></view>
+
+  <view wx:if="{{equipmentOpen}}">
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='设施设备' data-item='万用表'>
+      <view class="common_tv_tips30">万用表</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+
+    <view class="common_v_line720"></view>
+
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
+      <view class="common_tv_tips30">气缸压力表</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+  </view>
+</view>
+
+<!-- 维修技术人员 -->
+<view>
+  <view class="common_v_between100" bindtap="technician">
+    <view class="common_tv_tips32">维修技术人员</view>
+    <image wx:if="{{technicianOpen}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+    <image wx:if="{{!technicianOpen}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+  </view>
+
+  <view class="common_v_line720"></view>
+
+  <view wx:if="{{technicianOpen}}">
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
+      <view class="common_tv_tips30">机修人员</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+
+    <view class="common_v_line720"></view>
+
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
+      <view class="common_tv_tips30">质量检验员</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+  </view>
+</view>
+
+
+<!-- 维修管理制度 -->
+<view>
+  <view class="common_v_between100" bindtap="management">
+    <view class="common_tv_tips32">维修管理制度</view>
+    <image wx:if="{{managementOpen}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+    <image wx:if="{{!managementOpen}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+  </view>
+
+  <view class="common_v_line720"></view>
+
+  <view wx:if="{{managementOpen}}">
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
+      <view class="common_tv_tips30">业务工作流程</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+
+    <view class="common_v_line720"></view>
+
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
+      <view class="common_tv_tips30">服务质量承诺</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+  </view>
+</view>
+
+<!-- 环境保护措施 -->
+<view>
+  <view class="common_v_between100" bindtap="environment">
+    <view class="common_tv_tips32">环境保护措施</view>
+    <image wx:if="{{environmentOpen}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+    <image wx:if="{{!environmentOpen}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+  </view>
+
+  <view class="common_v_line720"></view>
+
+  <view wx:if="{{environmentOpen}}">
+    <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
+      <view class="common_tv_tips30">有害物质存储区的隔离、控制措施</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+
+    <view class="common_v_line750"></view>
+  </view>
+</view>
+
+<!-- 提交 -->
+<view class="btn_mar common_button_action">提 交</view>
+
+
+

@@ -1,10 +1,60 @@
-// pages/verifyingEnterprise/verifyingEnterprise.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    premisesOpen:false,
+    equipmentOpen:false,
+    technicianOpen: false,
+    managementOpen: false,
+    environmentOpen: false,
+    icon_location: app.globalData.picUrl + '/icon_location.png',
+    icon_navigation: app.globalData.picUrl + '/icon_navigation.png',
+    icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
+    icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
+  },
+  // 经营场地
+  premises:function(){
+    this.setData({
+      premisesOpen: !this.data.premisesOpen
+    })
+  },
+  //设备
+  equipment: function() {
+    this.setData({
+      equipmentOpen: !this.data.equipmentOpen
+    })
+  },
+  //维修技术人员
+  technician: function () {
+    this.setData({
+      technicianOpen: !this.data.technicianOpen
+    })
+  },
+  //维修管理制度
+  management: function () {
+    this.setData({
+      managementOpen: !this.data.managementOpen
+    })
+  },
+  //环境保护措施
+  environment: function () {
+    this.setData({
+      environmentOpen: !this.data.environmentOpen
+    })
+  },
+  // 跳转
+  toJumpS: function (e) {
+
+    let jumpway = e.currentTarget.dataset.jumpway
+    let name = e.currentTarget.dataset.name
+    let item = e.currentTarget.dataset.item
+    wx.navigateTo({
+      url: jumpway + '?name=' + name + '&item=' + item,
+    })
 
   },
 

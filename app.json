@@ -13,6 +13,7 @@
     "pages/enterpriseFileRecordDetail/enterpriseFileRecordDetail",
     "pages/fileRecordAuditList/fileRecordAuditList",
     "pages/fileRecordAuditDetail/fileRecordAuditDetail",
+    "pages/verifyEnterpriseUpload/verifyEnterpriseUpload",
 
     "pages/logs/logs",
     "pages/index/index"

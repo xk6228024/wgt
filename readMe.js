@@ -12,4 +12,5 @@
 "pages/enterpriseFileRecordDetail/enterpriseFileRecordDetail",备案企业详情
 "pages/fileRecordAuditList/fileRecordAuditList", 备案审核列表
 "pages/fileRecordAuditDetail/fileRecordAuditDetail",备案审核详情
+"pages/verifyEnterpriseUpload/verifyEnterpriseUpload",堪舆各种上传图片和文件
 */
