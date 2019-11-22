@@ -1,0 +1,15 @@
+<view class='v_bg' hidden="{{hiddenDialog}}">
+  <view class='v_main'>
+
+    <view class="v_title">温馨提示</view>
+    <view class="v_line"></view>
+    <view class="v_content">{{content}}</view>
+
+    <view class="v_submit_row">
+      <view class='v_submit_cancel' catchtap='toClose'>取消</view>
+      <view class="v_line_coulonm"></view>
+      <view class='v_submit_confirm' catchtap='toConfirm'>确认</view>
+    </view>
+
+  </view>
+</view>

@@ -269,6 +269,17 @@
   margin-left: 30rpx;
 }
 
+
+/* 通用普通字体 26大小 蓝色 */
+
+.common_tv_tips26_blue {
+  font-size: 26rpx;
+  height: 37rpx;
+  color: #185BBD;
+  line-height: 37rpx;
+  margin-left: 30rpx;
+}
+
 /* 通用普通字体 28大小 */
 
 .common_tv_tips28 {

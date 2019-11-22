@@ -1,0 +1,15 @@
+<view class='v_bg' hidden="{{hiddenInputDialog}}">
+  <view class='v_main'>
+
+    <view class="v_title">审核不通过</view>
+    <view class="v_line"></view>
+    <textarea class="v_content" bindinput="toInput" placeholder="请输入审核不通过的理由，不超过50个字符" placeholder-class="placeholder" maxlength='50' value="{{inputContent}}"></textarea>
+
+    <view class="v_submit_row">
+      <view class='v_submit_cancel' catchtap='toInputClose'>取消</view>
+      <view class="v_line_coulonm"></view>
+      <view class='v_submit_confirm' catchtap='toInputConfirm'>确认</view>
+    </view>
+
+  </view>
+</view>

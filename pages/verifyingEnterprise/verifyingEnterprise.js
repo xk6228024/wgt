@@ -11,6 +11,7 @@ Page({
     technicianOpen: false,
     managementOpen: false,
     environmentOpen: false,
+    hiddenDialog: true,
     icon_location: app.globalData.picUrl + '/icon_location.png',
     icon_navigation: app.globalData.picUrl + '/icon_navigation.png',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
@@ -56,6 +57,31 @@ Page({
       url: jumpway + '?name=' + name + '&item=' + item,
     })
 
+  },
+
+  // 提交
+  submit:function(){
+
+    this.setData({
+      hiddenDialog: false
+    })
+    
+    // wx.showModal({
+    //   title: '',
+    //   content: '请完成勘验项目',
+    //   showCancel: false,//是否显示取消按钮
+    //   cancelColor: 'skyblue',//取消文字的颜色
+    //   confirmText: "知道了",//默认是“确定”
+    //   confirmColor: '#185BBD',//确定文字的颜色
+    // })
+  },
+  toClose: function () {
+    this.setData({
+      hiddenDialog: true
+    })
+  },
+  toConfirm: function (e) {
+    console.log("===data===确认");
   },
 
   /**

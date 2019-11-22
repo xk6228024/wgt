@@ -135,37 +135,37 @@
 <!-- 备案资料 -->
 <view class="v_base" wx:if='{{currentIndex==2}}'>
 
-  <view class="common_v_between100" bindtap="enterpriseInfo">
+  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='企业信息'>
     <view class="common_tv_tips32">企业信息</view>
     <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
   </view>
   <view class="common_v_line720"></view>
 
-  <view class="common_v_between100" bindtap="enterpriseInfo">
+  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='人员信息'>
     <view class="common_tv_tips32">人员信息</view>
     <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
   </view>
   <view class="common_v_line720"></view>
 
-  <view class="common_v_between100" bindtap="enterpriseInfo">
+  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='维修管理制度'>
     <view class="common_tv_tips32">维修管理制度</view>
     <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
   </view>
   <view class="common_v_line720"></view>
 
-  <view class="common_v_between100" bindtap="enterpriseInfo">
+  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='环境保护措施'>
     <view class="common_tv_tips32">环境保护措施</view>
     <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
   </view>
   <view class="common_v_line720"></view>
 
-  <view class="common_v_between100" bindtap="enterpriseInfo">
+  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='危险货物运输车辆经营材料'>
     <view class="common_tv_tips32">危险货物运输车辆经营材料</view>
     <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
   </view>
   <view class="common_v_line720"></view>
 
-  <view class="common_v_between100" bindtap="enterpriseInfo">
+  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='其他'>
     <view class="common_tv_tips32">其他</view>
     <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
   </view>

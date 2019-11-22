@@ -9,12 +9,14 @@ Page({
     specializedOpen: false,
     detectionOpen: false,
     universalOpen: false,
+    hiddenDialog: true,
+    hiddenInputDialog:true,
     currentIndex: 1,
+    inputContent:'',
     icon_location: app.globalData.picUrl + '/icon_location.png',
     icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
   },
-
   // 切换
   changeCurrent: function (e) {
     this.setData({
@@ -65,6 +67,44 @@ Page({
     })
 
   },
+  //通过审核
+  pass: function () {
+    this.setData({
+      hiddenDialog: false
+    })
+  },
+  toClose: function () {
+    this.setData({
+      hiddenDialog: true
+    })
+  },
+  toConfirm: function (e) {
+    console.log("===data===确认");
+  },
+
+  //审核不通过
+  noPass: function () {
+    this.setData({
+      hiddenInputDialog: false
+    })
+  },
+  //获取输入内容
+  getInput: function (e) {
+    this.setData({
+      inputContent: e.detail
+    })
+  },
+  toInputClose: function () {
+    this.setData({
+      hiddenInputDialog: true
+    })
+  }, 
+  toInputConfirm: function () {
+    console.log("确认提交" + this.data.inputContent);
+  },
+
+
+
 
   /**
    * 生命周期函数--监听页面加载

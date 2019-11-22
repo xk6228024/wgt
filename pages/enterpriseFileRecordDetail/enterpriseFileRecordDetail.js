@@ -54,6 +54,16 @@ Page({
       universalOpen: !this.data.universalOpen
     })
   },
+  // 跳转
+  toJumpS: function (e) {
+
+    let jumpway = e.currentTarget.dataset.jumpway
+    let name = e.currentTarget.dataset.name
+    wx.navigateTo({
+      url: jumpway + '?name=' + name,
+    })
+
+  },
 
   /**
    * 生命周期函数--监听页面加载

@@ -10,22 +10,47 @@
 <!-- 选择栏 -->
 <view class="v_select">
 
-  <view class="v_select_tips">
-    <view class="common_tv_tips26">业户类别</view>
-    <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+  <view class="v_select_tips" bindtap="style">
+
+    <block wx:if="{{!styleSelect}}">
+      <view class="common_tv_tips26">业户类别</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">业户类别</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
+
   </view>
 
-  <view class="v_select_tips">
-    <view class="common_tv_tips26">所在区域</view>
-    <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+  <view class="v_select_tips" bindtap="area">
+
+    <block wx:if="{{!areaSelect}}">
+      <view class="common_tv_tips26">所在区域</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">所在区域</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
+
   </view>
 
-  <view class="v_select_tips">
-    <view class="common_tv_tips26">勘验状态</view>
-    <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+  <view class="v_select_tips" bindtap="state">
+
+    <block wx:if="{{!stateSelect}}">
+      <view class="common_tv_tips26">勘验状态</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">勘验状态</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
+
   </view>
 
 </view>
+
 
 <!-- 列表 -->
 <view class="v_list_main" wx:if="{{array.length > 0}}" wx:for="{{array}}" data-id='{{array.vehicleId}}'>
@@ -64,3 +89,10 @@
 
   </view>
 </view>
+
+<!-- 业户类别弹窗 -->
+<customPopUp hidden-pop-up="{{hiddenPopUp1}}" bindcloseTns="toClose1" bindchooseLi="chooseLi1" all-data='{{listData1}}'></customPopUp>
+<!-- 所在区域弹窗 -->
+<customPopUp hidden-pop-up="{{hiddenPopUp2}}" bindcloseTns="toClose2" bindchooseLi="chooseLi2" all-data='{{listData2}}'></customPopUp>
+<!-- 勘验状态弹窗 -->
+<customPopUp hidden-pop-up="{{hiddenPopUp3}}" bindcloseTns="toClose3" bindchooseLi="chooseLi3" all-data='{{listData3}}'></customPopUp>

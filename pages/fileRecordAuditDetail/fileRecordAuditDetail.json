@@ -2,5 +2,8 @@
   "navigationBarTitleText": "审核",
   "navigationBarBackgroundColor": "#185BBD",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "customDialog": "../../component/customDialog/customDialog",
+    "customInputDialog": "../../component/customInputDialog/customInputDialog"
+  }
 }

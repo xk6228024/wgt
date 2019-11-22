@@ -2,5 +2,7 @@
   "navigationBarTitleText": "现场勘验",
   "navigationBarBackgroundColor": "#185BBD",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "customPopUp": "../../component/customPopUp/customPopUp"
+  }
 }

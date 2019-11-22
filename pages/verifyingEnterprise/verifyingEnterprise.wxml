@@ -145,7 +145,10 @@
 </view>
 
 <!-- 提交 -->
-<view class="btn_mar common_button_action">提 交</view>
+<view class="btn_mar common_button_action" bindtap="submit">提 交</view>
+
+<!-- 弹窗 -->
+<customDialog content="确认完成勘验？" hidden-dialog="{{hiddenDialog}}" bindclose="toClose" bindconfirm="toConfirm"></customDialog>
 
 
 

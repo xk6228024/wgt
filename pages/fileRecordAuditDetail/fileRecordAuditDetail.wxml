@@ -256,6 +256,12 @@
 </view>
 
 <!-- 提交 -->
-<view class="btn_mar common_button_action">审核通过</view>
+<view class="btn_mar common_button_action" bindtap="pass">审核通过</view>
 
-<view class="btn_mar_white common_button_white">审核不通过</view>
+<view class="btn_mar_white common_button_white" bindtap="noPass">审核不通过</view>
+
+<!-- 弹窗 -->
+<customDialog content="确认审核通过？" hidden-dialog="{{hiddenDialog}}" bindclose="toClose" bindconfirm="toConfirm"></customDialog>
+<!-- 带输入框的弹窗 -->
+<customInputDialog hidden-input-dialog="{{hiddenInputDialog}}" bindinput="getInput" bindclose="toInputClose" bindconfirm="toInputConfirm"></customInputDialog>
+
