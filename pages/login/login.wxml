@@ -1,17 +1,23 @@
 <!--pages/login/login.wxml-->
+
+<view class='v_nav' style='height:{{titleBarHeight}}px; padding-top:{{statusBarHeight}}px;'>
+  <text class="tv_nav">登录</text>
+</view>
+
 <image class="iv_logo" mode='scaleToFill' src='{{icon_loginLogo}}'></image>
 <view class="v_bg">
   <view class="v_inputBg">
     <text class="tv_title">账号</text>
-    <input class="v_input" bindinput='motorInput' placeholder="请输入" placeholder-class="placeholder" maxlength='18' value="{{motor}}" ></input>
+    <input class='v_input' type='text' placeholder='请输入账号' value='{{accountNum}}' placeholder-class="placeholder" bindinput='getAccountNum' maxlength='11' />
   </view>
 
   <view class="v_line"></view>
 
   <view class="v_inputBg">
     <text class="tv_title">密码</text>
-    <input class="v_input" bindinput='motorInput' placeholder="请输入" placeholder-class="placeholder" maxlength='18' value="{{motor}}"></input>
+    <input class="v_input" placeholder="请输入密码" placeholder-class="placeholder" maxlength='18' bindinput="getPassword" password="true" value="{{password}}"></input>
   </view>
 </view>
 
-<button class="margin_top common_button_action">登 录</button>
+<view class="margin_leftTop common_button_action" bindtap="loginEvent">登 录</view>
+

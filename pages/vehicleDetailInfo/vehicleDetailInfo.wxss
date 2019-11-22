@@ -6,6 +6,7 @@ page{
 .v_vehicleInfoBg{
   display: flex;
   flex-direction: column;
+  background: white;
 }
 
 .v_sectionHeader{

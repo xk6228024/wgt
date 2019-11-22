@@ -4,6 +4,20 @@ page {
   background: #F5F5F5;
 }
 
+.v_nav{
+  display: flex;
+  flex-direction: row;
+  background: #185BBD;
+  justify-content: center;
+  align-items: center;
+
+}
+.tv_nav{
+  color: white;
+  font-size: 28rpx;
+  
+}
+
 .iv_logo{
   width: 214rpx;
   height: 227rpx;
@@ -51,6 +65,7 @@ page {
   background: #F5F5F5;
 }
 
-.margin_top{
+.margin_leftTop{
   margin-top: 60rpx;
+  margin-left: 30rpx;
 }

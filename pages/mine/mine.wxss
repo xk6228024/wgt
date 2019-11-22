@@ -24,7 +24,6 @@ page{
   width: 118rpx;
   height: 118rpx;
   flex-shrink: 0;
-  background: red;
 }
 
 .v_infoBg{
@@ -57,7 +56,7 @@ page{
   color: #3C94FF;
   overflow: hidden;
   border-radius: 18rpx;
-  border: 2rpx solid rgba(24, 91, 189, 1);
+  border: 2rpx solid  #3C94FF;
   height: 36rpx;
   width: 130rpx;
   margin-top: 17rpx;

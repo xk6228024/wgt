@@ -1,5 +1,6 @@
 // pages/login/login.js
-const app = getApp()
+const app = getApp();
+var netUtil = require('../../utils/NetUtil.js');
 
 Page({
 
@@ -8,61 +9,75 @@ Page({
    */
   data: {
     icon_loginLogo: app.globalData.picUrl + '/icon_loginLogo.png',
+    titleBarHeight: getApp().globalData.titleBarHeight,
+    statusBarHeight: getApp().globalData.statusBarHeight,
+    accountNum: '',
+    password: '',
+    loginUrl: app.globalData.url + '/vmts-supervision/app/sysUser/login',
+    phoneNum: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getAccountNum: function (event) {
+    console.log(event.detail.value)
+    this.setData({
+      accountNum: event.detail.value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  getPassword: function (event) {
+    this.setData({
+      password: event.detail.value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  // 登录事件
+  loginEvent: function(){
 
-  },
+    // if (0 == this.data.accountNum.length){
+      
+    //   wx.showToast({
+    //     title: '请输入账号!',
+    //     icon: 'none',
+    //   })
+    //   return;
+    // }
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+    // if (0 == this.data.password.length) {
+    //   wx.showToast({
+    //     title: '请输入密码!',
+    //     icon: 'none',
+    //   })
+    //   return;
+    // }
+    
+    // 登录接口请求
+    let param = {
+      data: {
+        userName: "szadmin", //电话号码
+        password: "123456", //短信验证码
+      }
+    };
+    netUtil.doPost(this.data.loginUrl, param).then(
 
-  },
+      //请求成功code==200回调
+      function (res) {
+        app.globalData.userInfo = res;
+        app.globalData.token = res.token;
+        wx.setStorageSync("userInfo", res);
+        wx.setStorageSync("token", res.token);
+        wx.navigateBack();
+      },
+      //请求失败回调
+      function (msg) {
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      }
+    )
   }
 })

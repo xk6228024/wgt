@@ -14,7 +14,6 @@ page{
 .iv_size{
   width: 118rpx;
   height: 118rpx;
-  background: red;
 }
 
 .v_bgColor{

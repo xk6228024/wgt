@@ -45,18 +45,19 @@
 <view class="common_v_line20"></view>
 
 <block wx:if = "{{hasRecord == true}}">
-  <view class="v_sectionHeader">
-    <text class="tv_titleFont tv_leftTitle tv_bold">维修记录</text>
-  </view>
-  <view class="common_v_line750"></view>
-  <!-- 维修记录列表 -->
-  <block wx:for = "{{lisArray}}">
-    <view class="common_v_between100" bindtap="cellTapEvent" data-repairid = "{{item}}">
-      <text class="tv_titleFont tv_row">2132134234324324234234324234324234234234234</text>
-      <image class="iv_arrow" mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+  <view class="common_v_column">
+    <view class="v_sectionHeader">
+      <text class="tv_titleFont tv_leftTitle tv_bold">维修记录</text>
     </view>
-    <view class="v_line"></view>
-  </block>
-
+    <view class="common_v_line750"></view>
+    <!-- 维修记录列表 -->
+    <block wx:for = "{{lisArray}}">
+      <view class="common_v_between100" bindtap="cellTapEvent" data-repairid = "{{item}}">
+        <text class="tv_titleFont tv_row">2132134234324324234234324234324234234234234</text>
+        <image class="iv_arrow" mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+      </view>
+      <view class="v_line"></view>
+    </block>
+  </view>
 </block>
 

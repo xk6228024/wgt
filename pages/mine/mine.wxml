@@ -1,10 +1,10 @@
 <!--pages/mine/mine.wxml-->
 
 <view class="v_bg" bindtap="pageJumpEvent" data-pageurl="../personalData/personalData">
-  <image class="iv_userHeader"></image>
+  <image class="iv_userHeader" mode='scaleToFill' src='{{headerImgUrl?headerImgUrl:icon_defaultHeader}}'></image>
   <view class="v_infoBg">
-    <text class="tv_userName">12312332423432432423423423423423424234234432</text>
-    <text class="tv_userRole">123123</text>
+    <text class="tv_userName">{{userName}}</text>
+    <text wx:if= "{{roleName}}" class="tv_userRole">{{roleName}}</text>
   </view>
   <image class="iv_arrow" mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
 </view>

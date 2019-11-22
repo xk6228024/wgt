@@ -1,5 +1,5 @@
 function doPost(urlStr, postData) {
-  console.log('doPost postData==:' + JSON.stringify(postData));
+  console.log('url==:' + urlStr+ '     doPost postData==:' + JSON.stringify(postData));
   return new Promise(function(resolve, reject) {
     
     //加载loading
@@ -22,12 +22,12 @@ function doPost(urlStr, postData) {
       success: function(res) {
         console.log('doPost success:' + JSON.stringify(res.data));
 
-        //成功
-        if (res.data.code == 200) {
+        // 成功
+        if (res.data.status == 200) {
           resolve(res.data);
         }
         //失败 token 失效
-        else if (res.data.code == 800) {
+        else if (res.data.status == 300) {
           console.log('fail');
           wx.showModal({
             title: '温馨提示',
@@ -36,6 +36,7 @@ function doPost(urlStr, postData) {
             confirmText: '确定',
             confirmColor: '#0078D4',
             success: function() {
+              wx.clearStorageSync();
               wx.reLaunch({
                 url: '../../pages/login/login',
               })
