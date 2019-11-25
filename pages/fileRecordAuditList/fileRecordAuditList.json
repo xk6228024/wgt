@@ -2,5 +2,9 @@
   "navigationBarTitleText": "备案审核",
   "navigationBarBackgroundColor": "#185BBD",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "customPopUp": "../../component/customPopUp/customPopUp"
+  }
 }

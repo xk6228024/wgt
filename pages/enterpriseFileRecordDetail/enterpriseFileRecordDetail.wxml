@@ -2,15 +2,15 @@
 <view class="v_list_info">
 
   <view class="common_v_between100">
-    <view class="common_tv_left370w">深圳市机动车汽修厂</view>
-    <view class="common_tv_right">一类企业</view>
+    <view class="common_tv_left370w">{{sourceList.enterpriseName}}</view>
+    <view class="common_tv_right">{{sourceList.enterpriseBusinessCategoryStr}}企业</view>
   </view>
 
   <view class="common_v_line720"></view>
 
   <view class="common_v_row100h">
     <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-    <view class="tv_ellipsis2 tv_location">深圳市 南山区 大新路创新大厦1号</view>
+    <view class="tv_ellipsis2 tv_location">{{sourceList.enterpriseDetailedAddress}}</view>
   </view>
 
   <view class="common_v_line20"></view>
@@ -41,87 +41,83 @@
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">企业名称</view>
-    <view class="common_tv_tips32_86c">深圳市机动车汽修厂</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseName}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">所在区域</view>
-    <view class="common_tv_tips32_86c">深圳市南山区</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseAreaStr}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">企业法人代表</view>
-    <view class="common_tv_tips32_86c">张丽</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseLegalRepresentative}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">统一社会信用代表</view>
-    <view class="common_tv_tips32_86c">458651231896548964</view>
+    <view class="common_tv_tips32_nomargin">统一社会信用代码</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseCreditIdentifier}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">主要负责人姓名</view>
-    <view class="common_tv_tips32_86c">张丽</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOwner}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经办人联系电话</view>
-    <view class="common_tv_tips32_86c">15966325541</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOwnerPhone}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">主要负责人身份证号</view>
-    <view class="common_tv_tips32_86c">15966325541</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOwnerIdcardnumber}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">主要负责人邮箱/传真</view>
-    <view class="common_tv_tips32_86c">15966325541</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOwnerEmail}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经营方式</view>
-    <view class="common_tv_tips32_86c">企业经营</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseChainOrGroupIs}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">企业性质</view>
-    <view class="common_tv_tips32_86c">私营</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseEconomicCategory}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经营类别</view>
-    <view class="common_tv_tips32_86c">单店</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseBusinessCategory}}</view>
   </view>
 
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">经营方式</view>
-    <view class="common_tv_tips32_86c">企业经营</view>
-  </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经营类型</view>
-    <view class="common_tv_tips32_86c">综合修理</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseBusinessType}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">机动车维修标志牌制作方式</view>
-    <view class="common_tv_tips32_86c">自行制作</view>
+    <view class="common_tv_tips32_86c">{{sourceList.signboardProductMethod}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">业务类型</view>
-    <view class="common_tv_tips32_86c">汽车维修</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseTypeId}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">业户类别</view>
-    <view class="common_tv_tips32_86c">一类</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseBusinessCategoryStr}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">漆房类型</view>
-    <view class="common_tv_tips32_86c">自有漆房</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseIsOwnerPaintRoom}}</view>
   </view>
 
   <view class="common_v_between100h_720w">

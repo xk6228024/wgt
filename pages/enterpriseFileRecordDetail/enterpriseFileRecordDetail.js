@@ -1,5 +1,7 @@
+//备案企业企业详情页面
+//获取应用实例
 const app = getApp()
-
+var netUtil = require('../../utils/NetUtil.js');
 Page({
 
   /**
@@ -10,6 +12,7 @@ Page({
     detectionOpen: false,
     universalOpen: false,
     currentIndex:1,
+    url: app.globalData.url + '/vmts-supervision/app/record/info',
     icon_location: app.globalData.picUrl + '/icon_location.png',
     icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
@@ -65,11 +68,41 @@ Page({
 
   },
 
+  //获取企业详情
+  getDetail: function () {
+    var that = this;
+
+    that.setData({
+      sourceData: {
+        enterpriseRecordId: this.data.orderId,
+      }
+    })
+
+    netUtil.doPost(this.data.url, this.data.sourceData).then(
+
+      //请求成功code==200回调
+      function (res) {
+
+        that.setData({
+          sourceList: res.data,
+        })
+      },
+      //请求失败回调
+      function (msg) {
+        console.log('error:' + JSON.stringify(msg));
+      }
+    )
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      orderId: options.id
+    })
+    this.getDetail();
+    console.log("id==" + this.data.orderId);
   },
 
   /**

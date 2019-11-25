@@ -53,14 +53,14 @@
 
 
 <!-- 列表 -->
-<view class="v_list_main" wx:if="{{array.length > 0}}" wx:for="{{array}}" data-id='{{array.vehicleId}}'>
+<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" data-id='{{sourceList.enterpriseRecordId}}'>
 
   <view class="common_v_line20"></view>
 
 
   <view class="common_v_row100h">
-    <view class="common_tv_left370w">深圳市机动车汽修厂</view>
-    <view class="common_tv_center">一类企业</view>
+    <view class="common_tv_left370w">{{sourceList.enterpriseName}}</view>
+    <view class="common_tv_center">{{sourceList.enterpriseBusinessCategoryStr}}企业</view>
 
     <block wx:if='{{!verify}}'>
       <view class='tv_verify_green'>已勘验</view>

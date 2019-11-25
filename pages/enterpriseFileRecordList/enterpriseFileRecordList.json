@@ -2,5 +2,7 @@
   "navigationBarTitleText": "备案企业",
   "navigationBarBackgroundColor": "#185BBD",
   "navigationBarTextStyle": "white",
-  "usingComponents": {}
+  "usingComponents": {
+    "customPopUp": "../../component/customPopUp/customPopUp"
+  }
 }

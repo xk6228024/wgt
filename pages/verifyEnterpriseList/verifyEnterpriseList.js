@@ -1,5 +1,7 @@
-//获取应用实例
+// 现场勘验--列表页面
+//获取应用实例  
 const app = getApp()
+var netUtil = require('../../utils/NetUtil.js');
 
 Page({
 
@@ -57,6 +59,11 @@ Page({
     hiddenPopUp1: true,
     hiddenPopUp2: true,
     hiddenPopUp3: true,
+    pageNum:1,
+    pageSize: 10,
+    //列表数据源
+    sourceList: '',
+    // url: app.globalData.url + '/vmts-supervision/app/record/findAuditEntList',
     icon_search: app.globalData.picUrl + '/icon_search.png',
     icon_arrow_down_gray: app.globalData.picUrl + '/icon_arrow_down_gray.png',
     icon_arrow_up_blue: app.globalData.picUrl + '/icon_arrow_up_blue.png',
@@ -170,13 +177,50 @@ Page({
       stateSelect: false,
     })
   },
+  //获取列表信息
+  getList:function(){
+    var that = this;
+
+    that.setData({
+      sourceData: {
+        pageNum: this.data.pageNum,
+        pageSize: this.data.pageSize,
+      }
+    })
+
+
+    netUtil.doPost(this.data.url, this.data.sourceData).then(
+
+      //请求成功code==200回调
+      function (res) {
+        console.log('success:' + JSON.stringify(res.data));
+
+        if (that.data.page == 1) {
+          that.setData({
+            sourceList: res.data,
+          })
+        } else if (that.data.page != 1 && res.data.length != 0) {
+
+          that.setData({
+            sourceList: that.data.sourceList.concat(res.data)
+          })
+
+        }
+
+      },
+      //请求失败回调
+      function (msg) {
+        // console.log('error:' + JSON.stringify(msg));
+      }
+    )
+  },
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    // this.getList();
   },
 
   /**

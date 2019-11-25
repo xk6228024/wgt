@@ -10,27 +10,43 @@
 <!-- 选择栏 -->
 <view class="v_select">
 
-  <view class="v_select_tips">
-    <view class="common_tv_tips26">业户类别</view>
-    <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+  <view class="v_select_tips" bindtap="style">
+
+    <block wx:if="{{!styleSelect}}">
+      <view class="common_tv_tips26">业户类别</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">业户类别</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
+
   </view>
 
-  <view class="v_select_tips">
-    <view class="common_tv_tips26">所在区域</view>
-    <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+  <view class="v_select_tips" bindtap="area">
+
+    <block wx:if="{{!areaSelect}}">
+      <view class="common_tv_tips26">所在区域</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">所在区域</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
+    
   </view>
 
 </view>
 
 <!-- 列表 -->
-<view class="v_list_main" wx:if="{{array.length > 0}}" wx:for="{{array}}" bindtap='toDetail' data-id='{{array.vehicleId}}'>
+<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" bindtap='toDetail' data-id='{{item.enterpriseRecordId}}'>
 
   <view class="common_v_line20"></view>
 
   <view class="common_v_between100">
 
-    <view class="common_tv_left370w">深圳市机动车汽修厂</view>
-    <view class="common_tv_right">一类企业</view>
+    <view class="common_tv_left370w">{{item.enterpriseName}}</view>
+    <view class="common_tv_right">{{item.enterpriseBusinessCategoryStr}}企业</view>
 
   </view>
   <view class="common_v_line720"></view>
@@ -40,7 +56,7 @@
 
     <view class="v_location">
       <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-      <view class="tv_ellipsis2 tv_location">深圳市 南山区 大新路创新大厦1号</view>
+      <view class="tv_ellipsis2 tv_location">{{item.enterpriseDetailedAddress}}</view>
     </view>
 
 
@@ -53,3 +69,8 @@
   </view>
 
 </view>
+
+<!-- 业户类别弹窗 -->
+<customPopUp hidden-pop-up="{{hiddenPopUp1}}" bindcloseTns="toClose1" bindchooseLi="chooseLi1" all-data='{{listData1}}'></customPopUp>
+<!-- 所在区域弹窗 -->
+<customPopUp hidden-pop-up="{{hiddenPopUp2}}" bindcloseTns="toClose2" bindchooseLi="chooseLi2" all-data='{{listData2}}'></customPopUp>
