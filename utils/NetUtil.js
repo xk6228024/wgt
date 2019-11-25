@@ -37,7 +37,7 @@ function doPost(urlStr, postData) {
             confirmColor: '#0078D4',
             success: function() {
               wx.clearStorageSync();
-              wx.reLaunch({
+              wx.navigateTo({
                 url: '../../pages/login/login',
               })
             }
