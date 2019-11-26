@@ -30,7 +30,7 @@
     <text class="tv_titleFont tv_leftTitle">维修企业名称</text>
     <text class="tv_subTitleFont tv_row">3123</text>
   </view>
-  <view class="v_line"></view>
+  <view class="common_v_line750"></view>
 </view>
 
 <view class="common_v_line20"></view>

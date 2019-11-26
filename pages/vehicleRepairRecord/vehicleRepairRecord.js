@@ -1,5 +1,6 @@
 // pages/vehicleRepairRecord/vehicleRepairRecord.js
 const app = getApp();
+var netUtil = require('../../utils/NetUtil.js');
 Page({
 
   /**
@@ -9,6 +10,7 @@ Page({
     repairid: '',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
     icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
+    vehicleRepairRecordUrl: app.globalData.url + '/vmts-supervision/app/vehicle/findVehicleRecordList',
     openRepairItem: false,
     openRepairParts: false,
     repairItemArray: [
@@ -31,6 +33,7 @@ Page({
         value: '213123',
       }
     ],
+    dataSource: [],
   },
 
   /**
@@ -44,52 +47,30 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  * 生命周期函数--监听页面显示
+  */
   onShow: function () {
-
+    this.getVehicleRepairRecordData()
   },
+  // 登录事件
+  getVehicleRepairRecordData: function () {
+    let _this = this;
+    let params = {
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    };
+    netUtil.doPost(this.data.vehicleRepairRecordUrl, params).then(
 
-  },
+      //请求成功code==200回调
+      function (res) {
+        _this.setData({
+          dataSource: res.data,
+        })
+      },
+      //请求失败回调
+      function (msg) {
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      }
+    )
   },
 
   openRepairItem: function () {

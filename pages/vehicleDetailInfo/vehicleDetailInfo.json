@@ -2,5 +2,7 @@
   "navigationBarTitleText": "车辆信息详情",
   "navigationBarBackgroundColor": "#185BBD",
   "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
   "usingComponents": {}
 }

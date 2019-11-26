@@ -24,8 +24,6 @@ Page({
     } 
   },
 
- 
-  
   //事件处理函数
   pageJumpEvent: function (e) {
     let pageurl = e.currentTarget.dataset.pageurl
@@ -33,5 +31,4 @@ Page({
       url: pageurl,
     })
   }
-
 })

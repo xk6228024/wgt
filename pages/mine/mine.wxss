@@ -58,7 +58,8 @@ page{
   border-radius: 18rpx;
   border: 2rpx solid  #3C94FF;
   height: 36rpx;
-  width: 130rpx;
+  width: 20rpx;
+  max-width: 180;
   margin-top: 17rpx;
   text-align: center;
   line-height: 36rpx;

@@ -97,7 +97,6 @@ page{
   width: 40rpx;
   height: 40rpx;
   margin-left: 30rpx;
-  background: red;
 }
 
 .v_brandBg{

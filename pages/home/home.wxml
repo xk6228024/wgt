@@ -33,5 +33,3 @@
   <image class="iv_menu" mode='scaleToFill' src='{{icon_vehicleFiles}}'></image>
   <text class="tv_menu">车辆档案</text>
 </view>
-
-
