@@ -82,25 +82,26 @@
 /* ----上传图片部分样式---- */
 
 .common_v_upload {
-  height: 190rpx;
-  width: 100%;
-  display: flex;
+	display:block;
+	width:100%;
+	margin:0 auto;
   background: #fff;
-  align-items: center;
+  position: relative;
 }
 
 .common_v_upload_block {
-  display: inline-block;
-  position: relative;
-  margin-right: 30rpx;
+	margin:30rpx 0 0 0;
+	display:inline-block;
+	width:150rpx;
+	height:150rpx;
 }
 
 .common_iv_del {
   width: 28rpx;
   height: 28rpx;
   position: absolute;
-  top: -14rpx;
-  right: -14rpx;
+  margin-left: 136rpx;
+  margin-top: -14rpx;
   z-index: 888;
 }
 

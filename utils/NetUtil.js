@@ -4,7 +4,7 @@ function doPost(urlStr, postData) {
     
     //加载loading
     wx.showLoading({
-      title: ''
+      
     })
 
     wx.request({
@@ -45,7 +45,7 @@ function doPost(urlStr, postData) {
         }
         //失败 其他失败
         else {
-          reject(res.data.msg);
+          reject(res.data.message);
         }
 
 

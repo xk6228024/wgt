@@ -13,16 +13,18 @@ Page({
     detectionOpen: false,
     universalOpen: false,
     hiddenDialog: true,
-    hiddenInputDialog:true,
+    hiddenInputDialog: true,
     currentIndex: 1,
-    inputContent:'',
+    inputContent: '',
+    id: '',
     url: app.globalData.url + '/vmts-supervision/app/record/info',
+    url_audit_submit: app.globalData.url + '/vmts-supervision/app/record/updateAuditStatus',
     icon_location: app.globalData.picUrl + '/icon_location.png',
     icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
   },
   // 切换
-  changeCurrent: function (e) {
+  changeCurrent: function(e) {
     this.setData({
       currentIndex: e.currentTarget.dataset.indexs
     })
@@ -43,26 +45,26 @@ Page({
   },
 
   // 专用设备
-  specialized: function () {
+  specialized: function() {
     this.setData({
       specializedOpen: !this.data.specializedOpen
     })
   },
   //检测设备
-  detection: function () {
+  detection: function() {
     this.setData({
       detectionOpen: !this.data.detectionOpen
     })
   },
   //通用
-  universal: function () {
+  universal: function() {
     this.setData({
       universalOpen: !this.data.universalOpen
     })
   },
 
   // 跳转
-  toJumpS: function (e) {
+  toJumpS: function(e) {
 
     let jumpway = e.currentTarget.dataset.jumpway
     let name = e.currentTarget.dataset.name
@@ -71,44 +73,112 @@ Page({
     })
 
   },
-  //通过审核
-  pass: function () {
+  //----------------通过审核-----------------
+  pass: function() {
     this.setData({
       hiddenDialog: false
     })
   },
-  toClose: function () {
+  //取消
+  toClose: function() {
     this.setData({
       hiddenDialog: true
     })
   },
-  toConfirm: function (e) {
-    console.log("===data===确认");
+  //确认
+  toConfirm: function(e) {
+    console.log("===data===审核通过确认提交");
+
+    var that = this;
+
+    that.setData({
+      sourceData: {
+        // "auditFailureReasons": "热个紫砂杯真棒起码想起上人",
+        auditStatus: 1,
+        enterpriseRecordId: this.data.id,
+      }
+    })
+
+    netUtil.doPost(this.data.url_audit_submit, this.data.sourceData).then(
+
+      //请求成功code==200回调
+      function(res) {
+        wx.showToast({
+          title: res.message,
+          icon: 'success',
+          duration: 800,
+        });
+      },
+      //请求失败回调
+      function(msg) {
+        console.log('error:' + JSON.stringify(msg));
+        wx.showToast({
+          title: '提交失败:' + msg,
+          icon: 'fail',
+          duration: 800,
+        });
+      }
+    )
   },
 
-  //审核不通过
-  noPass: function () {
+  //------------审核不通过--------------
+  noPass: function() {
     this.setData({
       hiddenInputDialog: false
     })
   },
-  //获取输入内容
-  getInput: function (e) {
+  //获取输入内容  PS:真机才有效！
+  getInput: function(e) {
+    console.log("getInput");
+
     this.setData({
       inputContent: e.detail
     })
   },
-  toInputClose: function () {
+  //取消
+  toInputClose: function() {
     this.setData({
       hiddenInputDialog: true
     })
-  }, 
-  toInputConfirm: function () {
-    console.log("确认提交" + this.data.inputContent);
+  },
+  //确认
+  toInputConfirm: function() {
+    console.log("审核不通过 确认提交" + this.data.inputContent);
+
+    var that = this;
+
+    that.setData({
+      sourceData: {
+        auditFailureReasons: this.data.inputContent,
+        auditStatus: 2,
+        enterpriseRecordId: this.data.id,
+      }
+    })
+
+    netUtil.doPost(this.data.url_audit_submit, this.data.sourceData).then(
+
+      //请求成功code==200回调
+      function (res) {
+        wx.showToast({
+          title: res.message,
+          icon: 'success',
+          duration: 1500,
+        });
+      },
+      //请求失败回调
+      function (msg) {
+        console.log('error:' + JSON.stringify(msg));
+        wx.showToast({
+          title: msg,
+          icon: 'none',
+          duration: 1500,
+        });
+      }
+    )
   },
 
   //获取企业详情
-  getDetail:function(){
+  getDetail: function() {
     var that = this;
 
     that.setData({
@@ -120,14 +190,14 @@ Page({
     netUtil.doPost(this.data.url, this.data.sourceData).then(
 
       //请求成功code==200回调
-      function (res) {
+      function(res) {
 
         that.setData({
           sourceList: res.data,
         })
       },
       //请求失败回调
-      function (msg) {
+      function(msg) {
         console.log('error:' + JSON.stringify(msg));
       }
     )
@@ -136,60 +206,60 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
-      orderId: options.id
+      id: options.id
     })
     this.getDetail();
-    console.log("id==" + this.data.orderId);
+    console.log("id==" + this.data.id);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -259,4 +259,4 @@
 <!-- 弹窗 -->
 <customDialog content="确认审核通过？" hidden-dialog="{{hiddenDialog}}" bindclose="toClose" bindconfirm="toConfirm"></customDialog>
 <!-- 带输入框的弹窗 -->
-<customInputDialog hidden-input-dialog="{{hiddenInputDialog}}" bindinput="getInput" bindclose="toInputClose" bindconfirm="toInputConfirm"></customInputDialog>
+<customInputDialog hidden-input-dialog="{{hiddenInputDialog}}" bindputaaa="getInput" bindbluraaa="getBlur" bindclose="toInputClose" bindconfirm="toInputConfirm"></customInputDialog>

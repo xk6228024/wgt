@@ -9,36 +9,75 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: [
+    array: [{
+      message: '专业修车100年',
+      vehicleId: '1234567'
+    }, {
+      message: '专业修车200年',
+      vehicleId: '7654321',
+    }, {
+      message: '专业修车300年',
+      vehicleId: '7654321',
+    }],
+    listData: [],
+    listData1: [
       {
-        message: '专业修车100年',
-        vehicleId: '1234567'
-      }, {
-        message: '专业修车200年',
-        vehicleId: '7654321',
-      }, {
-        message: '专业修车300年',
-        vehicleId: '7654321',
+        optionName: "一类企业",
+        optionValue: "01"
+      },
+      {
+        optionName: "二类企业",
+        optionValue: "02"
+      },
+      {
+        optionName: "三类企业",
+        optionValue: "02"
       }
     ],
-    listData: [],
-    listData1: [{
-      optionName: "蓝色",
-      optionValue: "01"
-    },
-    {
-      optionName: "黄色",
-      optionValue: "02"
-    }
-    ],
     listData2: [{
-      optionName: "绿色",
-      optionValue: "03"
-    },
-    {
-      optionName: "红色",
-      optionValue: "04"
-    }
+        optionName: "市辖区",
+        optionValue: "03"
+      },
+      {
+        optionName: "罗湖区",
+        optionValue: "04"
+      },
+      {
+        optionName: "福田区",
+        optionValue: "04"
+      },
+      {
+        optionName: "南山区",
+        optionValue: "04"
+      },
+      {
+        optionName: "宝安区",
+        optionValue: "04"
+      },
+      {
+        optionName: "龙岗区",
+        optionValue: "04"
+      },
+      {
+        optionName: "盐田区",
+        optionValue: "04"
+      },
+      {
+        optionName: "坪山区",
+        optionValue: "04"
+      },
+      {
+        optionName: "光明区",
+        optionValue: "04"
+      },
+      {
+        optionName: "龙华区",
+        optionValue: "04"
+      },
+      {
+        optionName: "大鹏区",
+        optionValue: "04"
+      }
     ],
     verify: true,
     //业户类别
@@ -53,13 +92,14 @@ Page({
     //列表数据源
     sourceList: '',
     url: app.globalData.url + '/vmts-supervision/app/record/findEntList',
+    url_CityRegion: app.globalData.url + '/vmts-supervision/app/area/findCityRegion',
     icon_search: app.globalData.picUrl + '/icon_search.png',
     icon_arrow_down_gray: app.globalData.picUrl + '/icon_arrow_down_gray.png',
     icon_arrow_up_blue: app.globalData.picUrl + '/icon_arrow_up_blue.png',
     icon_location: app.globalData.picUrl + '/icon_location.png',
   },
   //跳转勘验详情
-  toDetail: function (e) {
+  toDetail: function(e) {
 
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
@@ -69,7 +109,7 @@ Page({
   },
 
   //业户类别
-  style: function () {
+  style: function() {
     this.setData({
       areaSelect: false,
       styleSelect: !this.data.styleSelect,
@@ -78,7 +118,7 @@ Page({
     })
   },
   //所在区域
-  area: function () {
+  area: function() {
     this.setData({
       styleSelect: false,
       areaSelect: !this.data.areaSelect,
@@ -86,16 +126,16 @@ Page({
       hiddenPopUp1: true,
     })
   },
-  
+
   //刷选栏 点击选择11111
-  chooseLi1: function (e) {
+  chooseLi1: function(e) {
     console.log("选择了" + e.detail.optionName);
     this.setData({
 
     })
   },
   //刷选栏 取消11111
-  toClose1: function () {
+  toClose1: function() {
     this.setData({
       hiddenPopUp1: true,
       hiddenPopUp2: true,
@@ -105,14 +145,14 @@ Page({
   },
 
   //刷选栏 点击选择22222
-  chooseLi2: function (e) {
+  chooseLi2: function(e) {
     console.log("选择了" + e.detail.optionName);
     this.setData({
-      
+
     })
   },
   //刷选栏 取消22222
-  toClose2: function () {
+  toClose2: function() {
     this.setData({
       hiddenPopUp1: true,
       hiddenPopUp2: true,
@@ -122,7 +162,7 @@ Page({
   },
 
   //获取列表信息
-  getList: function () {
+  getList: function() {
     var that = this;
 
     that.setData({
@@ -136,7 +176,7 @@ Page({
     netUtil.doPost(this.data.url, this.data.sourceData).then(
 
       //请求成功code==200回调
-      function (res) {
+      function(res) {
 
         if (that.data.pageNum == 1) {
           that.setData({
@@ -152,7 +192,7 @@ Page({
 
       },
       //请求失败回调
-      function (msg) {
+      function(msg) {
         console.log('error:' + JSON.stringify(msg));
       }
     )
@@ -161,14 +201,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.getList();
   },
 
   /**
- * 页面相关事件处理函数--监听用户下拉动作
- */
-  onPullDownRefresh: function () {
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
     console.log('onPullDownRefresh')
     this.setData({
       pageNum: 1
@@ -179,7 +219,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     var that = this;
     // 页数+1
     this.setData({
@@ -193,28 +233,28 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
@@ -222,7 +262,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

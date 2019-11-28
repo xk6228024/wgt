@@ -30,8 +30,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    toInput: function(e) {
-      this.triggerEvent('input', e.detail.value)
+    input: function(e) {
+      this.triggerEvent('putaaa', e.detail.value)
     },
     toInputConfirm: function (e) {
       this.triggerEvent('confirm')
@@ -40,5 +40,8 @@ Component({
     toInputClose: function (e) {
       this.triggerEvent('close')
     },
+    toblur:function(e){
+      this.triggerEvent('bluraaa', e.detail.value)
+    }
   }
 })

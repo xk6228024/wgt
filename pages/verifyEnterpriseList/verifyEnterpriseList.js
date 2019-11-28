@@ -21,31 +21,77 @@ Page({
     }],
 
     listData: [],
-    listData1: [{
-        optionName: "蓝色",
+    listData1: [
+      {
+        optionName: "一类企业",
         optionValue: "01"
       },
       {
-        optionName: "黄色",
+        optionName: "二类企业",
+        optionValue: "02"
+      },
+      {
+        optionName: "三类企业",
         optionValue: "02"
       }
     ],
     listData2: [{
-        optionName: "绿色",
-        optionValue: "03"
-      },
-      {
-        optionName: "红色",
-        optionValue: "04"
-      }
+      optionName: "市辖区",
+      optionValue: "03"
+    },
+    {
+      optionName: "罗湖区",
+      optionValue: "04"
+    },
+    {
+      optionName: "福田区",
+      optionValue: "04"
+    },
+    {
+      optionName: "南山区",
+      optionValue: "04"
+    },
+    {
+      optionName: "宝安区",
+      optionValue: "04"
+    },
+    {
+      optionName: "龙岗区",
+      optionValue: "04"
+    },
+    {
+      optionName: "盐田区",
+      optionValue: "04"
+    },
+    {
+      optionName: "坪山区",
+      optionValue: "04"
+    },
+    {
+      optionName: "光明区",
+      optionValue: "04"
+    },
+    {
+      optionName: "龙华区",
+      optionValue: "04"
+    },
+    {
+      optionName: "大鹏区",
+      optionValue: "04"
+    }
     ],
-    listData3: [{
-        optionName: "黑色",
-        optionValue: "05"
+    listData3: [
+      {
+        optionName: "全部",
+        optionValue: "01"
       },
       {
-        optionName: "白色",
-        optionValue: "06"
+        optionName: "待勘验",
+        optionValue: "02"
+      },
+      {
+        optionName: "已勘验",
+        optionValue: "02"
       }
     ],
     verify:true,

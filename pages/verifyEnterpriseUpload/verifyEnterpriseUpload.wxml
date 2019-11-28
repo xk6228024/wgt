@@ -111,14 +111,24 @@
   </view>
 
 
-  <view class="common_v_upload">
+  <!-- <view class="common_v_upload">
     <image class='mar_addimg common_iv150' mode="aspectFit" bindtap='chooseImg' src='{{icon_addimg}}'></image>
 
     <view class='mar_l24 common_v_upload_block' wx:for="{{choosePhoto}}" wx:key="index">
       <image class='common_iv_del' bindtap='toDetalImg' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
       <image class='common_iv150' src='{{item}}'></image>
     </view>
+  </view> -->
+
+  <view class="common_v_upload">
+    <image class='mar_addimg common_iv150' mode="aspectFit" bindtap='chooseFiles' src='{{icon_addimg}}'></image>
+
+    <view class='mar_l24 common_v_upload_block' wx:for="{{chooseFile}}" wx:key="index">
+      <image class='common_iv_del' bindtap='toDetalImg' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
+      <image class='common_iv150' src='{{icon_uploadfile}}'></image>
+    </view>
   </view>
+
 
   <view class="common_v_line20"></view>
 
@@ -137,5 +147,5 @@
   </view>
 
   <!-- 提交 -->
-  <view class="btn_mar common_button_action">确 定</view>
+  <view class="btn_mar common_button_action" bindtap="submit">确 定</view>
 </view>
