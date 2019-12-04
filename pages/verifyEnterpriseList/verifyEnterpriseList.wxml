@@ -1,9 +1,10 @@
 <!-- 搜索 -->
 <view class="common_v_search">
-  <view class="common_v_search_bg">
+  <view class="common_v_search_bg v_search_width">
     <image class='common_mar_search common_iv30' mode='scaleToFill' src='{{icon_search}}'></image>
     <input bindinput='searchInput' placeholder="请输入企业名称查询" placeholder-class="placeholderStyle" maxlength='18' value="{{search}}" />
   </view>
+  <view class="mar_l30 common_button_radius_blue" bindtap='toCreate'>新增勘验</view>
 </view>
 
 
@@ -36,16 +37,22 @@
 
   </view>
 
-  <view class="v_select_tips" bindtap="state">
+  <view class="v_select_tips">
 
-    <block wx:if="{{!stateSelect}}">
-      <view class="common_tv_tips26">勘验状态</view>
-      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
-    </block>
-    <block wx:else>
+    <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="dateChange">
+      <view class="v_picker">
+
+        <!-- <block wx:if="{{!stateSelect}}"> -->
+        <view class="common_tv_tips26">勘验日期</view>
+        <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+        <!-- </block> -->
+        <!-- <block wx:else>
       <view class="common_tv_tips26_blue">勘验状态</view>
       <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
-    </block>
+    </block> -->
+
+      </view>
+    </picker>
 
   </view>
 
@@ -61,13 +68,14 @@
   <view class="common_v_row100h">
     <view class="common_tv_left370w">{{sourceList.enterpriseName}}</view>
     <view class="common_tv_center">{{sourceList.enterpriseBusinessCategoryStr}}企业</view>
+    <view class="common_tv_right">张小兵</view>
 
-    <block wx:if='{{!verify}}'>
+    <!-- <block wx:if='{{!verify}}'>
       <view class='tv_verify_green'>已勘验</view>
     </block>
     <block wx:else>
       <view class='tv_verify_yellow'>待勘验</view>
-    </block>
+    </block> -->
 
   </view>
 
@@ -79,15 +87,23 @@
     <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
     <view class="tv_ellipsis2 tv_location">深圳市 南山区 大新路创新大厦1号</view>
 
-    <block wx:if='{{!verify}}'>
+    <view class="marleft202 common_tv_tips26">2019-10-10</view>
+
+    <!-- <block wx:if='{{!verify}}'>
       <view class="marleft220 common_button_radius_blue" bindtap='toDetail'>勘验</view>
     </block>
     <block wx:else>
       <view class="marleft62 common_button_radius_blue" bindtap='toDetail'>再次勘验</view>
       <view class="marleft20 common_button_radius_blue" bindtap="record">勘验记录</view>
-    </block>
+    </block> -->
 
   </view>
+</view>
+
+<!-- 无数据空白页 -->
+<view class="common_v_nodata" wx:if="{{sourceList.length == 0}}">
+  <image class='common_iv_nodata' mode='scaleToFill' src='{{icon_nodata}}'></image>
+  <view class="common_tv_tips28_86c">没有搜索到结果</view>
 </view>
 
 <!-- 业户类别弹窗 -->
@@ -95,4 +111,4 @@
 <!-- 所在区域弹窗 -->
 <customPopUp hidden-pop-up="{{hiddenPopUp2}}" bindcloseTns="toClose2" bindchooseLi="chooseLi2" all-data='{{listData2}}'></customPopUp>
 <!-- 勘验状态弹窗 -->
-<customPopUp hidden-pop-up="{{hiddenPopUp3}}" bindcloseTns="toClose3" bindchooseLi="chooseLi3" all-data='{{listData3}}'></customPopUp>
+<!-- <customPopUp hidden-pop-up="{{hiddenPopUp3}}" bindcloseTns="toClose3" bindchooseLi="chooseLi3" all-data='{{listData3}}'></customPopUp> -->

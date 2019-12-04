@@ -16,7 +16,8 @@
     "pages/verifyEnterpriseUpload/verifyEnterpriseUpload",
     "pages/fileRecordAuditInfo/fileRecordAuditInfo",
     "pages/verifyEnterpriseRecord/verifyEnterpriseRecord",
-
+    "pages/verifyCreate/verifyCreate",
+    
     "pages/logs/logs",
     "pages/index/index"
   ],

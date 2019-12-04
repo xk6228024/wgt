@@ -1,5 +1,5 @@
 page {
-  background: #fff;
+  background: #F5F5F5;
 }
 
 /* 选择栏 样式 */
@@ -11,6 +11,7 @@ page {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background: #fff;
 }
 
 .v_select_tips {

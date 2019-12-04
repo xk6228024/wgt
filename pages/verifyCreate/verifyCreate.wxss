@@ -2,11 +2,6 @@ page {
   background: #F5F5F5;
 }
 
-/* 设置搜索栏宽度 */
-.v_search_width{
-  width: 530rpx;
-}
-
 /* 选择栏 样式 */
 
 .v_select {

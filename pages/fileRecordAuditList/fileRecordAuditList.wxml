@@ -4,11 +4,14 @@
     <image class='common_mar_search common_iv30' mode='scaleToFill' src='{{icon_search}}'></image>
     <input bindinput='searchInput' placeholder="请输入企业名称查询" placeholder-class="placeholderStyle" maxlength='18' value="{{search}}" />
   </view>
+  <view>
+
+  </view>
 </view>
 
 
 <!-- 选择栏 -->
-<view class="v_select" >
+<view class="v_select">
 
   <view class="v_select_tips" bindtap="style">
 
@@ -23,7 +26,12 @@
 
   </view>
 
+
+
   <view class="v_select_tips" bindtap="area">
+
+    <!-- <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="area">
+      <view class="v_picker"> -->
 
     <block wx:if="{{!areaSelect}}">
       <view class="common_tv_tips26">所在区域</view>
@@ -33,6 +41,10 @@
       <view class="common_tv_tips26_blue">所在区域</view>
       <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
     </block>
+
+    <!-- </view>
+    </picker> -->
+
 
   </view>
 
@@ -55,10 +67,16 @@
 
     <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
     <view class="tv_ellipsis2 tv_location">{{item.enterpriseDetailedAddress}}</view>
-    <view class="marleft220 common_button_radius_blue" >审核</view>
+    <view class="marleft220 common_button_radius_blue">审核</view>
 
   </view>
 
+</view>
+
+<!-- 无数据空白页 -->
+<view class="common_v_nodata" wx:if="{{sourceList.length == 0}}">
+  <image class='common_iv_nodata' mode='scaleToFill' src='{{icon_nodata}}'></image>
+  <view class="common_tv_tips28_86c">没有搜索到结果</view>
 </view>
 
 <!-- 业户类别弹窗 -->

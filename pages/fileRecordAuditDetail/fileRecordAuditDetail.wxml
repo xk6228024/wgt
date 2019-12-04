@@ -173,32 +173,35 @@
 <!-- 设备 -->
 <view class="v_base" wx:if='{{currentIndex==3}}'>
   <!-- 专用设备 -->
-  <view>
-    <view class="common_v_between100" bindtap="specialized">
-      <view class="common_tv_tips32">专用设备</view>
-      <image wx:if="{{specializedOpen}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
-      <image wx:if="{{!specializedOpen}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+  <view wx:for="{{array}}">
+    <view class="common_v_between100" bindtap="specialized" data-id='{{index}}'>
+      <view class="common_tv_tips32">{{item.message}}</view>
+      <image wx:if="{{item.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+      <image wx:if="{{!item.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
 
     <view class="common_v_line720"></view>
 
-    <view wx:if="{{specializedOpen}}">
-      <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='经营场地' data-item='接待室'>
-        <view class="common_tv_tips30_gray">费油收集设备</view>
-        <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-      </view>
+    <block wx:if="{{item.select}}">
+      <view wx:for="{{item.son}}">
+        <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='经营场地' data-item='接待室'>
+          <view class="common_tv_tips30_gray">{{item.messageson}}</view>
+          <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+        </view>
 
-      <view class="common_v_line720"></view>
+        <view class="common_v_line720"></view>
 
-      <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
+        <!-- <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload'>
         <view class="common_tv_tips30_gray">费油输送设备</view>
         <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+      </view> -->
       </view>
-    </view>
+    </block>
+
   </view>
 
   <!-- 检测设备 -->
-  <view>
+  <!-- <view>
     <view class="common_v_between100" bindtap="detection">
       <view class="common_tv_tips32">检测设备</view>
       <image wx:if="{{detectionOpen}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
@@ -220,10 +223,10 @@
         <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
       </view>
     </view>
-  </view>
+  </view> -->
 
   <!-- 通用设备 -->
-  <view>
+  <!-- <view>
     <view class="common_v_between100" bindtap="universal">
       <view class="common_tv_tips32">通用设备</view>
       <image wx:if="{{universalOpen}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
@@ -245,7 +248,7 @@
         <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
       </view>
     </view>
-  </view>
+  </view> -->
 
 
 

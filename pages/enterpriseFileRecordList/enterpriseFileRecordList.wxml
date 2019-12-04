@@ -8,7 +8,7 @@
 
 
 <!-- 选择栏 -->
-<view class="v_select">
+<view class="v_select" wx:if="{{sourceList.length > 0}}">
 
   <view class="v_select_tips" bindtap="style">
 
@@ -33,7 +33,7 @@
       <view class="common_tv_tips26_blue">所在区域</view>
       <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
     </block>
-    
+
   </view>
 
 </view>
@@ -68,6 +68,12 @@
 
   </view>
 
+</view>
+
+<!-- 无数据空白页 -->
+<view class="common_v_nodata"  wx:if="{{sourceList.length == 0}}">
+  <image class='common_iv_nodata' mode='scaleToFill' src='{{icon_nodata}}'></image>
+  <view class="common_tv_tips28_86c">没有搜索到结果</view>
 </view>
 
 <!-- 业户类别弹窗 -->

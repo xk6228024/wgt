@@ -9,12 +9,47 @@ Page({
    * 页面的初始数据
    */
   data: {
+    array: [{
+      message: '专用设备123',
+      vehicleId: '1234567',
+      // select: false,
+      son: [{
+        messageson: '专用设备的儿子1',
+      }, {
+        messageson: '专用设备的儿子2',
+      }, {
+        messageson: '专用设备的儿子3',
+      }]
+    }, {
+      message: '检测设备456',
+      vehicleId: '7654321',
+      // select: false,
+      son: [{
+        messageson: '检测设备的儿子1',
+      }, {
+        messageson: '检测设备的儿子2',
+      }, {
+        messageson: '检测设备的儿子3',
+      }]
+    }, {
+      message: '通用设备789',
+      vehicleId: '7654321',
+      // select: false,
+      son: [{
+        messageson: '通用设备的儿子1',
+      }, {
+        messageson: '通用设备的儿子2',
+      }, {
+        messageson: '通用设备的儿子3',
+      }]
+    }],
     specializedOpen: false,
     detectionOpen: false,
     universalOpen: false,
     hiddenDialog: true,
     hiddenInputDialog: true,
     currentIndex: 1,
+    index: '',
     inputContent: '',
     id: '',
     url: app.globalData.url + '/vmts-supervision/app/record/info',
@@ -45,23 +80,44 @@ Page({
   },
 
   // 专用设备
-  specialized: function() {
-    this.setData({
-      specializedOpen: !this.data.specializedOpen
-    })
+  specialized: function(e) {
+    var id = e.currentTarget.dataset.id;
+    let array = this.data.array;
+    console.log("选择了第" + id);
+
+    for (let i = 0; i < array.length; i++) {
+      if (id == i) {
+        let select = 'array[' + i + '].select'
+        if (array[i].select) {
+          console.log("select111==" + select);
+          this.setData({
+            [select]: false
+          })
+        } else {
+          console.log("select222==" + select);
+          this.setData({
+            [select]: true
+          })
+        }
+      }
+    }
+
+    // this.setData({
+    //   specializedOpen: !this.data.specializedOpen
+    // })
   },
-  //检测设备
-  detection: function() {
-    this.setData({
-      detectionOpen: !this.data.detectionOpen
-    })
-  },
-  //通用
-  universal: function() {
-    this.setData({
-      universalOpen: !this.data.universalOpen
-    })
-  },
+  // //检测设备
+  // detection: function() {
+  //   this.setData({
+  //     detectionOpen: !this.data.detectionOpen
+  //   })
+  // },
+  // //通用
+  // universal: function() {
+  //   this.setData({
+  //     universalOpen: !this.data.universalOpen
+  //   })
+  // },
 
   // 跳转
   toJumpS: function(e) {
@@ -158,7 +214,7 @@ Page({
     netUtil.doPost(this.data.url_audit_submit, this.data.sourceData).then(
 
       //请求成功code==200回调
-      function (res) {
+      function(res) {
         wx.showToast({
           title: res.message,
           icon: 'success',
@@ -166,7 +222,7 @@ Page({
         });
       },
       //请求失败回调
-      function (msg) {
+      function(msg) {
         console.log('error:' + JSON.stringify(msg));
         wx.showToast({
           title: msg,
@@ -207,11 +263,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let i = 0;
+    let array = this.data.array;
+
+    for (let i = 0; i < array.length; i++) {
+      let item = array[i];
+      item.select = false;
+      array[i] = item;
+    }
+
+    this.data.array = array;
+    
+    
     this.setData({
       id: options.id
     })
     this.getDetail();
     console.log("id==" + this.data.id);
+
+
   },
 
   /**

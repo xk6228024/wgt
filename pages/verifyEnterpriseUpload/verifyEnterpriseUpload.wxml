@@ -98,11 +98,25 @@
       <view class="tv_must_tips">文件</view>
     </view>
 
-    <image class='iv_uploadFile' mode='scaleToFill' src='{{icon_uploadFile}}'></image>
+    <image class='iv_uploadFile' mode='scaleToFill' src='{{icon_uploadFile}}' bindtap='chooseFiles'></image>
   </view>
+
+  <view class="common_v_upload">
+    <view class='common_v_upload_file_block' wx:for="{{chooseFile}}" wx:key="index">
+      <image class='common_file_del' bindtap='toDetalFile' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
+
+      <view class="common_v_upload_file">
+        <image class='common_iv_uploadFile' src='{{icon_uploadfile}}'></image>
+        <view class="tv_ellipsis1 common_tv_filename">{{item.filename}}</view>
+      </view>
+
+    </view>
+  </view>
+
   <view class="common_v_line20"></view>
 
-  <!-- 上传图片部分 -->
+
+  <!-- 图片上传 -->
   <view class="common_v_between100">
     <view class="v_must_tips">
       <view class="iv_must_tips">*</view>
@@ -110,22 +124,12 @@
     </view>
   </view>
 
-
-  <!-- <view class="common_v_upload">
+  <view class="common_v_upload">
     <image class='mar_addimg common_iv150' mode="aspectFit" bindtap='chooseImg' src='{{icon_addimg}}'></image>
 
     <view class='mar_l24 common_v_upload_block' wx:for="{{choosePhoto}}" wx:key="index">
       <image class='common_iv_del' bindtap='toDetalImg' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
       <image class='common_iv150' src='{{item}}'></image>
-    </view>
-  </view> -->
-
-  <view class="common_v_upload">
-    <image class='mar_addimg common_iv150' mode="aspectFit" bindtap='chooseFiles' src='{{icon_addimg}}'></image>
-
-    <view class='mar_l24 common_v_upload_block' wx:for="{{chooseFile}}" wx:key="index">
-      <image class='common_iv_del' bindtap='toDetalImg' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
-      <image class='common_iv150' src='{{icon_uploadfile}}'></image>
     </view>
   </view>
 

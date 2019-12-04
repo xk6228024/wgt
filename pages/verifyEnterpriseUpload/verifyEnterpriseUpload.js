@@ -96,7 +96,7 @@ Page({
         var filepath = res.tempFiles[0].path;
         console.log("选择文件名==" + filename + "选择文件路径==" + filepath);
         let file = {
-          'filename':filename,
+          'filename': filename,
           'filepath': filepath,
         };
         chooseFile = chooseFile.concat(file);
@@ -105,6 +105,16 @@ Page({
         })
       }
     })
+  },
+  // 文件删除
+  toDetalFile: function(e) {
+    let detalIndex = e.currentTarget.dataset.delnum
+    this.data.chooseFile.splice(detalIndex, 1)
+    if (this.data.chooseFile.length >= 0) {
+      this.setData({
+        chooseFile: this.data.chooseFile,
+      })
+    }
   },
 
   /* 函数描述：作为上传文件时递归上传的函数体体；
@@ -170,6 +180,7 @@ Page({
     var failUp = 0; //失败个数
     var i = 0; //第几个
     var length = this.data.choosePhoto.length; //长度
+    let filePaths
 
     this.uploadDIY(this.data.choosePhoto, successUp, failUp, i, length);
   },
