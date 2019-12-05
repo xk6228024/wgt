@@ -72,7 +72,7 @@ App({
   },
 
   globalData: {
-    //用户信息对象
+    //用户信息对象123
     userInfo: {},
     token: '',
     picUrl: "http://supervision-32596.oss-cn-hangzhou.aliyuncs.com", // icon 图片 url
