@@ -1,7 +1,6 @@
 // 现场勘验--列表页面
 //获取应用实例  
 const app = getApp()
-var netUtil = require('../../utils/NetUtil.js');
 
 Page({
 
@@ -64,6 +63,8 @@ Page({
     hiddenPopUp3: true,
     pageNum: 1,
     pageSize: 10,
+    //搜索关键字
+    searchKey: '',
     //列表数据源
     sourceList: '',
     //列表接口
@@ -185,6 +186,14 @@ Page({
     })
   },
 
+  //搜索输入关键字监听
+  searchInput: function (e) {
+    this.setData({
+      searchKey: e.detail.value
+    })
+      // this.getList();
+  },
+
   // ————————————————————————————接口数据————————————————————————————————
   //获取列表信息
   getList: function() {
@@ -194,11 +203,12 @@ Page({
       sourceData: {
         pageNum: this.data.pageNum,
         pageSize: this.data.pageSize,
+        enterpriseName: this.data.searchKey,
       }
     })
 
 
-    netUtil.doPost(this.data.url, this.data.sourceData).then(
+    app.doPost(this.data.url, this.data.sourceData).then(
 
       //请求成功code==200回调
       function(res) {
@@ -233,7 +243,7 @@ Page({
       }
     })
 
-    netUtil.doPost(this.data.url_region, this.data.sourceData).then(
+    app.doPost(this.data.url_region, this.data.sourceData).then(
 
       //请求成功code==200回调
       function(res) {
@@ -270,7 +280,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    // this.getList();
+    this.getList();
   },
 
   /**
@@ -287,18 +297,28 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
+  // 上拉刷新
+  onPullDownRefresh: function () {
+    console.log('onPullDownRefresh')
+    this.setData({
+      pageNum: 1
+    })
+    this.getList();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
+    console.log('onReachBottom')
 
+    var that = this;
+    // 页数+1
+    this.setData({
+      pageNum: that.data.pageNum + 1
+    })
+
+    this.getList();
   },
 
   /**

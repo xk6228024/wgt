@@ -68,6 +68,7 @@ page {
   flex-direction: column;
   background: #fff;
   margin-right: 30rpx;
+  overflow: hidden;
 }
 
 .tv_num{

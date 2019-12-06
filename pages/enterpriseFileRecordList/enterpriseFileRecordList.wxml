@@ -58,10 +58,10 @@
   <view class="common_v_line20"></view>
 
   <view class="common_v_row100h">
-    <view class="common_tv_left370w">{{sourceList.enterpriseName}}</view>
-    <view class="common_tv_center">{{sourceList.enterpriseBusinessCategoryStr}}企业</view>
+    <view class="common_tv_left370w">{{item.enterpriseName}}</view>
+    <view class="common_tv_center">{{item.enterpriseBusinessCategoryText}}</view>
 
-    <block wx:if='{{!verify}}'>
+    <block wx:if="{{item.inquestStatusText==='已勘验'}}">
       <view class='tv_verify_green'>已勘验</view>
     </block>
     <block wx:else>
@@ -77,15 +77,14 @@
 
     <view class="v_location">
       <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-      <view class="tv_ellipsis2 tv_location">{{item.enterpriseDetailedAddress}}</view>
+      <view class="tv_ellipsis2 tv_location">{{item.enterpriseAddress}}</view>
     </view>
 
 
     <view class="v_num">
       <view class="tv_num common_tv_tips26">备案编号</view>
-      <view class="common_tv_tips26">44122302201900066</view>
+      <view class="common_tv_tips26">{{item.enterpriseRecordId}}</view>
     </view>
-
 
   </view>
 

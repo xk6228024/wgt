@@ -1,7 +1,7 @@
 //备案企业企业详情页面
 //获取应用实例
 const app = getApp()
-var netUtil = require('../../utils/NetUtil.js');
+
 Page({
 
   /**
@@ -134,7 +134,7 @@ Page({
       }
     })
 
-    netUtil.doPost(this.data.url, this.data.sourceData).then(
+    app.doPost(this.data.url, this.data.sourceData).then(
 
       //请求成功code==200回调
       function (res) {

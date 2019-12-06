@@ -1,7 +1,6 @@
 // 现场勘验--列表页面
 //获取应用实例  
 const app = getApp()
-var netUtil = require('../../utils/NetUtil.js');
 
 Page({
 
@@ -64,6 +63,8 @@ Page({
     hiddenPopUp3: true,
     pageNum: 1,
     pageSize: 10,
+    //搜索关键字
+    searchKey: '',
     //列表数据源
     sourceList: '',
     //列表接口
@@ -214,6 +215,14 @@ Page({
     })
   },
 
+  //搜索输入关键字监听
+  searchInput: function (e) {
+    this.setData({
+      searchKey: e.detail.value
+    })
+    // this.getList();
+  },
+
   // ————————————————————————————接口数据————————————————————————————————
   //获取列表信息
   getList: function () {
@@ -226,8 +235,10 @@ Page({
       }
     })
 
+  
 
-    netUtil.doPost(this.data.url, this.data.sourceData).then(
+
+    app.doPost(this.data.url, this.data.sourceData).then(
 
       //请求成功code==200回调
       function (res) {
@@ -252,6 +263,7 @@ Page({
       }
     )
   },
+
   //获取城市区域信息
   getListRegion: function () {
     var that = this;
@@ -262,7 +274,7 @@ Page({
       }
     })
 
-    netUtil.doPost(this.data.url_region, this.data.sourceData).then(
+    app.doPost(this.data.url_region, this.data.sourceData).then(
 
       //请求成功code==200回调
       function (res) {
@@ -299,7 +311,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // this.getList();
+    this.getList();
   },
 
   /**

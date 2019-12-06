@@ -8,6 +8,10 @@ Page({
   data: {
     item: '',
     name: '',
+    //输入框长度
+    textLen: 0,
+    //输入框内容
+    textarea: '',
     // 上传图片的数组
     choosePhoto: [],
     // 上传文件的数组
@@ -51,6 +55,8 @@ Page({
       count: 9 - choosePhoto.length, // 最多可以选择9张图片，默认9
       success: function(res) {
         var imgsrc = res.tempFilePaths;
+        console.log("选择图片路径==" + imgsrc);
+
         choosePhoto = choosePhoto.concat(imgsrc)
         // if (choosePhoto.length > 3) {
         //   wx.showModal({
@@ -90,19 +96,35 @@ Page({
       chooseFile = this.data.chooseFile
     wx.chooseMessageFile({
       count: 10,
-      type: 'all',
+      type: 'file',
       success(res) {
-        var filename = res.tempFiles[0].name;
-        var filepath = res.tempFiles[0].path;
-        console.log("选择文件名==" + filename + "选择文件路径==" + filepath);
-        let file = {
-          'filename': filename,
-          'filepath': filepath,
-        };
-        chooseFile = chooseFile.concat(file);
-        that.setData({
-          chooseFile: chooseFile
-        })
+        console.log("选择了==" + res.tempFiles);
+        let i = 0;
+        for (i = 0; i < res.tempFiles.length;i++){
+          var filename = res.tempFiles[i].name;
+          var filepath = res.tempFiles[i].path;
+          console.log("选择文件名==" + filename + "选择文件路径==" + filepath);
+          let file = {
+            'filename': filename,
+            'filepath': filepath,
+          };
+          chooseFile = chooseFile.concat(file);
+          that.setData({
+            chooseFile: chooseFile
+          })
+        }
+
+        // var filename = res.tempFiles[0].name;
+        // var filepath = res.tempFiles[0].path;
+        // console.log("选择文件名==" + filename + "选择文件路径==" + filepath);
+        // let file = {
+        //   'filename': filename,
+        //   'filepath': filepath,
+        // };
+        // chooseFile = chooseFile.concat(file);
+        // that.setData({
+        //   chooseFile: chooseFile
+        // })
       }
     })
   },
@@ -125,7 +147,7 @@ Page({
    * i是文件路径数组的指标
    * length是文件路径数组的长度
    */
-  uploadDIY: function(filePaths, successUp, failUp, i, length) {
+  uploadImg: function(filePaths, successUp, failUp, i, length) {
     var that = this;
     console.log("图片上传中...")
     wx.uploadFile({
@@ -161,16 +183,29 @@ Page({
           var txt = '总共' + successUp + '张上传成功,' + failUp + '张上传失败！';
           console.log(txt);
           // app.toastShow(0, txt, 2000, 1);
-        } else { //递归调用uploadDIY函数
+        } else { //递归调用uploadImg函数
           if (that.data.isuploaderror) {
             console.log("图片上传失败，请重新选择上传");
             // app.toastShow(0, '图片上传失败，请重新选择上传', 2000, 1);
           } else {
-            this.uploadDIY(filePaths, successUp, failUp, i, length);
+            this.uploadImg(filePaths, successUp, failUp, i, length);
           }
         }
       }
     });
+  },
+  //输入监听
+  bindTextAreaBlur: function(e) {
+    let value = e.detail.value
+    let textLen = value.length;
+    this.setData({
+      textLen: textLen,
+      textarea: value
+    });
+    if (textLen > 100) {
+      return;
+    }
+
   },
 
   //提交
@@ -180,9 +215,8 @@ Page({
     var failUp = 0; //失败个数
     var i = 0; //第几个
     var length = this.data.choosePhoto.length; //长度
-    let filePaths
 
-    this.uploadDIY(this.data.choosePhoto, successUp, failUp, i, length);
+    this.uploadImg(this.data.choosePhoto, successUp, failUp, i, length);
   },
 
 

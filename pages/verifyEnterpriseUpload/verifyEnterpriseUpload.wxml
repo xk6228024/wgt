@@ -143,11 +143,11 @@
       <view class="tv_must_tips">勘验结果</view>
     </view>
 
-    <view class="tv_num">0/100</view>
+    <view class="tv_num">{{textLen}}/100</view>
   </view>
 
   <view class="v_input_tips">
-    <textarea class="v_input" bindblur="bindTextAreaBlur" placeholder="请输入勘验结果，不超过100个字符。" placeholder-class="placeholder" disabled="{{input_disabled}}" maxlength='100' />
+    <textarea class="v_input" bindinput="bindTextAreaBlur" placeholder="请输入勘验结果，不超过100个字符。" placeholder-class="placeholder" disabled="{{input_disabled}}" maxlength='100' />
   </view>
 
   <!-- 提交 -->
