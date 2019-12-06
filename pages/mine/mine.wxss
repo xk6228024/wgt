@@ -7,48 +7,33 @@ page{
   align-items: center;
 }
 
-.v_bg{
-  height: 176rpx;
+.v_cell138rpx {
   width: 100%;
-  margin-top: 0;
+  height: 138rpx;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.iv_size{
+  width: 118rpx;
+  height: 118rpx;
+}
+
+.v_bgColor{
   background: white;
 }
 
-.iv_userHeader{
-  margin-left: 32rpx;
-  width: 118rpx;
-  height: 118rpx;
-  flex-shrink: 0;
-}
-
-.v_infoBg{
+.tv_left {
+  font-size: 30rpx;
+  color: #404d66;
+  height: 52rpx;
+  line-height: 52rpx;
   margin-left: 30rpx;
-  height: 100%;
-  width: 496rpx;
-  margin-right: 30rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.iv_arrow{
-  margin-right: 30rpx;
-  width: 14rpx;
-  height: 26rpx;
-  flex-shrink: 0;
-}
-.tv_userName{
-  font: 32rpx;
-  font-weight: bold;
-  color: #404D66;
-  text-overflow: ellipsis;
   overflow: hidden;
-  flex-wrap: nowrap;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
 }
 
 .tv_userRole{
@@ -58,7 +43,7 @@ page{
   border-radius: 18rpx;
   border: 2rpx solid  #3C94FF;
   height: 36rpx;
-  width: 20rpx;
+  /* width: 20rpx; */
   max-width: 180;
   margin-top: 17rpx;
   text-align: center;

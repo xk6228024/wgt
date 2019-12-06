@@ -7,31 +7,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loginOutUrl: app.globalData.url + '/vmts-supervision/app/sysUser/loginOut',
-    icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
     icon_defaultHeader: app.globalData.picUrl + '/icon_defaultHeader.png',
-    headerImgUrl: '',
-    userName: '',
-    roleName: '',
+    personalDataurl: app.globalData.url + '/vmts-supervision/app/user/info',
+    dataSource: {},
   },
 
   /**
-   * 生命周期函数--监听页面显示
-   */
+  * 生命周期函数--监听页面显示
+  */
   onShow: function () {
-    let userInfo = wx.getStorageSync('userInfo');
-    this.setData({
-      userName: userInfo.name,
-      headerImgUrl: userInfo.avatar,
-      roleName: userInfo.roleExtEnterpriseOwnerIsview
-    })
+    this.getPersonalData()
   },
+  // 登录事件
+  getPersonalData: function () {
+    let _this = this;
+    netUtil.doPost(this.data.personalDataurl, null).then(
 
-  pageJumpEvent: function(e){
-    let pageurl = e.currentTarget.dataset.pageurl
-    wx.navigateTo({
-      url: pageurl,
-    })
+      //请求成功code==200回调
+      function (res) {
+        _this.setData({
+          dataSource: res.data,
+        })
+      },
+      //请求失败回调
+      function (msg) {
+
+      }
+    )
   },
 
   // 退出登录
