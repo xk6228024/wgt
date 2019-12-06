@@ -45,6 +45,24 @@ page {
   margin-left: 20rpx;
 }
 
+.tv_verify_green {
+  width: 84rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  color: rgba(82, 196, 26, 1);
+  line-height: 40rpx;
+  margin-right: 30rpx;
+}
+
+.tv_verify_yellow {
+  width: 84rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  color: rgba(250, 173, 20, 1);
+  line-height: 40rpx;
+  margin-right: 30rpx;
+}
+
 .v_num {
   display: flex;
   flex-direction: column;

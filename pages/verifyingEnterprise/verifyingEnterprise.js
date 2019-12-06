@@ -6,47 +6,70 @@ Page({
    * 页面的初始数据
    */
   data: {
-    premisesOpen:false,
-    equipmentOpen:false,
-    technicianOpen: false,
-    managementOpen: false,
-    environmentOpen: false,
+    array: [{
+      message: '专用设备123',
+      vehicleId: '1234567',
+      // select: false,
+      son: [{
+        messageson: '专用设备的儿子1',
+      }, {
+        messageson: '专用设备的儿子2',
+      }, {
+        messageson: '专用设备的儿子3',
+      }]
+    }, {
+      message: '检测设备456',
+      vehicleId: '7654321',
+      // select: false,
+      son: [{
+        messageson: '检测设备的儿子1',
+      }, {
+        messageson: '检测设备的儿子2',
+      }, {
+        messageson: '检测设备的儿子3',
+      }]
+    }, {
+      message: '通用设备789',
+      vehicleId: '7654321',
+      // select: false,
+      son: [{
+        messageson: '通用设备的儿子1',
+      }, {
+        messageson: '通用设备的儿子2',
+      }, {
+        messageson: '通用设备的儿子3',
+      }]
+    }],
     hiddenDialog: true,
     icon_location: app.globalData.picUrl + '/icon_location.png',
     icon_navigation: app.globalData.picUrl + '/icon_navigation.png',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
     icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
   },
-  // 经营场地
-  premises:function(){
-    this.setData({
-      premisesOpen: !this.data.premisesOpen
-    })
+  // 动态布局 点击事件
+  itemSelect: function (e) {
+    var id = e.currentTarget.dataset.id;
+    let array = this.data.array;
+    console.log("选择了第" + id);
+
+    for (let i = 0; i < array.length; i++) {
+      if (id == i) {
+        let select = 'array[' + i + '].select'
+        if (array[i].select) {
+          console.log("select111==" + select);
+          this.setData({
+            [select]: false
+          })
+        } else {
+          console.log("select222==" + select);
+          this.setData({
+            [select]: true
+          })
+        }
+      }
+    }
   },
-  //设备
-  equipment: function() {
-    this.setData({
-      equipmentOpen: !this.data.equipmentOpen
-    })
-  },
-  //维修技术人员
-  technician: function () {
-    this.setData({
-      technicianOpen: !this.data.technicianOpen
-    })
-  },
-  //维修管理制度
-  management: function () {
-    this.setData({
-      managementOpen: !this.data.managementOpen
-    })
-  },
-  //环境保护措施
-  environment: function () {
-    this.setData({
-      environmentOpen: !this.data.environmentOpen
-    })
-  },
+
   // 跳转
   toJumpS: function (e) {
 

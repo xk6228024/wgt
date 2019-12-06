@@ -36,6 +36,20 @@
 
   </view>
 
+
+  <view class="v_select_tips" bindtap="state">
+
+    <block wx:if="{{!stateSelect}}">
+      <view class="common_tv_tips26">勘验状态</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">勘验状态</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
+
+  </view>
+
 </view>
 
 <!-- 列表 -->
@@ -43,12 +57,19 @@
 
   <view class="common_v_line20"></view>
 
-  <view class="common_v_between100">
+  <view class="common_v_row100h">
+    <view class="common_tv_left370w">{{sourceList.enterpriseName}}</view>
+    <view class="common_tv_center">{{sourceList.enterpriseBusinessCategoryStr}}企业</view>
 
-    <view class="common_tv_left370w">{{item.enterpriseName}}</view>
-    <view class="common_tv_right">{{item.enterpriseBusinessCategoryStr}}企业</view>
+    <block wx:if='{{!verify}}'>
+      <view class='tv_verify_green'>已勘验</view>
+    </block>
+    <block wx:else>
+      <view class='tv_verify_yellow'>待勘验</view>
+    </block>
 
   </view>
+
   <view class="common_v_line720"></view>
 
 
@@ -71,7 +92,7 @@
 </view>
 
 <!-- 无数据空白页 -->
-<view class="common_v_nodata"  wx:if="{{sourceList.length == 0}}">
+<view class="common_v_nodata" wx:if="{{sourceList.length == 0}}">
   <image class='common_iv_nodata' mode='scaleToFill' src='{{icon_nodata}}'></image>
   <view class="common_tv_tips28_86c">没有搜索到结果</view>
 </view>
@@ -80,3 +101,5 @@
 <customPopUp hidden-pop-up="{{hiddenPopUp1}}" bindcloseTns="toClose1" bindchooseLi="chooseLi1" all-data='{{listData1}}'></customPopUp>
 <!-- 所在区域弹窗 -->
 <customPopUp hidden-pop-up="{{hiddenPopUp2}}" bindcloseTns="toClose2" bindchooseLi="chooseLi2" all-data='{{listData2}}'></customPopUp>
+<!-- 勘验状态弹窗 -->
+<customPopUp hidden-pop-up="{{hiddenPopUp3}}" bindcloseTns="toClose3" bindchooseLi="chooseLi3" all-data='{{listData3}}'></customPopUp>

@@ -43,9 +43,6 @@ Page({
         messageson: '通用设备的儿子3',
       }]
     }],
-    specializedOpen: false,
-    detectionOpen: false,
-    universalOpen: false,
     hiddenDialog: true,
     hiddenInputDialog: true,
     currentIndex: 1,
@@ -79,8 +76,8 @@ Page({
     // this.getStateData()
   },
 
-  // 专用设备
-  specialized: function(e) {
+  // 设备选择
+  itemSelect: function(e) {
     var id = e.currentTarget.dataset.id;
     let array = this.data.array;
     console.log("选择了第" + id);
@@ -102,22 +99,7 @@ Page({
       }
     }
 
-    // this.setData({
-    //   specializedOpen: !this.data.specializedOpen
-    // })
   },
-  // //检测设备
-  // detection: function() {
-  //   this.setData({
-  //     detectionOpen: !this.data.detectionOpen
-  //   })
-  // },
-  // //通用
-  // universal: function() {
-  //   this.setData({
-  //     universalOpen: !this.data.universalOpen
-  //   })
-  // },
 
   // 跳转
   toJumpS: function(e) {

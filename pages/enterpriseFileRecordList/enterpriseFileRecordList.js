@@ -20,8 +20,7 @@ Page({
       vehicleId: '7654321',
     }],
     listData: [],
-    listData1: [
-      {
+    listData1: [{
         regionName: "一类企业",
         optionValue: "01"
       },
@@ -36,14 +35,31 @@ Page({
     ],
     //装城市区域信息的数组
     listData2: [],
+    //勘验状态
+    listData3: [{
+        regionName: "全部",
+        optionValue: "01"
+      },
+      {
+        regionName: "待勘验",
+        optionValue: "02"
+      },
+      {
+        regionName: "已勘验",
+        optionValue: "02"
+      }
+    ],
     verify: true,
     //业户类别
     styleSelect: false,
     //所在区域
     areaSelect: false,
+    //勘验状态
+    stateSelect: false,
     //弹窗
     hiddenPopUp1: true,
     hiddenPopUp2: true,
+    hiddenPopUp3: true,
     pageNum: 1,
     pageSize: 10,
     //列表数据源
@@ -52,7 +68,7 @@ Page({
     url: app.globalData.url + '/vmts-supervision/app/record/findEntList',
     //区域接口
     url_region: app.globalData.url + '/vmts-supervision/app/area/findCityRegion',
-    icon_search: app.globalData.picUrl + '/icon_search.png', 
+    icon_search: app.globalData.picUrl + '/icon_search.png',
     icon_nodata: app.globalData.picUrl + '/icon_nodata.png',
     icon_arrow_down_gray: app.globalData.picUrl + '/icon_arrow_down_gray.png',
     icon_arrow_up_blue: app.globalData.picUrl + '/icon_arrow_up_blue.png',
@@ -92,39 +108,73 @@ Page({
       this.getListRegion();
     }
   },
+  //勘验状态
+  state: function() {
+    this.setData({
+      styleSelect: false,
+      areaSelect: false,
+      stateSelect: !this.data.stateSelect,
+      hiddenPopUp3: !this.data.hiddenPopUp3,
+      hiddenPopUp1: true,
+      hiddenPopUp2: true,
+    })
+  },
+
 
   // ——————————————————————————————刷选栏事件——————————————————————————————————————
   //刷选栏 点击选择1  ————业户类别
-  chooseLi1: function(e) {
+  chooseLi1: function (e) {
     console.log("选择了" + e.detail.regionName);
     this.setData({
 
     })
   },
   //刷选栏 点击取消1  ————业户类别
-  toClose1: function() {
+  toClose1: function () {
     this.setData({
       hiddenPopUp1: true,
       hiddenPopUp2: true,
+      hiddenPopUp3: true,
       styleSelect: false,
       areaSelect: false,
+      stateSelect: false,
     })
   },
 
   //刷选栏 点击选择2  ————所在区域
-  chooseLi2: function(e) {
+  chooseLi2: function (e) {
     console.log("选择了" + e.detail.regionName);
     this.setData({
 
     })
   },
   //刷选栏 点击取消2  ————所在区域
-  toClose2: function() {
+  toClose2: function () {
     this.setData({
       hiddenPopUp1: true,
       hiddenPopUp2: true,
+      hiddenPopUp3: true,
       styleSelect: false,
       areaSelect: false,
+      stateSelect: false,
+    })
+  },
+  //刷选栏 点击选择3  ————勘验状态
+  chooseLi3: function (e) {
+    console.log("选择了" + e.detail.regionName);
+    this.setData({
+
+    })
+  },
+  //刷选栏 点击取消3  ————勘验状态
+  toClose3: function () {
+    this.setData({
+      hiddenPopUp1: true,
+      hiddenPopUp2: true,
+      hiddenPopUp3: true,
+      styleSelect: false,
+      areaSelect: false,
+      stateSelect: false,
     })
   },
 
@@ -167,7 +217,7 @@ Page({
   },
 
   //获取城市区域信息
-  getListRegion: function () {
+  getListRegion: function() {
     var that = this;
 
     that.setData({
@@ -179,7 +229,7 @@ Page({
     netUtil.doPost(this.data.url_region, this.data.sourceData).then(
 
       //请求成功code==200回调
-      function (res) {
+      function(res) {
 
         that.setData({
           listData2: res.datas,
@@ -187,7 +237,7 @@ Page({
 
       },
       //请求失败回调
-      function (msg) {
+      function(msg) {
         console.log('error:' + JSON.stringify(msg));
       }
     )
@@ -198,7 +248,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
   },
 
   /**

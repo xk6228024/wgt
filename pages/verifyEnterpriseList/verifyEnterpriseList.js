@@ -135,17 +135,6 @@ Page({
       this.getListRegion();
     }
   },
-  //勘验状态
-  // state: function() {
-  //   this.setData({
-  //     styleSelect: false,
-  //     areaSelect: false,
-  //     stateSelect: !this.data.stateSelect,
-  //     hiddenPopUp3: !this.data.hiddenPopUp3,
-  //     hiddenPopUp1: true,
-  //     hiddenPopUp2: true,
-  //   })
-  // },
 
   //时间选择器改变监听
   dateChange: function(e) {
@@ -186,24 +175,6 @@ Page({
   },
   //刷选栏 点击取消2  ————所在区域
   toClose2: function() {
-    this.setData({
-      hiddenPopUp1: true,
-      hiddenPopUp2: true,
-      hiddenPopUp3: true,
-      styleSelect: false,
-      areaSelect: false,
-      stateSelect: false,
-    })
-  },
-  //刷选栏 点击选择3  ————勘验状态
-  chooseLi3: function(e) {
-    console.log("选择了" + e.detail.regionName);
-    this.setData({
-
-    })
-  },
-  //刷选栏 点击取消3  ————勘验状态
-  toClose3: function() {
     this.setData({
       hiddenPopUp1: true,
       hiddenPopUp2: true,

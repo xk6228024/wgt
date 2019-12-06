@@ -8,14 +8,70 @@ Page({
    * 页面的初始数据
    */
   data: {
-    specializedOpen: false,
-    detectionOpen: false,
-    universalOpen: false,
+    array: [{
+      message: '专用设备123',
+      vehicleId: '1234567',
+      // select: false,
+      son: [{
+        messageson: '专用设备的儿子1',
+      }, {
+        messageson: '专用设备的儿子2',
+      }, {
+        messageson: '专用设备的儿子3',
+      }]
+    }, {
+      message: '检测设备456',
+      vehicleId: '7654321',
+      // select: false,
+      son: [{
+        messageson: '检测设备的儿子1',
+      }, {
+        messageson: '检测设备的儿子2',
+      }, {
+        messageson: '检测设备的儿子3',
+      }]
+    }, {
+      message: '通用设备789',
+      vehicleId: '7654321',
+      // select: false,
+      son: [{
+        messageson: '通用设备的儿子1',
+      }, {
+        messageson: '通用设备的儿子2',
+      }, {
+        messageson: '通用设备的儿子3',
+      }]
+    }],
     currentIndex:1,
     url: app.globalData.url + '/vmts-supervision/app/record/info',
     icon_location: app.globalData.picUrl + '/icon_location.png',
     icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
+  },
+
+  // 设备选择
+  itemSelect: function (e) {
+    var id = e.currentTarget.dataset.id;
+    let array = this.data.array;
+    console.log("选择了第" + id);
+
+    for (let i = 0; i < array.length; i++) {
+      if (id == i) {
+        let select = 'array[' + i + '].select'
+        if (array[i].select) {
+          console.log("select111==" + select);
+          this.setData({
+            [select]: false
+          })
+        } else {
+          console.log("select222==" + select);
+          this.setData({
+            [select]: true
+          })
+        }
+      }
+    }
+
   },
 
   // 切换
