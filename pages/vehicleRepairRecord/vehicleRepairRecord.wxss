@@ -1,8 +1,8 @@
+
 /* pages/vehicleRepairRecord/vehicleRepairRecord.wxss */
 page{
   background: #F5F5F5;
 }
-
 .tv_titleFont{
   font-size: 32rpx;
   color: #404d66;
@@ -12,17 +12,14 @@ page{
   white-space: nowrap;
   text-overflow: ellipsis;
 } 
-
 .tv_leftTitle {
   flex-shrink: 0;
   margin-left: 30rpx;
 }
-
 .tv_row {
   margin-left: 30rpx;
   margin-right: 30rpx;
 }
-
 .tv_subTitleFont{
   font-size: 32rpx;
   color: #868686;
@@ -32,28 +29,26 @@ page{
   white-space: nowrap;
   text-overflow: ellipsis;
 } 
-
 .tv_tv_subTitleRight{
   margin-left: 30rpx;
   margin-right: 30rpx;
   text-align: right;
 }
-
 .tv_bold{
   font-weight: bold;
 }
-
 .iv_arrow{
   margin-right: 30rpx;
   width: 14rpx;
   height: 26rpx;
   flex-shrink: 0;
 }
-
 .v_line{
   margin-left: 30rpx;
   margin-right: 0;
   height: 2rpx;
   background: #f5f5f5;
 }
-
+.tv_mid{
+  width: 266rpx;
+}

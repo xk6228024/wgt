@@ -60,8 +60,8 @@ Page({
     // 登录接口请求
     let param = {
       data: {
-        userName: "szadmin", //电话号码
-        password: "123456", //短信验证码
+        userName: "szadmin",
+        password: "123456", 
       }
     };
     netUtil.doPost(this.data.loginUrl, param).then(

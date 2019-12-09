@@ -1,5 +1,5 @@
-<!--pages/vehicleDetailInfo/vehicleDetailInfo.wxml-->
 
+<!--pages/vehicleDetailInfo/vehicleDetailInfo.wxml-->
 <!-- 基本信息 -->
 <view class="v_vehicleInfoBg">
   <view class="v_sectionHeader">
@@ -8,56 +8,52 @@
   <view class="common_v_line750"></view>
   <view class="common_v_between100">
     <text class="tv_titleFont tv_leftTitle">车牌号码</text>
-    <text class="tv_subTitleFont tv_row">3123</text>
+    <text class="tv_subTitleFont tv_row">{{vehicleInfo.vehicleNo}}</text>
   </view>
   <view class="v_line"></view>
   <view class="common_v_between100">
     <text class="tv_titleFont tv_leftTitle">车牌颜色</text>
-    <text class="tv_subTitleFont tv_row">3123</text>
+    <text class="tv_subTitleFont tv_row">{{plateColor[vehicleInfo.vehicleLicensePlateColor]}}</text>
   </view>
   <view class="v_line"></view>
   <view class="common_v_between100">
     <text class="tv_titleFont tv_leftTitle">品牌车系车型</text>
-    <text class="tv_subTitleFont tv_row">3123</text>
+    <text class="tv_subTitleFont tv_row">{{vehicleInfo.vehicleBrand+vehicleInfo.vehicleModel+vehicleInfo.vehicleSeriesName}}</text>
   </view>
   <view class="v_line"></view>
   <view class="common_v_between100">
     <text class="tv_titleFont tv_leftTitle">VIN码</text>
-    <text class="tv_subTitleFont tv_row">3123</text>
+    <text class="tv_subTitleFont tv_row">{{vehicleInfo.vin}}</text>
   </view>
   <view class="v_line"></view>
   <view class="common_v_between100">
     <text class="tv_titleFont tv_leftTitle">车辆类型</text>
-    <text class="tv_subTitleFont tv_row">3123</text>
+    <text class="tv_subTitleFont tv_row">{{vehicleInfo.typeName?vehicleInfo.typeName:"其他"}}</text>
   </view>
   <view class="v_line"></view>
   <view class="common_v_between100">
     <text class="tv_titleFont tv_leftTitle">车主名称</text>
-    <text class="tv_subTitleFont tv_row">3123</text>
+    <text class="tv_subTitleFont tv_row">{{vehicleInfo.vehicleOwner}}</text>
   </view>
   <view class="v_line"></view>
   <view class="common_v_between100">
     <text class="tv_titleFont tv_leftTitle">联系电话</text>
-    <text class="tv_subTitleFont tv_row">312323213213213123123213123</text>
+    <text class="tv_subTitleFont tv_row">{{vehicleInfo.vehicleTelphone}}</text>
   </view>
 </view>
-
 <view class="common_v_line20"></view>
-
-<block wx:if = "{{hasRecord == true}}">
-  <view class="common_v_column">
-    <view class="v_sectionHeader">
-      <text class="tv_titleFont tv_leftTitle tv_bold">维修记录</text>
-    </view>
-    <view class="common_v_line750"></view>
-    <!-- 维修记录列表 -->
-    <block wx:for = "{{lisArray}}">
-      <view class="common_v_between100" bindtap="cellTapEvent" data-repairid = "{{item}}">
-        <text class="tv_titleFont tv_row">2132134234324324234234324234324234234234234</text>
-        <image class="iv_arrow" mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-      </view>
-      <view class="v_line"></view>
-    </block>
+<view wx:if = "{{dataSource}}" class="common_v_column">
+  <view class="v_sectionHeader">
+    <text class="tv_titleFont tv_leftTitle tv_bold">维修记录({{totalRecord}})</text>
   </view>
-</block>
-
+  <view class="common_v_line750"></view>
+  <!-- 维修记录列表 -->
+  <block wx:for = "{{dataSource}}">
+    <view class="common_v_between100" bindtap="cellTapEvent" data-vehiclefixid = "{{item.vehicleFixId}}">
+      <text class="tv_titleFont tv_row">{{item.vehicleFixUnit}}</text>
+      <image class="iv_arrow" mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+    <view class="v_line"></view>
+  </block>
+</view>
+<text class="tv_noMoreData" wx:if = "{{isLastPage}}">没有更多数据了哦!~</text>

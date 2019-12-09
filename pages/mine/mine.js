@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loginOutUrl:'',
     icon_defaultHeader: app.globalData.picUrl + '/icon_defaultHeader.png',
     personalDataurl: app.globalData.url + '/vmts-supervision/app/user/info',
     dataSource: {},
