@@ -66,7 +66,7 @@
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经办人联系电话</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOwnerPhone}}</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseLinkName}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
@@ -81,7 +81,7 @@
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经营方式</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseChainOrGroupIs}}</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseLegalRepresentative?'企业经营':'个体经营'}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
@@ -91,38 +91,98 @@
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经营类别</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseBusinessCategory}}</view>
+
+    <!-- 经营类别 1:单店/总店 2:连锁 -->
+    <block wx:if='{{sourceList.enterpriseChainOrGroupIs==1}}'>
+      <view class="common_tv_tips32_86c">单店/总店</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseChainOrGroupIs==2}}'>
+      <view class="common_tv_tips32_86c">连锁</view>
+    </block>
+
   </view>
 
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经营类型</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseBusinessType}}</view>
+
+    <!-- 经营类型 1：综合修理 2：机动车生产、进口企业授权维修 3：其他 -->
+    <block wx:if='{{sourceList.enterpriseOperatingType==1}}'>
+      <view class="common_tv_tips32_86c">综合修理</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseOperatingType==2}}'>
+      <view class="common_tv_tips32_86c">机动车生产、进口企业授权维修</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseOperatingType==3}}'>
+      <view class="common_tv_tips32_86c">其他</view>
+    </block>
+
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">机动车维修标志牌制作方式</view>
-    <view class="common_tv_tips32_86c">{{sourceList.signboardProductMethod}}</view>
+
+    <!-- 机动车维修标志牌制作方式 0,自行制作；1,协会统一制作 -->
+    <block wx:if='{{sourceList.signboardProductMethod==0}}'>
+      <view class="common_tv_tips32_86c">自行制作</view>
+    </block>
+    <block wx:if='{{sourceList.signboardProductMethod==1}}'>
+      <view class="common_tv_tips32_86c">协会统一制作</view>
+    </block>
+    
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">业务类型</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseTypeId}}</view>
+
+    <!-- 业务类型 1:汽车维修 2:摩托车维修 3:其他机动车维修 -->
+    <block wx:if='{{sourceList.enterpriseBusinessType==1}}'>
+      <view class="common_tv_tips32_86c">汽车维修</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseBusinessType==2}}'>
+      <view class="common_tv_tips32_86c">摩托车维修</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseBusinessType==3}}'>
+      <view class="common_tv_tips32_86c">其他机动车维修</view>
+    </block>
+
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">业户类别</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseBusinessCategoryStr}}</view>
+
+    <!-- 业户类别（经营类别） 1、一类 2、二类 3、三类 -->
+    <block wx:if='{{sourceList.enterpriseBusinessCategory==1}}'>
+      <view class="common_tv_tips32_86c">一类</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseBusinessCategory==2}}'>
+      <view class="common_tv_tips32_86c">二类</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseBusinessCategory==3}}'>
+      <view class="common_tv_tips32_86c">三类</view>
+    </block>
+
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">漆房类型</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseIsOwnerPaintRoom}}</view>
+
+    <!-- 漆房类型 //1：自有漆房 2：外协漆房 默认为0 表是没有油漆房 -->
+    <block wx:if='{{sourceList.enterpriseIsOwnerPaintRoom==0}}'>
+      <view class="common_tv_tips32_86c">没有油漆房</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseIsOwnerPaintRoom==1}}'>
+      <view class="common_tv_tips32_86c">自有漆房</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseIsOwnerPaintRoom==2}}'>
+      <view class="common_tv_tips32_86c">外协漆房</view>
+    </block>
+
   </view>
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">项目种类</view>
-    <view class="common_tv_tips32_86c">大中型客车维修，大型货车维修</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOperationArea}}</view>
   </view>
 
 </view>
@@ -173,24 +233,24 @@
 <!-- 设备 -->
 <view class="v_base" wx:if='{{currentIndex==3}}'>
   <!-- 设备 动态的布局  -->
-<view wx:for="{{array}}">
-  <view class="common_v_between100" bindtap="itemSelect" data-id='{{index}}'>
-    <view class="common_tv_tips32">{{item.message}}</view>
-    <image wx:if="{{item.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
-    <image wx:if="{{!item.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-  </view>
-
-  <view class="common_v_line720"></view>
-
-  <block wx:if="{{item.select}}">
-    <view wx:for="{{item.son}}">
-      <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='经营场地' data-item='接待室'>
-        <view class="common_tv_tips30_gray">{{item.messageson}}</view>
-        <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-      </view>
-
-      <view class="common_v_line720"></view>
+  <view wx:for="{{array}}">
+    <view class="common_v_between100" bindtap="itemSelect" data-id='{{index}}'>
+      <view class="common_tv_tips32">{{item.message}}</view>
+      <image wx:if="{{item.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+      <image wx:if="{{!item.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
-  </block>
-</view>
+
+    <view class="common_v_line720"></view>
+
+    <block wx:if="{{item.select}}">
+      <view wx:for="{{item.son}}">
+        <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='经营场地' data-item='接待室'>
+          <view class="common_tv_tips30_gray">{{item.messageson}}</view>
+          <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+        </view>
+
+        <view class="common_v_line720"></view>
+      </view>
+    </block>
+  </view>
 </view>

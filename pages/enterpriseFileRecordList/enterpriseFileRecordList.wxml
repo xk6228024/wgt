@@ -8,7 +8,7 @@
 
 
 <!-- 选择栏 -->
-<view class="v_select" wx:if="{{sourceList.length > 0}}">
+<view class="v_select" >
 
   <view class="v_select_tips" bindtap="style">
 

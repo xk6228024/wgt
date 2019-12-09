@@ -1,4 +1,8 @@
 const app = getApp()
+var QQMapWX = require('../../component/qqmap-wx-jssdk1/qqmap-wx-jssdk.js');
+var qqmapsdk = new QQMapWX({
+  key: 'R2ABZ-JMQE4-GDRUR-XIDJW-U7U5O-QOB7B' // 必填
+});
 
 Page({
 
@@ -105,6 +109,38 @@ Page({
   },
   toConfirm: function (e) {
     console.log("===data===确认");
+  },
+  //导航
+  navigationTestEvent(e) {
+    var _this = this;
+    //调用地址解析接口
+    qqmapsdk.geocoder({
+      //获取表单传入地址
+      address: '深圳市 南山区 南头街道 创新大厦', //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'
+      success: function (res) {//成功后的回调
+        console.log(res);
+        var res = res.result;
+        var latitude = res.location.lat;
+        var longitude = res.location.lng;
+        _this.toGps(latitude, longitude);
+      },
+      fail: function (error) {
+        console.error(error);
+      },
+      complete: function (res) {
+        console.log(res);
+      }
+    })
+  },
+  toGps: function (lat, log) {
+    let that = this
+    wx.openLocation({
+      latitude: Number(lat),
+      longitude: Number(log),
+      name: '创新大厦',
+      address: '深圳市 南山区 南头街道 创新大厦',
+      scale: 16
+    })
   },
 
   /**

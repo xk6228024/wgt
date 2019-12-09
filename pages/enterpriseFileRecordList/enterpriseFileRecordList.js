@@ -21,15 +21,15 @@ Page({
     listData: [],
     listData1: [{
         regionName: "一类企业",
-        optionValue: "01"
+        optionValue: "1"
       },
       {
         regionName: "二类企业",
-        optionValue: "02"
+        optionValue: "2"
       },
       {
         regionName: "三类企业",
-        optionValue: "02"
+        optionValue: "3"
       }
     ],
     //装城市区域信息的数组
@@ -37,15 +37,15 @@ Page({
     //勘验状态
     listData3: [{
         regionName: "全部",
-        optionValue: "01"
+        optionValue: ""
       },
       {
         regionName: "待勘验",
-        optionValue: "02"
+        optionValue: "0"
       },
       {
         regionName: "已勘验",
-        optionValue: "02"
+        optionValue: "1"
       }
     ],
     verify: true,
@@ -59,6 +59,15 @@ Page({
     hiddenPopUp1: true,
     hiddenPopUp2: true,
     hiddenPopUp3: true,
+    //搜索-企业名称
+    enterpriseName: '',
+    //搜索-业户类别
+    enterpriseBusinessCategory: '',
+    //搜索-所选区域
+    enterpriseArea:'',
+    //搜索-勘验状态
+    enterpriseInquestStatus: '',
+    //页数
     pageNum: 1,
     pageSize: 10,
     //列表数据源
@@ -125,8 +134,9 @@ Page({
   chooseLi1: function (e) {
     console.log("选择了" + e.detail.regionName);
     this.setData({
-
+      enterpriseBusinessCategory: e.detail.optionValue,
     })
+    this.getList();
   },
   //刷选栏 点击取消1  ————业户类别
   toClose1: function () {
@@ -144,8 +154,9 @@ Page({
   chooseLi2: function (e) {
     console.log("选择了" + e.detail.regionName);
     this.setData({
-
+      enterpriseArea: e.detail.regionId,
     })
+    this.getList();
   },
   //刷选栏 点击取消2  ————所在区域
   toClose2: function () {
@@ -162,8 +173,9 @@ Page({
   chooseLi3: function (e) {
     console.log("选择了" + e.detail.regionName);
     this.setData({
-
+      enterpriseInquestStatus: e.detail.optionValue,
     })
+    this.getList();
   },
   //刷选栏 点击取消3  ————勘验状态
   toClose3: function () {
@@ -177,6 +189,14 @@ Page({
     })
   },
 
+  //搜索输入关键字监听
+  searchInput: function (e) {
+    this.setData({
+      enterpriseName: e.detail.value
+    })
+    this.getList();
+  },
+
   // ————————————————————————————接口数据————————————————————————————————
   //获取列表信息
   getList: function() {
@@ -186,6 +206,14 @@ Page({
       sourceData: {
         pageNum: this.data.pageNum,
         pageSize: this.data.pageSize,
+        //搜索-企业名称
+        enterpriseName: this.data.enterpriseName,
+        //搜索-业户类别
+        enterpriseBusinessCategory: this.data.enterpriseBusinessCategory,
+        //搜索-所选区域
+        enterpriseArea: this.data.enterpriseArea,
+        //搜索-勘验状态
+        enterpriseInquestStatus: this.data.enterpriseInquestStatus,
       }
     })
 

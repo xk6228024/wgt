@@ -9,7 +9,7 @@
 
 
 <!-- 选择栏 -->
-<view class="v_select" wx:if="{{sourceList.length > 0}}">
+<view class="v_select">
 
   <view class="v_select_tips" bindtap="style">
 
@@ -52,21 +52,21 @@
 
 
 <!-- 列表 -->
-<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" bindtap='toDetail' data-id='{{sourceList.enterpriseRecordId}}' >
+<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" bindtap='toDetail' data-id='{{item.enterpriseRecordId}}' >
 
   <view class="common_v_line20"></view>
 
   <view class="common_v_row100h">
-    <view class="common_tv_left370w">{{sourceList.enterpriseName}}</view>
-    <view class="common_tv_center">{{sourceList.enterpriseBusinessCategoryStr}}企业</view>
-    <view class="common_tv_right">张小兵</view>
+    <view class="common_tv_left370w">{{item.enterpriseName}}</view>
+    <view class="common_tv_center">{{item.enterpriseBusinessCategoryText}}</view>
+    <view class="common_tv_right">{{item.nickName}}</view>
   </view>
 
   <view class="common_v_line720"></view>
 
   <view class="common_v_row100h">
     <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-    <view class="tv_ellipsis2 tv_location">深圳市 南山区 大新路创新大厦1号</view>
+    <view class="tv_ellipsis2 tv_location">{{item.enterpriseAddress}}</view>
     <view class="marleft202 common_tv_tips26">2019-10-10</view>
   </view>
 

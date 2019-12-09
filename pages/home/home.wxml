@@ -34,4 +34,4 @@
   <text class="tv_menu">车辆档案</text>
 </view>
 
-<button bindtap="navigationTestEvent" data-address="深圳市 南山区 南头街道 创新大厦">导航</button>
+<!-- <button bindtap="navigationTestEvent" data-address="深圳市 南山区 南头街道 创新大厦">导航</button> -->

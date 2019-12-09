@@ -11,7 +11,7 @@
   <view class="common_v_row100h">
     <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
     <view class="tv_ellipsis2 tv_location">深圳市 南山区 大新路创新大厦1号</view>
-    <image class='marleft267 iv_navigation' mode='scaleToFill' src='{{icon_navigation}}'></image>
+    <image class='marleft267 iv_navigation' mode='scaleToFill' src='{{icon_navigation}}' bindtap="navigationTestEvent" data-address="深圳市 南山区 南头街道 创新大厦"></image>
   </view>
 
   <view class="common_v_line20"></view>

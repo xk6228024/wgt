@@ -22,30 +22,30 @@ Page({
     listData: [],
     listData1: [{
         regionName: "一类企业",
-        optionValue: "01"
+        optionValue: "1"
       },
       {
         regionName: "二类企业",
-        optionValue: "02"
+        optionValue: "2"
       },
       {
         regionName: "三类企业",
-        optionValue: "02"
+        optionValue: "3"
       }
     ],
     //装城市区域信息的数组
     listData2: [],
     listData3: [{
         regionName: "全部",
-        optionValue: "01"
+        optionValue: ""
       },
       {
         regionName: "待勘验",
-        optionValue: "02"
+        optionValue: "0"
       },
       {
         regionName: "已勘验",
-        optionValue: "02"
+        optionValue: "1"
       }
     ],
     verify: true,
@@ -63,12 +63,18 @@ Page({
     hiddenPopUp3: true,
     pageNum: 1,
     pageSize: 10,
-    //搜索关键字
-    searchKey: '',
+    //搜索-企业名称
+    enterpriseName: '',
+    //搜索-业户类别
+    enterpriseBusinessCategory: '',
+    //搜索-所选区域
+    enterpriseArea: '',
+    //搜索-勘验日期
+    time: '',
     //列表数据源
     sourceList: '',
     //列表接口
-    // url: app.globalData.url + '/vmts-supervision/app/record/findAuditEntList',
+    url: app.globalData.url + '/vmts-supervision/app/record/findEntInquestList',
     //区域接口
     url_region: app.globalData.url + '/vmts-supervision/app/area/findCityRegion',
     icon_search: app.globalData.picUrl + '/icon_search.png',
@@ -152,8 +158,9 @@ Page({
   chooseLi1: function(e) {
     console.log("选择了" + e.detail.regionName);
     this.setData({
-
+      enterpriseBusinessCategory: e.detail.optionValue,
     })
+    this.getList();
   },
   //刷选栏 点击取消1  ————业户类别
   toClose1: function() {
@@ -171,8 +178,9 @@ Page({
   chooseLi2: function(e) {
     console.log("选择了" + e.detail.regionName);
     this.setData({
-
+      enterpriseArea: e.detail.regionId,
     })
+    this.getList();
   },
   //刷选栏 点击取消2  ————所在区域
   toClose2: function() {
@@ -187,11 +195,11 @@ Page({
   },
 
   //搜索输入关键字监听
-  searchInput: function (e) {
+  searchInput: function(e) {
     this.setData({
-      searchKey: e.detail.value
+      enterpriseName: e.detail.value
     })
-      // this.getList();
+    this.getList();
   },
 
   // ————————————————————————————接口数据————————————————————————————————
@@ -203,7 +211,14 @@ Page({
       sourceData: {
         pageNum: this.data.pageNum,
         pageSize: this.data.pageSize,
-        enterpriseName: this.data.searchKey,
+        //搜索-企业名称
+        enterpriseName: this.data.enterpriseName,
+        //搜索-业户类别
+        enterpriseBusinessCategory: this.data.enterpriseBusinessCategory,
+        //搜索-所选区域
+        enterpriseArea: this.data.enterpriseArea,
+        //搜索-勘验时间
+        // enterpriseInquestStatus: this.data.enterpriseInquestStatus,
       }
     })
 
@@ -212,16 +227,16 @@ Page({
 
       //请求成功code==200回调
       function(res) {
-        console.log('success:' + JSON.stringify(res.data));
+        console.log('success:' + JSON.stringify(res.data.list));
 
-        if (that.data.page == 1) {
+        if (that.data.pageNum == 1) {
           that.setData({
-            sourceList: res.data,
+            sourceList: res.data.list,
           })
-        } else if (that.data.page != 1 && res.data.length != 0) {
+        } else if (that.data.pageNum != 1 && res.data.length != 0) {
 
           that.setData({
-            sourceList: that.data.sourceList.concat(res.data)
+            sourceList: that.data.sourceList.concat(res.data.list)
           })
 
         }
@@ -298,7 +313,7 @@ Page({
   },
 
   // 上拉刷新
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     console.log('onPullDownRefresh')
     this.setData({
       pageNum: 1
@@ -309,7 +324,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     console.log('onReachBottom')
 
     var that = this;
