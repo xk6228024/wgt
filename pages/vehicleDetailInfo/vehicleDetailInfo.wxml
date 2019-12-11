@@ -42,7 +42,7 @@
   </view>
 </view>
 <view class="common_v_line20"></view>
-<view wx:if = "{{dataSource}}" class="common_v_column">
+<view wx:if = "{{dataSource.length}}" class="common_v_column">
   <view class="v_sectionHeader">
     <text class="tv_titleFont tv_leftTitle tv_bold">维修记录({{totalRecord}})</text>
   </view>

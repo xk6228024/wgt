@@ -40,28 +40,28 @@ Page({
   // 登录事件
   loginEvent: function(){
 
-    // if (0 == this.data.accountNum.length){
+    if (0 == this.data.accountNum.length){
       
-    //   wx.showToast({
-    //     title: '请输入账号!',
-    //     icon: 'none',
-    //   })
-    //   return;
-    // }
+      wx.showToast({
+        title: '请输入账号!',
+        icon: 'none',
+      })
+      return;
+    }
 
-    // if (0 == this.data.password.length) {
-    //   wx.showToast({
-    //     title: '请输入密码!',
-    //     icon: 'none',
-    //   })
-    //   return;
-    // }
+    if (0 == this.data.password.length) {
+      wx.showToast({
+        title: '请输入密码!',
+        icon: 'none',
+      })
+      return;
+    }
     
     // 登录接口请求
     let param = {
       data: {
-        userName: "szadmin",
-        password: "123456", 
+        userName: this.data.accountNum,
+        password: this.data.password, 
       }
     };
     netUtil.doPost(this.data.loginUrl, param).then(
