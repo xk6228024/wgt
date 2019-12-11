@@ -7,24 +7,31 @@ Page({
   data: {
     name: '',
     imgUrls: [
-      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
+      // 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+      // 'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
+      // 'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
     ],
+    //列表数据源
+    sourceList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("options+++++++++++name==", options.name)
+    let infoStr = options.info;
+    let infoObj = JSON.parse(infoStr);
+    console.log("options+++++++++++infoObj==", infoObj)
     wx.setNavigationBarTitle({
-      title: options.name
+      title: infoObj.title
     })
 
     this.setData({
-      name: options.name,
+      sourceList :infoObj.itemList,
+      // name: infoObj.itemList[0].text,
+      // imgUrls: infoObj.itemList[0].url,
     })
+    // console.log("options+++++++++++sourceList==", JSON.stringify(this.data.sourceList))
   },
 
   //图片点击事件

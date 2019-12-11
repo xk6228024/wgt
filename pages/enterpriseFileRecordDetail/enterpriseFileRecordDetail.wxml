@@ -129,7 +129,7 @@
     <block wx:if='{{sourceList.signboardProductMethod==1}}'>
       <view class="common_tv_tips32_86c">协会统一制作</view>
     </block>
-    
+
   </view>
 
   <view class="common_v_between100h_720w">
@@ -191,41 +191,13 @@
 <!-- 备案资料 -->
 <view class="v_base" wx:if='{{currentIndex==2}}'>
 
-  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='企业信息'>
-    <view class="common_tv_tips32">企业信息</view>
-    <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+  <view wx:for='{{basEnterpriseMaterialsList}}'>
+    <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-info='{{item}}'>
+      <view class="tv_ellipsis2 tv_record_info">{{item.title}}</view>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    </view>
+    <view class="common_v_line720"></view>
   </view>
-  <view class="common_v_line720"></view>
-
-  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='人员信息'>
-    <view class="common_tv_tips32">人员信息</view>
-    <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-  </view>
-  <view class="common_v_line720"></view>
-
-  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='维修管理制度'>
-    <view class="common_tv_tips32">维修管理制度</view>
-    <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-  </view>
-  <view class="common_v_line720"></view>
-
-  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='环境保护措施'>
-    <view class="common_tv_tips32">环境保护措施</view>
-    <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-  </view>
-  <view class="common_v_line720"></view>
-
-  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='危险货物运输车辆经营材料'>
-    <view class="common_tv_tips32">危险货物运输车辆经营材料</view>
-    <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-  </view>
-  <view class="common_v_line720"></view>
-
-  <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-name='其他'>
-    <view class="common_tv_tips32">其他</view>
-    <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-  </view>
-  <view class="common_v_line720"></view>
 
 </view>
 
@@ -244,9 +216,10 @@
 
     <block wx:if="{{item.select}}">
       <view wx:for="{{item.son}}">
-        <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='经营场地' data-item='接待室'>
-          <view class="common_tv_tips30_gray">{{item.messageson}}</view>
-          <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+        <view class="common_v_between100_gray">
+          <view class="common_tv_tips30_gray">{{item.itemName}}</view>
+          <view class="common_tv_right">{{item.orderNumber}}</view>
+          <!-- <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image> -->
         </view>
 
         <view class="common_v_line720"></view>
