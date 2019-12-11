@@ -53,7 +53,7 @@
 
 
 <!-- 列表 -->
-<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" bindtap='toDetail' data-id='{{item.enterpriseRecordId}}' >
+<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" bindtap='toDetail' data-id='{{item.enterpriseRecordId}}'>
 
   <view class="common_v_line20"></view>
 
@@ -67,8 +67,8 @@
 
   <view class="common_v_row100h">
     <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-    <view class="tv_ellipsis2 tv_location">{{item.enterpriseAddress}}</view>
-    <view class="marleft202 common_tv_tips26">2019-10-10</view>
+    <view class="tv_ellipsis2 tv_location">{{item.enterpriseProvinceText+item.enterpriseCityText+item.enterpriseAreaText+item.enterpriseAddress}}</view>
+    <view class="marleft202 common_tv_tips26">{{item.inquestTime}}</view>
   </view>
 
 </view>
@@ -88,26 +88,27 @@
   <view class='main_box_bottom' catchtap='--'>
     <view class="common_v_line750"></view>
     <view class="common_v_row100h">
-      <view class="common_tv_left370w">开始日期</view>
-      <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="dateChange">
-        <view class="common_tv_tips26">请选择日期</view>
+      <view class="common_tv_tips28 marright100">开始日期</view>
+      <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="startDate">
+        <!-- <view class="common_tv_tips26">请选择日期</view> -->
+        <input bindinput='searchInput' placeholder="请选择日期" placeholder-class="placeholder" maxlength='18' value="{{sTime}}" disabled="true"/>
       </picker>
     </view>
 
-    <view class="common_v_line720"></view>
+    <!-- <view class="common_v_line720"></view> -->
     <view class="common_v_row100h">
-      <view class="common_tv_left370w">结束日期</view>
-      <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="dateChange">
-        <view class="common_tv_tips26">请选择日期</view>
+      <view class="common_tv_tips28 marright100">结束日期</view>
+      <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="endDate">
+        <!-- <view class="common_tv_tips26">请选择日期</view> -->
+        <input bindinput='searchInput' placeholder="请选择日期" placeholder-class="placeholder" maxlength='18' value="{{eTime}}" disabled="true"/>
       </picker>
     </view>
 
-    <view class="common_v_line750"></view>
-    <view class="common_v_row100h">
-      <view class="common_tv_left370w" catchtap="toClosePop">取消</view>
-      <view class="common_tv_center" toClosePop ="dateConfirmEvent">确认</view>
+    <!-- <view class="common_v_line750"></view> -->
+    <view class="common_v_between100">
+      <view class="common_tv_tips28" catchtap="toClosePop">取消</view>
+      <view class="common_tv_right tv_verify_blue" catchtap="toConfirm">确认</view>
     </view>
 
   </view>
 </view>
-

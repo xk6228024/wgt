@@ -1,7 +1,7 @@
 // 现场勘验--列表页面
 //获取应用实例  
 const app = getApp()
-
+var timeFilter = require('../../utils/filterTime.js');
 Page({
 
   /**
@@ -53,11 +53,14 @@ Page({
     styleSelect: false,
     //所在区域
     areaSelect: false,
+    //日期状态
     dateSelect: false,
     //勘验状态
     stateSelect: false,
-    //选择的日期
-    dateSelect: '',
+    //选择的开始日期
+    sTime:'',
+    //选择的结束日期
+    eTime:'',
     //弹窗
     hiddenPopUp1: true,
     hiddenPopUp2: true,
@@ -158,13 +161,43 @@ Page({
     })
   },
 
-  //时间选择器改变监听
-  dateChange: function(e) {
-    // this.setData({
-    //   dateSelect: e.detail.value
-    // })
+  //开始时间选择器改变监听
+  startDate: function(e) {
+    this.setData({
+      sTime: e.detail.value
+    })
 
-    console.log("选择了" + this.data.dateSelect);
+    console.log("选择了" + this.data.sTime);
+  },
+  //结束时间选择器改变监听
+  endDate: function (e) {
+    this.setData({
+      eTime: e.detail.value
+    })
+
+    console.log("选择了" + this.data.eTime);
+  },
+  //日期选择确定
+  toConfirm: function () {
+    let temp_sTime = new Date(this.data.sTime).getTime();
+    let temp_eTime = new Date(this.data.eTime).getTime();
+    console.log("日期确认转时间戳 开始时间==" + temp_sTime + "...结束时间==" + temp_eTime);
+
+    if (temp_sTime > temp_eTime){
+      wx.showToast({
+        title: "开始时间不能大于结束时间",
+        icon: 'none',
+        duration: 1500,
+      });
+      return;
+    }else{
+      this.setData({
+        startTime: temp_sTime,
+        endTime: temp_eTime,
+      })
+      this.getList();
+      this.toClosePop();
+    }
   },
 
   // ——————————————————————————————刷选栏事件——————————————————————————————————————
@@ -208,10 +241,6 @@ Page({
     })
     this.getList();
   },
-  //日期选择确定
-  dateConfirmEvent: function() {
-    
-  },
 
   // ————————————————————————————接口数据————————————————————————————————
   //获取列表信息
@@ -228,8 +257,10 @@ Page({
         enterpriseBusinessCategory: this.data.enterpriseBusinessCategory,
         //搜索-所选区域
         enterpriseArea: this.data.enterpriseArea,
-        //搜索-勘验时间
-        // enterpriseInquestStatus: this.data.enterpriseInquestStatus,
+        //搜索-勘验开始时间
+        startTime: this.data.startTime,
+        //搜索-勘验结束时间
+        endTime: this.data.endTime,
       }
     })
 
@@ -239,7 +270,15 @@ Page({
       //请求成功code==200回调
       function(res) {
         console.log('success:' + JSON.stringify(res.data.list));
+        //处理时间格式
+        let list = res.data.list;
+        for (let i = 0; i < list.length;i++){
+          let time = list[i].inquestTime;
+          list[i].inquestTime = timeFilter.filterTime(time, 'yyyy-mm-dd');
+        }
+        res.data.list = list;
 
+        //
         if (that.data.pageNum == 1) {
           that.setData({
             sourceList: res.data.list,

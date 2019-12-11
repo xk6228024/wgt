@@ -77,13 +77,13 @@
 
     <view class="v_location">
       <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-      <view class="tv_ellipsis2 tv_location">{{item.enterpriseAddress}}</view>
+      <view class="tv_ellipsis2 tv_location">{{item.enterpriseProvinceText+item.enterpriseCityText+item.enterpriseAreaText+item.enterpriseAddress}}</view>
     </view>
 
 
     <view class="v_num">
       <view class="tv_num common_tv_tips26">备案编号</view>
-      <view class="common_tv_tips26">{{item.enterpriseRecordId}}</view>
+      <view class="common_tv_tips26">{{item.recordCoding}}</view>
     </view>
 
   </view>

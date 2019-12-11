@@ -97,10 +97,12 @@ Page({
   //业户类别
   style: function() {
     this.setData({
-      areaSelect: false,
       styleSelect: !this.data.styleSelect,
+      areaSelect: false,
+      stateSelect: false,
       hiddenPopUp1: !this.data.hiddenPopUp1,
       hiddenPopUp2: true,
+      hiddenPopUp3:true,
     })
   },
   //所在区域
@@ -108,8 +110,10 @@ Page({
     this.setData({
       styleSelect: false,
       areaSelect: !this.data.areaSelect,
+      stateSelect:false,
       hiddenPopUp2: !this.data.hiddenPopUp2,
       hiddenPopUp1: true,
+      hiddenPopUp3: true,
     })
 
     if (!this.data.hiddenPopUp2) {

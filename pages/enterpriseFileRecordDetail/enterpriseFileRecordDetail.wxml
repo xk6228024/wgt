@@ -10,7 +10,7 @@
 
   <view class="common_v_row100h">
     <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-    <view class="tv_ellipsis2 tv_location">{{sourceList.enterpriseDetailedAddress}}</view>
+    <view class="tv_ellipsis2 tv_location">{{sourceList.enterpriseProvinceText+sourceList.enterpriseCityText+sourceList.enterpriseAreaText+sourceList.enterpriseDetailedAddress}}</view>
   </view>
 
   <view class="common_v_line20"></view>
@@ -46,7 +46,7 @@
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">所在区域</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseAreaStr}}</view>
+    <view class="common_tv_tips32_86c">{{sourceList.enterpriseProvinceText+sourceList.enterpriseCityText+sourceList.enterpriseAreaText}}</view>
   </view>
 
   <view class="common_v_between100h_720w">
@@ -84,10 +84,29 @@
     <view class="common_tv_tips32_86c">{{sourceList.enterpriseLegalRepresentative?'企业经营':'个体经营'}}</view>
   </view>
 
+
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">企业性质</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseEconomicCategory}}</view>
+
+    <!-- 企业性质 1，国有 2，集体 3，私营 4，外资 11,其他 -->
+    <block wx:if='{{sourceList.enterpriseEconomicCategory==1}}'>
+      <view class="common_tv_tips32_86c">国有</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseEconomicCategory==2}}'>
+      <view class="common_tv_tips32_86c">集体</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseEconomicCategory==3}}'>
+      <view class="common_tv_tips32_86c">私营</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseEconomicCategory==4}}'>
+      <view class="common_tv_tips32_86c">外资</view>
+    </block>
+    <block wx:if='{{sourceList.enterpriseEconomicCategory==11}}'>
+      <view class="common_tv_tips32_86c">其他</view>
+    </block>
+
   </view>
+
 
   <view class="common_v_between100h_720w">
     <view class="common_tv_tips32_nomargin">经营类别</view>
