@@ -22,6 +22,8 @@ Page({
       '8': app.globalData.picUrl + '/icon_plateOrangeGreen.png',
       '6': app.globalData.picUrl + '/icon_plateWhite.png',
     },
+   
+
     dataSource: [],
     isLastPage: false,
   },

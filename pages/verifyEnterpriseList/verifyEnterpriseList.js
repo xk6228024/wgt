@@ -53,6 +53,7 @@ Page({
     styleSelect: false,
     //所在区域
     areaSelect: false,
+    dateSelect: false,
     //勘验状态
     stateSelect: false,
     //选择的日期
@@ -121,6 +122,7 @@ Page({
     this.setData({
       areaSelect: false,
       stateSelect: false,
+      dateSelect: false,
       styleSelect: !this.data.styleSelect,
       hiddenPopUp1: !this.data.hiddenPopUp1,
       hiddenPopUp2: true,
@@ -133,6 +135,7 @@ Page({
       styleSelect: false,
       stateSelect: false,
       areaSelect: !this.data.areaSelect,
+      dateSelect: false,
       hiddenPopUp2: !this.data.hiddenPopUp2,
       hiddenPopUp1: true,
       hiddenPopUp3: true,
@@ -143,11 +146,23 @@ Page({
     }
   },
 
+  selectDateEvent: function() {
+    this.setData({
+      styleSelect: false,
+      stateSelect: false,
+      areaSelect: false,
+      dateSelect: !this.data.dateSelect,
+      hiddenPopUp2: true,
+      hiddenPopUp1: true,
+      hiddenPopUp3: !this.data.hiddenPopUp3,
+    })
+  },
+
   //时间选择器改变监听
   dateChange: function(e) {
-    this.setData({
-      dateSelect: e.detail.value
-    })
+    // this.setData({
+    //   dateSelect: e.detail.value
+    // })
 
     console.log("选择了" + this.data.dateSelect);
   },
@@ -162,17 +177,7 @@ Page({
     })
     this.getList();
   },
-  //刷选栏 点击取消1  ————业户类别
-  toClose1: function() {
-    this.setData({
-      hiddenPopUp1: true,
-      hiddenPopUp2: true,
-      hiddenPopUp3: true,
-      styleSelect: false,
-      areaSelect: false,
-      stateSelect: false,
-    })
-  },
+  
 
   //刷选栏 点击选择2  ————所在区域
   chooseLi2: function(e) {
@@ -182,8 +187,9 @@ Page({
     })
     this.getList();
   },
-  //刷选栏 点击取消2  ————所在区域
-  toClose2: function() {
+ 
+  //关闭弹窗
+  toClosePop: function () {
     this.setData({
       hiddenPopUp1: true,
       hiddenPopUp2: true,
@@ -191,6 +197,7 @@ Page({
       styleSelect: false,
       areaSelect: false,
       stateSelect: false,
+      dateSelect: false,
     })
   },
 
@@ -200,6 +207,10 @@ Page({
       enterpriseName: e.detail.value
     })
     this.getList();
+  },
+  //日期选择确定
+  dateConfirmEvent: function() {
+    
   },
 
   // ————————————————————————————接口数据————————————————————————————————

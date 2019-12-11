@@ -4,7 +4,7 @@
 <view class="v_bgColor common_v_search">
   <view class="common_v_search_bg">
     <image class='common_mar_search common_iv30' mode='scaleToFill' src='{{icon_search}}'></image>
-    <input bindinput='searchInput' placeholder="请输入企业名称查询" placeholder-class="placeholderStyle" maxlength='18' value="{{searchKey}}" bindconfirm='searchEvent' type='text' confirm-type='search' placeholder="搜索"/>
+    <input bindinput='searchInput' placeholder="请输入企业名称查询" placeholder-class="placeholderStyle" maxlength='18' value="{{searchKey}}" bindconfirm='searchEvent' type='text' confirm-type='search' placeholder="请输入车牌号、车牌颜色"/>
   </view>
 </view>
 <block wx:for = "{{dataSource}}">

@@ -2,6 +2,7 @@
 // pages/vehicleRepairRecord/vehicleRepairRecord.js
 const app = getApp();
 var netUtil = require('../../utils/NetUtil.js');
+var timeFilter = require('../../utils/filterTime.js');
 Page({
   /**
    * 页面的初始数据
@@ -56,11 +57,16 @@ Page({
     let params = {
       vehicleFixId: this.data.vehicleFixId
     };
+    
     netUtil.doPost(this.data.vehicleRepairRecordUrl, params).then(
       //请求成功code==200回调
       function (res) {
+        let time = res.data.vehicleFix.vehicleFixBalanceDate;
+        res.data.vehicleFix.vehicleFixBalanceDate = timeFilter.filterTime(time, 'yyyy-mm-dd');
+        
         _this.setData({
           dataSource: res.data,
+
         })
       },
       //请求失败回调
@@ -68,14 +74,17 @@ Page({
       }
     )
   },
+
   formatTimeStamp: function (data) {
     return Date.parse(new Date(`${data}`)) || Date.parse(new Date(`${data.replace(/-/g, '/')}`));
   },
+
   openRepairItem: function () {
     this.setData({
       openRepairItem: !this.data.openRepairItem
     })
   },
+
   openRepairParts: function () {
     this.setData({
       openRepairParts: !this.data.openRepairParts

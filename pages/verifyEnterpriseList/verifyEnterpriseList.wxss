@@ -92,3 +92,20 @@ page {
 .marleft20 {
   margin-left: 20rpx;
 }
+
+.main_box {
+  position: fixed;
+  top: 170rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 800;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.main_box_bottom {
+  position: absolute;
+  width: 100%;
+  z-index: 900;
+}

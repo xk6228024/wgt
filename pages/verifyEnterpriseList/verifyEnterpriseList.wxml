@@ -37,14 +37,15 @@
 
   </view>
 
-  <view class="v_select_tips">
-
-    <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="dateChange">
-      <view class="v_picker">
-        <view class="common_tv_tips26">勘验日期</view>
-        <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
-      </view>
-    </picker>
+  <view class="v_select_tips" bindtap="selectDateEvent">
+    <block wx:if="{{!dateSelect}}">
+      <view class="common_tv_tips26">勘验日期</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">勘验日期</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
 
   </view>
 
@@ -79,6 +80,34 @@
 </view>
 
 <!-- 业户类别弹窗 -->
-<customPopUp hidden-pop-up="{{hiddenPopUp1}}" bindcloseTns="toClose1" bindchooseLi="chooseLi1" all-data='{{listData1}}'></customPopUp>
+<customPopUp hidden-pop-up="{{hiddenPopUp1}}" bindcloseTns="toClosePop" bindchooseLi="chooseLi1" all-data='{{listData1}}'></customPopUp>
 <!-- 所在区域弹窗 -->
-<customPopUp hidden-pop-up="{{hiddenPopUp2}}" bindcloseTns="toClose2" bindchooseLi="chooseLi2" all-data='{{listData2}}'></customPopUp>
+<customPopUp hidden-pop-up="{{hiddenPopUp2}}" bindcloseTns="toClosePop" bindchooseLi="chooseLi2" all-data='{{listData2}}'></customPopUp>
+<!-- 日期选择 -->
+<view class='main_box' hidden="{{hiddenPopUp3}}" bindtap='toClosePop'>
+  <view class='main_box_bottom' catchtap='--'>
+    <view class="common_v_line750"></view>
+    <view class="common_v_row100h">
+      <view class="common_tv_left370w">开始日期</view>
+      <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="dateChange">
+        <view class="common_tv_tips26">请选择日期</view>
+      </picker>
+    </view>
+
+    <view class="common_v_line720"></view>
+    <view class="common_v_row100h">
+      <view class="common_tv_left370w">结束日期</view>
+      <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="dateChange">
+        <view class="common_tv_tips26">请选择日期</view>
+      </picker>
+    </view>
+
+    <view class="common_v_line750"></view>
+    <view class="common_v_row100h">
+      <view class="common_tv_left370w" catchtap="toClosePop">取消</view>
+      <view class="common_tv_center" toClosePop ="dateConfirmEvent">确认</view>
+    </view>
+
+  </view>
+</view>
+
