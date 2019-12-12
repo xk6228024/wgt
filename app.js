@@ -139,6 +139,7 @@ App({
     token: '',
     picUrl: "http://supervision-32596.oss-cn-hangzhou.aliyuncs.com", // icon 图片 url
     staticUrl: "https://mobile.jinchehui.com", //静态资源页面 url
-    url: 'http://192.168.1.80:8081', // 彪哥地址url
+    // url: 'http://192.168.1.80:8081', // 彪哥地址url
+    url:'https://hub.qcfxp.com/',//外网测试地址
   }
 })
