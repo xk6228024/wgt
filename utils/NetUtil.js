@@ -45,6 +45,7 @@ function doPost(urlStr, postData) {
         }
         //失败 其他失败
         else {
+         
           reject(res.data.message);
         }
 

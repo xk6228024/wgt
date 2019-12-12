@@ -91,6 +91,11 @@ Page({
       },
       //请求失败回调
       function (msg) {
+        wx.showToast({
+          title: msg,
+          icon: 'none',
+          duration: 2000,
+        });
       }
     )
   },

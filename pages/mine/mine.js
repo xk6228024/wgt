@@ -32,7 +32,11 @@ Page({
       },
       //请求失败回调
       function (msg) {
-
+        wx.showToast({
+          title: msg,
+          icon: 'none',
+          duration: 2000,
+        });
       }
     )
   },
@@ -59,7 +63,11 @@ Page({
       },
       //请求失败回调
       function (msg) {
-        console.log('error:' + JSON.stringify(msg));
+        wx.showToast({
+          title: msg,
+          icon: 'none',
+          duration: 2000,
+        });
       }
     )
   },
