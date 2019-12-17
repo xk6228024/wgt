@@ -7,7 +7,8 @@ Page({
    */
   data: {
     item: '',
-    name: '',
+    contentvos: '',
+    tblvos: '',
     //输入框长度
     textLen: 0,
     //输入框内容
@@ -36,14 +37,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("options+++++++++++name==", options.name + "...item==" + options.item)
+
+    let contentvosStr = options.contentvos;
+    let contentvos = JSON.parse(contentvosStr);
+    let tblvosStr = options.tblvos;
+    let tblvos = JSON.parse(tblvosStr);
+    console.log("tblvosObj==", tblvos+"contentvosObj==", contentvos)
+
+
     wx.setNavigationBarTitle({
       title: options.name
     })
 
     this.setData({
       name: options.name,
-      item: options.item
+      contentvos: contentvos,
+      tblvos: tblvos
     })
 
   },
@@ -113,18 +122,6 @@ Page({
             chooseFile: chooseFile
           })
         }
-
-        // var filename = res.tempFiles[0].name;
-        // var filepath = res.tempFiles[0].path;
-        // console.log("选择文件名==" + filename + "选择文件路径==" + filepath);
-        // let file = {
-        //   'filename': filename,
-        //   'filepath': filepath,
-        // };
-        // chooseFile = chooseFile.concat(file);
-        // that.setData({
-        //   chooseFile: chooseFile
-        // })
       }
     })
   },

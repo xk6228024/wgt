@@ -45,6 +45,18 @@ Page({
       }]
     }],
     hiddenDialog: true,
+    //企业ID
+    id:'',
+    //企业详情接口 
+    url_detail: app.globalData.url + '/vmts-supervision/app/record/info',
+    //企业详情数据
+    sourceDetail: '',
+    //勘验项目接口
+    url_project: app.globalData.url + '/vmts-supervision/app/inquest/project',
+    //勘验数据
+    sourceProject: '',
+    //确认提交
+    url_confirm: app.globalData.url + '/vmts-supervision/app/inquest/status',
     icon_location: app.globalData.picUrl + '/icon_location.png',
     icon_navigation: app.globalData.picUrl + '/icon_navigation.png',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
@@ -53,13 +65,13 @@ Page({
   // 动态布局 点击事件
   itemSelect: function (e) {
     var id = e.currentTarget.dataset.id;
-    let array = this.data.array;
+    let sourceProject = this.data.sourceProject;
     console.log("选择了第" + id);
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < sourceProject.length; i++) {
       if (id == i) {
-        let select = 'array[' + i + '].select'
-        if (array[i].select) {
+        let select = 'sourceProject[' + i + '].select'
+        if (sourceProject[i].select) {
           console.log("select111==" + select);
           this.setData({
             [select]: false
@@ -79,20 +91,28 @@ Page({
 
     let jumpway = e.currentTarget.dataset.jumpway
     let name = e.currentTarget.dataset.name
-    let item = e.currentTarget.dataset.item
+
+    let tblvos = e.currentTarget.dataset.tblvos
+    let tblvosStr = JSON.stringify(tblvos);
+    let contentvos = e.currentTarget.dataset.contentvos
+    let contentvosStr = JSON.stringify(contentvos);
+
+    console.log("contentvosStr==" + contentvosStr + "...tblvosStr==" + tblvosStr);
+
+
     wx.navigateTo({
-      url: jumpway + '?name=' + name + '&item=' + item,
+      url: jumpway + '?name=' + name + '&contentvos=' + contentvosStr + '&tblvos=' + tblvosStr,
     })
 
   },
 
   // 提交
-  submit:function(){
+  submit: function () {
 
     this.setData({
       hiddenDialog: false
     })
-    
+
     // wx.showModal({
     //   title: '',
     //   content: '请完成勘验项目',
@@ -109,6 +129,7 @@ Page({
   },
   toConfirm: function (e) {
     console.log("===data===确认");
+
   },
   //导航
   navigationTestEvent(e) {
@@ -117,7 +138,7 @@ Page({
     qqmapsdk.geocoder({
       //获取表单传入地址
       address: '深圳市 南山区 南头街道 创新大厦', //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'
-      success: function (res) {//成功后的回调
+      success: function (res) { //成功后的回调
         console.log(res);
         var res = res.result;
         var latitude = res.location.lat;
@@ -143,11 +164,94 @@ Page({
     })
   },
 
+  //获取企业详情
+  getDetail: function () {
+    var that = this;
+
+    that.setData({
+      sourceData: {
+        enterpriseRecordId: this.data.id,
+      }
+    })
+
+    app.doPost(this.data.url_detail, this.data.sourceData).then(
+
+      //请求成功code==200回调
+      function (res) {
+        that.setData({
+          sourceDetail: res.data,
+        })
+      },
+      //请求失败回调
+      function (msg) {
+        console.log('error:' + JSON.stringify(msg));
+      }
+    )
+  },
+
+    //获取勘验项目
+    getProject: function () {
+      var that = this;
+  
+      that.setData({
+        sourceData: {
+          inquestRecordId: "C5E60D8B23BE4525ABFABFE523E1B1B6",
+          enterpriseRecordId: "033918D617CA41C3B92064C1A8193B9C",
+          businessCategoryName: "一类汽车维修企业",
+          cityCode: "440300"
+        }
+      })
+  
+      app.doPost(this.data.url_project, this.data.sourceData).then(
+  
+        //请求成功code==200回调
+        function (res) {
+          that.setData({
+            sourceProject: res.data,
+          })
+        },
+        //请求失败回调
+        function (msg) {
+          console.log('error:' + JSON.stringify(msg));
+        }
+      )
+    },
+
+  //确认提交
+  confirmProject: function () {
+    var that = this;
+
+    that.setData({
+      sourceData: {
+        enterpriseRecordId: this.data.id,
+      }
+    })
+
+    app.doPost(this.data.url_confirm, this.data.sourceData).then(
+
+      //请求成功code==200回调
+      function (res) {
+        console.log('勘验提交成功');
+        that.setData({
+        })
+      },
+      //请求失败回调
+      function (msg) {
+        console.log('勘验提交失败 error:' + JSON.stringify(msg));
+      }
+    )
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id: options.id
+    })
+    this.getDetail();
+    this.getProject();
+    console.log("id==" + this.data.id);
   },
 
   /**

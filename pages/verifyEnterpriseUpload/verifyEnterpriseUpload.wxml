@@ -1,155 +1,72 @@
 <!-- 顶部分化部分 -->
-<view>
-
-  <view wx:if="{{name =='经营场地'}}">
-
+<view wx:for="{{tblvos}}">
+  <!-- 文本 -->
+  <view wx:if="{{item.inquestProjectTblType =='1'}}">
     <view class="common_v_between100">
-      <view class="common_tv_tips32">检查事项</view>
-      <view class="common_tv_tips32_86c">{{item}}</view>
+      <view class="common_tv_tips32">{{item.inquestProjectTblName}}</view>
+      <view class="common_tv_tips32_86c">{{contentvos.datas[item.inquestProjectTblId]}}</view>
     </view>
     <view class="common_v_line720"></view>
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">要求</view>
-      <view class="common_tv_tips32_86c">面积不小于80㎡</view>
-    </view>
-    <view class="common_v_line720"></view>
-
   </view>
 
 
-  <view wx:if="{{name =='设施设备'}}">
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">设备名称</view>
-      <view class="common_tv_tips32_86c">{{item}}</view>
-    </view>
-    <view class="common_v_line720"></view>
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">数量</view>
-      <view class="common_tv_tips32_86c">123</view>
-    </view>
-    <view class="common_v_line720"></view>
-
-  </view>
-
-
-  <view wx:if="{{name =='维修技术人员'}}">
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">岗位</view>
-      <view class="common_tv_tips32_86c">{{item}}</view>
-    </view>
-    <view class="common_v_line720"></view>
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">数量规定</view>
-      <view class="common_tv_tips32_86c">≥2名</view>
-    </view>
-    <view class="common_v_line720"></view>
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">证书条件规定</view>
-      <view class="common_tv_tips32_86c">具有汽车维修工或机动车 检测维修士证书</view>
-    </view>
-    <view class="common_v_line720"></view>
-
-  </view>
-
-
-  <view wx:if="{{name =='维修管理制度'}}">
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">事项类别</view>
-      <view class="common_tv_tips32_86c">{{item}}</view>
-    </view>
-    <view class="common_v_line720"></view>
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">事项名称</view>
-      <view class="common_tv_tips32_86c">业务工作流程</view>
-    </view>
-    <view class="common_v_line720"></view>
-
-  </view>
-
-
-  <view wx:if="{{name =='环境保护措施'}}">
-
-    <view class="common_v_between100">
-      <view class="common_tv_tips32">检查事项</view>
-      <view class="common_tv_tips32_86c">{{item}}</view>
-    </view>
-    <view class="common_v_line720"></view>
-
-  </view>
-
-</view>
-
-
-<!-- 上传-公共部分 -->
-<view>
-
-  <!-- 文件上传 -->
-  <view class="common_v_between100">
-    <view class="v_must_tips">
-      <view class="iv_must_tips">*</view>
-      <view class="tv_must_tips">文件</view>
-    </view>
-
-    <image class='iv_uploadFile' mode='scaleToFill' src='{{icon_uploadFile}}' bindtap='chooseFiles'></image>
-  </view>
-
-  <view class="common_v_upload">
-    <view class='common_v_upload_file_block' wx:for="{{chooseFile}}" wx:key="index">
-      <image class='common_file_del' bindtap='toDetalFile' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
-
-      <view class="common_v_upload_file">
-        <image class='common_iv_uploadFile' src='{{icon_uploadfile}}'></image>
-        <view class="tv_ellipsis1 common_tv_filename">{{item.filename}}</view>
+  <!-- 输入框内容 -->
+  <view wx:if="{{item.inquestProjectTblType =='2'}}">
+    <view class="common_v_between100" >
+      <view class="v_must_tips">
+        <view class="iv_must_tips">*</view>
+        <view class="tv_must_tips">{{item.inquestProjectTblName}}</view>
       </view>
-
+      <view class="tv_num">{{textLen}}/100</view>
     </view>
+    <view class="v_input_tips">
+      <textarea class="v_input" bindinput="bindTextAreaBlur" placeholder="请输入，不超过100个字符。" placeholder-class="placeholder" disabled="{{input_disabled}}" maxlength='100' />
+    </view>
+    <view class="common_v_line20"></view>
   </view>
-
-  <view class="common_v_line20"></view>
 
 
   <!-- 图片上传 -->
-  <view class="common_v_between100">
-    <view class="v_must_tips">
-      <view class="iv_must_tips">*</view>
-      <view class="tv_must_tips">图片</view>
+  <view wx:if="{{item.inquestProjectTblType =='3'}}">
+    <view class="common_v_between100">
+      <view class="v_must_tips">
+        <view class="iv_must_tips">*</view>
+        <view class="tv_must_tips">{{item.inquestProjectTblName}}</view>
+      </view>
     </view>
-  </view>
-
-  <view class="common_v_upload">
-    <image class='mar_addimg common_iv150' mode="aspectFit" bindtap='chooseImg' src='{{icon_addimg}}'></image>
-
-    <view class='mar_l24 common_v_upload_block' wx:for="{{choosePhoto}}" wx:key="index">
-      <image class='common_iv_del' bindtap='toDetalImg' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
-      <image class='common_iv150' src='{{item}}'></image>
+    <view class="common_v_upload">
+      <image class='mar_addimg common_iv150' mode="aspectFit" bindtap='chooseImg' src='{{icon_addimg}}' data-tblid='{{item.inquestProjectTblId}}'></image>
+      <view class='mar_l24 common_v_upload_block' wx:for="{{choosePhoto}}" wx:key="index">
+        <image class='common_iv_del' bindtap='toDetalImg' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
+        <image class='common_iv150' src='{{item}}'></image>
+      </view>
     </view>
+    <view class="common_v_line20"></view>
   </view>
 
 
-  <view class="common_v_line20"></view>
-
-  <!-- 勘验结果 -->
-  <view class="common_v_between100">
-    <view class="v_must_tips">
-      <view class="iv_must_tips">*</view>
-      <view class="tv_must_tips">勘验结果</view>
+  <!-- 文件上传 -->
+  <view wx:if="{{item.inquestProjectTblType =='4'}}">
+    <view class="common_v_between100" >
+      <view class="v_must_tips">
+        <view class="iv_must_tips">*</view>
+        <view class="tv_must_tips">{{item.inquestProjectTblName}}</view>
+      </view>
+      <image class='iv_uploadFile' mode='scaleToFill' src='{{icon_uploadFile}}' bindtap='chooseFiles'></image>
     </view>
-
-    <view class="tv_num">{{textLen}}/100</view>
+    <view class="common_v_upload">
+      <view class='common_v_upload_file_block' wx:for="{{chooseFile}}" wx:key="index">
+        <image class='common_file_del' bindtap='toDetalFile' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
+        <view class="common_v_upload_file">
+          <image class='common_iv_uploadFile' src='{{icon_uploadfile}}'></image>
+          <view class="tv_ellipsis1 common_tv_filename">{{item.filename}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="common_v_line20"></view>
   </view>
 
-  <view class="v_input_tips">
-    <textarea class="v_input" bindinput="bindTextAreaBlur" placeholder="请输入勘验结果，不超过100个字符。" placeholder-class="placeholder" disabled="{{input_disabled}}" maxlength='100' />
-  </view>
 
-  <!-- 提交 -->
-  <view class="btn_mar common_button_action" bindtap="submit">确 定</view>
 </view>
+<!-- 提交 -->
+<view class="btn_mar common_button_action" bindtap="submit">确 定</view>

@@ -2,16 +2,16 @@
 <view class="v_list_info">
 
   <view class="common_v_between100">
-    <view class="common_tv_left370w">{{sourceList.enterpriseName}}</view>
-    <view class="common_tv_right">{{sourceList.enterpriseBusinessCategoryStr}}企业</view>
+    <view class="common_tv_left370w">{{sourceDetail.enterpriseName}}</view>
+    <view class="common_tv_right">{{sourceDetail.enterpriseBusinessCategoryStr}}企业</view>
   </view>
 
   <view class="common_v_line720"></view>
 
   <view class="common_v_row100h">
     <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-    <view class="tv_ellipsis2 tv_location">{{sourceList.enterpriseProvinceText+sourceList.enterpriseCityText+sourceList.enterpriseAreaText+sourceList.enterpriseDetailedAddress}}</view>
-    <image class='marleft267 iv_navigation' mode='scaleToFill' src='{{icon_navigation}}' bindtap="navigationTestEvent" data-address="{{sourceList.enterpriseProvinceText+sourceList.enterpriseCityText+sourceList.enterpriseAreaText+sourceList.enterpriseAddress}}"></image>
+    <view class="tv_ellipsis2 tv_location">{{sourceDetail.enterpriseProvinceText+sourceDetail.enterpriseCityText+sourceDetail.enterpriseAreaText+sourceDetail.enterpriseDetailedAddress}}</view>
+    <image class='marleft267 iv_navigation' mode='scaleToFill' src='{{icon_navigation}}' bindtap="navigationTestEvent" data-address="{{sourceDetail.enterpriseProvinceText+sourceDetail.enterpriseCityText+sourceDetail.enterpriseAreaText+sourceDetail.enterpriseAddress}}"></image>
   </view>
 
   <view class="common_v_line20"></view>
@@ -24,19 +24,19 @@
 </view>
 
 <!-- 勘验项目 动态的布局  -->
-<view wx:for="{{array}}">
+<view wx:for="{{sourceProject}}" wx:for-item="itemSource">
   <view class="common_v_between100" bindtap="itemSelect" data-id='{{index}}'>
-    <view class="common_tv_tips32">{{item.message}}</view>
-    <image wx:if="{{item.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
-    <image wx:if="{{!item.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    <view class="common_tv_tips32">{{itemSource.inquestProjectName}}</view>
+    <image wx:if="{{itemSource.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+    <image wx:if="{{!itemSource.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
   </view>
 
   <view class="common_v_line720"></view>
 
-  <block wx:if="{{item.select}}">
-    <view wx:for="{{item.son}}">
-      <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='经营场地' data-item='接待室'>
-        <view class="common_tv_tips30_gray">{{item.messageson}}</view>
+  <block wx:if="{{itemSource.select}}">
+    <view wx:for="{{itemSource.contentVos}}" >
+      <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='{{itemSource.inquestProjectName}}' data-contentvos='{{itemSource.contentVos[index]}}' data-tblvos='{{itemSource.tblVos}}'>
+        <view class="common_tv_tips30_gray">{{item.firstRow}}</view>
         <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
       </view>
 
