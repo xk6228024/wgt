@@ -90,20 +90,13 @@ Page({
   toJumpS: function (e) {
 
     let jumpway = e.currentTarget.dataset.jumpway
-    let name = e.currentTarget.dataset.name
-
-    let tblvos = e.currentTarget.dataset.tblvos
-    let tblvosStr = JSON.stringify(tblvos);
-    let contentvos = e.currentTarget.dataset.contentvos
-    let contentvosStr = JSON.stringify(contentvos);
-
-    console.log("contentvosStr==" + contentvosStr + "...tblvosStr==" + tblvosStr);
-
+    let id = e.currentTarget.dataset.id
+    let title = e.currentTarget.dataset.title
+    console.log("id==" + id+"     title==" +title);
 
     wx.navigateTo({
-      url: jumpway + '?name=' + name + '&contentvos=' + contentvosStr + '&tblvos=' + tblvosStr,
+      url: jumpway + '?id=' + id+'&title=' + title,
     })
-
   },
 
   // 提交
@@ -129,7 +122,7 @@ Page({
   },
   toConfirm: function (e) {
     console.log("===data===确认");
-
+    this.confirmProject();
   },
   //导航
   navigationTestEvent(e) {

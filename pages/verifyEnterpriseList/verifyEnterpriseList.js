@@ -93,8 +93,12 @@ Page({
   toDetail: function(e) {
 
     let id = e.currentTarget.dataset.id
+    let templist = e.currentTarget.dataset.list
+    let list = JSON.stringify(templist);
+    console.log('list==' + list);
+
     wx.navigateTo({
-      url: '../verifyingEnterprise/verifyingEnterprise?id=' + id,
+      url: '../verifyingEnterprise/verifyingEnterprise?id=' + id + '&list=' + list,
     })
 
   },
@@ -103,8 +107,12 @@ Page({
   record: function(e) {
 
     let id = e.currentTarget.dataset.id
+    let templist = e.currentTarget.dataset.list
+    let list = JSON.stringify(templist);
+    console.log('list==' + list);
+
     wx.navigateTo({
-      url: '../verifyEnterpriseRecord/verifyEnterpriseRecord?id=' + id,
+      url: '../verifyEnterpriseRecord/verifyEnterpriseRecord?id=' + id + '&list=' + list,
     })
 
   },
@@ -194,6 +202,7 @@ Page({
       this.setData({
         startTime: temp_sTime,
         endTime: temp_eTime,
+        pageNum: 1
       })
       this.getList();
       this.toClosePop();
@@ -207,6 +216,7 @@ Page({
     console.log("选择了" + e.detail.regionName);
     this.setData({
       enterpriseBusinessCategory: e.detail.optionValue,
+      pageNum: 1
     })
     this.getList();
   },
@@ -217,6 +227,7 @@ Page({
     console.log("选择了" + e.detail.regionName);
     this.setData({
       enterpriseArea: e.detail.regionId,
+      pageNum: 1
     })
     this.getList();
   },
@@ -237,7 +248,8 @@ Page({
   //搜索输入关键字监听
   searchInput: function(e) {
     this.setData({
-      enterpriseName: e.detail.value
+      enterpriseName: e.detail.value,
+      pageNum: 1
     })
     this.getList();
   },

@@ -6,9 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    item: '',
-    contentvos: '',
-    tblvos: '',
     //输入框长度
     textLen: 0,
     //输入框内容
@@ -27,10 +24,19 @@ Page({
     src: '',
     //上传好的图片数组
     piclist: [],
+    //标题头
+    title: '',
+    //id
+    id: '',
+    //勘验模板接口 
+    url_detail: app.globalData.url + '/vmts-supervision/app/inquest/project/content',
+    //勘验模板数据
+    sourceDetail:[],
     icon_uploadFile: app.globalData.picUrl + '/icon_uploadFile.png',
     icon_addimg: app.globalData.picUrl + '/icon_addimg.png',
     icon_delimg: app.globalData.picUrl + '/icon_delimg.png',
     icon_uploadfile: app.globalData.picUrl + '/icon_uploadfile.png',
+    icon_nodata: app.globalData.picUrl + '/icon_nodata.png',
   },
 
   /**
@@ -38,46 +44,78 @@ Page({
    */
   onLoad: function(options) {
 
-    let contentvosStr = options.contentvos;
-    let contentvos = JSON.parse(contentvosStr);
-    let tblvosStr = options.tblvos;
-    let tblvos = JSON.parse(tblvosStr);
-    console.log("tblvosObj==", tblvos+"contentvosObj==", contentvos)
-
 
     wx.setNavigationBarTitle({
-      title: options.name
+      title: options.title
     })
 
     this.setData({
-      name: options.name,
-      contentvos: contentvos,
-      tblvos: tblvos
+      title: options.title,
+      id: options.id,
     })
 
+    console.log("id==" + this.data.id);
+
+    this.getDetail();
+
   },
+  //获取模板详情
+  getDetail: function() {
+    var that = this;
+
+    that.setData({
+      sourceData: {
+        contentId: this.data.id,
+      }
+    })
+
+    app.doPost(this.data.url_detail, this.data.sourceData).then(
+
+      //请求成功code==200回调
+      function (res) {
+        let itemList = res.data.projectContentVos;
+        for(let i = 0;i<itemList.length; i++){
+          let item = itemList[i];
+          if(item.inquestProjectTblType == '3' || item.inquestProjectTblType == '4'){
+            if(item instanceof Array){
+              //是数组不处理
+            }else{
+              //不是数组赋空数组
+              item.inquestProjectContentValue = [];
+            }
+          }
+        }
+
+        that.setData({
+          sourceDetail: itemList,
+        })
+      },
+      //请求失败回调
+      function (msg) {
+        console.log('error:' + JSON.stringify(msg));
+      }
+    )
+  },
+
   // 选择图片
-  chooseImg: function() {
-    var that = this,
-      choosePhoto = this.data.choosePhoto
+  chooseImg: function(e) {
+    var that = this;
+    let index = e.currentTarget.dataset.dex;
+    let imageArray = this.data.sourceDetail[index].inquestProjectContentValue;
+    if(typeof(imageArray) === 'string'){
+      imageArray = [];
+    }
     wx.chooseImage({
-      count: 9 - choosePhoto.length, // 最多可以选择9张图片，默认9
+      count: 9 - imageArray.length, // 最多可以选择9张图片，默认9
       success: function(res) {
         var imgsrc = res.tempFilePaths;
         console.log("选择图片路径==" + imgsrc);
 
-        choosePhoto = choosePhoto.concat(imgsrc)
-        // if (choosePhoto.length > 3) {
-        //   wx.showModal({
-        //     title: '',
-        //     content: '最可只能上传3张图片',
-        //     showCancel: false, //不显示取消按钮
-        //     confirmText: '确定'
-        //   })
-        //   return
-        // }
+        imageArray = imageArray.concat(imgsrc)
+        that.data.sourceDetail[index].inquestProjectContentValue = imageArray;
+
         that.setData({
-          choosePhoto: choosePhoto
+          sourceDetail: that.data.sourceDetail
         })
       },
       fail: function() {
@@ -87,16 +125,21 @@ Page({
         //console.log("上传成功")
       }
     })
+
+    
+  
   },
   // 图片删除
   toDetalImg: function(e) {
-    let detalIndex = e.currentTarget.dataset.delnum
-    this.data.choosePhoto.splice(detalIndex, 1)
-    if (this.data.choosePhoto.length >= 0) {
-      this.setData({
-        choosePhoto: this.data.choosePhoto,
-      })
-    }
+    let detalIndex = e.currentTarget.dataset.delnum;
+    let index = e.currentTarget.dataset.idex;
+    let imageArray = this.data.sourceDetail[index].inquestProjectContentValue;
+    imageArray.splice(detalIndex, 1)
+    this.data.sourceDetail[index].inquestProjectContentValue = imageArray;
+    this.setData({
+      sourceDetail: this.data.sourceDetail,
+    })
+    
   },
 
   //选择文件
@@ -214,6 +257,14 @@ Page({
     var length = this.data.choosePhoto.length; //长度
 
     this.uploadImg(this.data.choosePhoto, successUp, failUp, i, length);
+
+    var selectData = {};
+    for(let i = 0;i<this.data.sourceDetail.length;i++){
+      selectData[this.data.sourceDetail[i].inquestProjectTblId] = this.data.sourceDetail[i].inquestProjectContentValue;
+    }
+    let enterpriseInquestProjectContent = JSON.stringify(selectData);
+
+    console.log('enterpriseInquestProjectContent:'+enterpriseInquestProjectContent);
   },
 
 

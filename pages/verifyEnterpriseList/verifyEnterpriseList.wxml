@@ -53,7 +53,7 @@
 
 
 <!-- 列表 -->
-<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" bindtap='toDetail' data-id='{{item.enterpriseRecordId}}'>
+<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" bindtap='toDetail' data-id='{{item.enterpriseRecordId}}' data-list='{{sourceList[index]}}'>
 
   <view class="common_v_line20"></view>
 

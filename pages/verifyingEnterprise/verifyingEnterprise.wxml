@@ -24,19 +24,19 @@
 </view>
 
 <!-- 勘验项目 动态的布局  -->
-<view wx:for="{{sourceProject}}" wx:for-item="itemSource">
+<view wx:for="{{sourceProject}}">
   <view class="common_v_between100" bindtap="itemSelect" data-id='{{index}}'>
-    <view class="common_tv_tips32">{{itemSource.inquestProjectName}}</view>
-    <image wx:if="{{itemSource.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
-    <image wx:if="{{!itemSource.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+    <view class="common_tv_tips32">{{item.inquestProjectName}}</view>
+    <image wx:if="{{item.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
+    <image wx:if="{{!item.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
   </view>
 
   <view class="common_v_line720"></view>
 
-  <block wx:if="{{itemSource.select}}">
-    <view wx:for="{{itemSource.contentVos}}" >
-      <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-name='{{itemSource.inquestProjectName}}' data-contentvos='{{itemSource.contentVos[index]}}' data-tblvos='{{itemSource.tblVos}}'>
-        <view class="common_tv_tips30_gray">{{item.firstRow}}</view>
+  <block wx:if="{{item.select}}">
+    <view wx:for="{{item.firstContentVos}}" wx:for-item="itemVos">
+      <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-id='{{itemVos.contentId}}' data-title='{{item.inquestProjectName}}'>
+        <view class="common_tv_tips30_gray">{{itemVos.value}}</view>
         <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
       </view>
 

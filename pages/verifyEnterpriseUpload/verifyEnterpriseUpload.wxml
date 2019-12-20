@@ -1,10 +1,10 @@
 <!-- 顶部分化部分 -->
-<view wx:for="{{tblvos}}">
+<view wx:for="{{sourceDetail}}" wx:for-index="dex">
   <!-- 文本 -->
   <view wx:if="{{item.inquestProjectTblType =='1'}}">
     <view class="common_v_between100">
       <view class="common_tv_tips32">{{item.inquestProjectTblName}}</view>
-      <view class="common_tv_tips32_86c">{{contentvos.datas[item.inquestProjectTblId]}}</view>
+      <view class="common_tv_tips32_86c">{{item.inquestProjectContentValue}}</view>
     </view>
     <view class="common_v_line720"></view>
   </view>
@@ -35,10 +35,10 @@
       </view>
     </view>
     <view class="common_v_upload">
-      <image class='mar_addimg common_iv150' mode="aspectFit" bindtap='chooseImg' src='{{icon_addimg}}' data-tblid='{{item.inquestProjectTblId}}'></image>
-      <view class='mar_l24 common_v_upload_block' wx:for="{{choosePhoto}}" wx:key="index">
-        <image class='common_iv_del' bindtap='toDetalImg' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
-        <image class='common_iv150' src='{{item}}'></image>
+      <image class='mar_addimg common_iv150' mode="aspectFit" bindtap='chooseImg' src='{{icon_addimg}}' data-dex='{{dex}}'></image>
+      <view class='mar_l24 common_v_upload_block' wx:for="{{sourceDetail[dex].inquestProjectContentValue}}"  wx:for-item="itemSource" wx:for-index="idex">
+        <image class='common_iv_del' bindtap='toDetalImg' data-delNum='{{idex}}' data-idex='{{dex}}' src='{{icon_delimg}}'></image>
+        <image class='common_iv150' src='{{itemSource}}'></image>
       </view>
     </view>
     <view class="common_v_line20"></view>
@@ -69,4 +69,10 @@
 
 </view>
 <!-- 提交 -->
-<view class="btn_mar common_button_action" bindtap="submit">确 定</view>
+<view class="btn_mar common_button_action" bindtap="submit" wx:if="{{sourceDetail.length > 0}}">确 定</view>
+
+<!-- 无数据空白页 -->
+<view class="common_v_nodata" wx:if="{{sourceDetail.length == 0}}">
+  <image class='common_iv_nodata' mode='scaleToFill' src='{{icon_nodata}}'></image>
+  <view class="common_tv_tips28_86c">没有搜索到结果</view>
+</view>
