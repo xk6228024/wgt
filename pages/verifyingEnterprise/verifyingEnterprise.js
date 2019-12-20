@@ -47,6 +47,10 @@ Page({
     hiddenDialog: true,
     //企业ID
     id:'',
+    //列表传过来的list 字符串
+    listStr:'',
+    //列表传过来的list
+    list:'',
     //企业详情接口 
     url_detail: app.globalData.url + '/vmts-supervision/app/record/info',
     //企业详情数据
@@ -185,13 +189,14 @@ Page({
     //获取勘验项目
     getProject: function () {
       var that = this;
-  
+      let list = JSON.parse(this.data.listStr);
+
       that.setData({
         sourceData: {
-          inquestRecordId: "C5E60D8B23BE4525ABFABFE523E1B1B6",
-          enterpriseRecordId: "033918D617CA41C3B92064C1A8193B9C",
-          businessCategoryName: "一类汽车维修企业",
-          cityCode: "440300"
+          inquestRecordId: list.inquestRecordId,
+          enterpriseRecordId: this.data.id,
+          businessCategoryName: list.enterpriseBusinessCategoryText,
+          cityCode: list.enterpriseCity
         }
       })
   
@@ -216,7 +221,7 @@ Page({
 
     that.setData({
       sourceData: {
-        enterpriseRecordId: this.data.id,
+        enterpriseId: this.data.id,
       }
     })
 
@@ -239,12 +244,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+
+
     this.setData({
-      id: options.id
+      id: options.id,
+      listStr: options.list
     })
-    this.getDetail();
-    this.getProject();
-    console.log("id==" + this.data.id);
+    console.log("id==" + this.data.id + '  listStr==' + this.data.listStr);
   },
 
   /**
@@ -258,7 +265,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getDetail();
+    this.getProject();
   },
 
   /**

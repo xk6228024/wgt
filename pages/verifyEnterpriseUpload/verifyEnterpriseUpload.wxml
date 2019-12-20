@@ -17,10 +17,10 @@
         <view class="iv_must_tips">*</view>
         <view class="tv_must_tips">{{item.inquestProjectTblName}}</view>
       </view>
-      <view class="tv_num">{{textLen}}/100</view>
+      <view class="tv_num">{{item.inquestProjectContentValue.length}}/100</view>
     </view>
     <view class="v_input_tips">
-      <textarea class="v_input" bindinput="bindTextAreaBlur" placeholder="请输入，不超过100个字符。" placeholder-class="placeholder" disabled="{{input_disabled}}" maxlength='100' />
+      <textarea class="v_input" bindinput="bindTextAreaBlur" placeholder="请输入，不超过100个字符。" placeholder-class="placeholder" disabled="{{input_disabled}}" maxlength='100' data-dex='{{dex}}' value="{{item.inquestProjectContentValue}}"/>
     </view>
     <view class="common_v_line20"></view>
   </view>
@@ -52,14 +52,14 @@
         <view class="iv_must_tips">*</view>
         <view class="tv_must_tips">{{item.inquestProjectTblName}}</view>
       </view>
-      <image class='iv_uploadFile' mode='scaleToFill' src='{{icon_uploadFile}}' bindtap='chooseFiles'></image>
+      <image class='iv_uploadFile' mode='scaleToFill' src='{{icon_uploadFile}}' bindtap='chooseFiles' data-dex='{{dex}}'></image>
     </view>
     <view class="common_v_upload">
-      <view class='common_v_upload_file_block' wx:for="{{chooseFile}}" wx:key="index">
-        <image class='common_file_del' bindtap='toDetalFile' data-delNum='{{index}}' src='{{icon_delimg}}'></image>
+      <view class='common_v_upload_file_block' wx:for="{{sourceDetail[dex].inquestProjectContentValue}}" wx:for-item="itemSource" wx:for-index="idex">
+        <image class='common_file_del' bindtap='toDetalFile' data-delNum='{{idex}}' data-idex='{{dex}}' src='{{icon_delimg}}'></image>
         <view class="common_v_upload_file">
           <image class='common_iv_uploadFile' src='{{icon_uploadfile}}'></image>
-          <view class="tv_ellipsis1 common_tv_filename">{{item.filename}}</view>
+          <view class="tv_ellipsis1 common_tv_filename">{{itemSource.filename}}</view>
         </view>
       </view>
     </view>

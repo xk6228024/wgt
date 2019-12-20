@@ -1,5 +1,9 @@
 const app = getApp()
 
+var selectData = [];
+var selectDataIndex = 0;//用于统计上传文件
+var uploadFileIndex = 0;
+var uploadFileCount = 0;
 Page({
 
   /**
@@ -28,10 +32,18 @@ Page({
     title: '',
     //id
     id: '',
+    //锁
+    lock: false,
     //勘验模板接口 
     url_detail: app.globalData.url + '/vmts-supervision/app/inquest/project/content',
     //勘验模板数据
-    sourceDetail:[],
+    sourceDetail: [],
+    //勘验内容保存接口
+    url_commit: app.globalData.url + '/vmts-supervision/app/inquest/project/content/add',
+    //勘验内容要上传的数据
+    enterpriseInquestProjectContent:'',
+    //详情数据
+    sourceObj:'',
     icon_uploadFile: app.globalData.picUrl + '/icon_uploadFile.png',
     icon_addimg: app.globalData.picUrl + '/icon_addimg.png',
     icon_delimg: app.globalData.picUrl + '/icon_delimg.png',
@@ -72,26 +84,71 @@ Page({
     app.doPost(this.data.url_detail, this.data.sourceData).then(
 
       //请求成功code==200回调
-      function (res) {
+      function(res) {
         let itemList = res.data.projectContentVos;
-        for(let i = 0;i<itemList.length; i++){
+        for (let i = 0; i < itemList.length; i++) {
           let item = itemList[i];
-          if(item.inquestProjectTblType == '3' || item.inquestProjectTblType == '4'){
-            if(item instanceof Array){
+          if (item.inquestProjectTblType == '3' || item.inquestProjectTblType == '4') {
+            if (item.inquestProjectContentValue.indexOf("[") != -1 || item.inquestProjectContentValue.indexOf("{") != -1) {
+              let obj = JSON.parse(item.inquestProjectContentValue);
+              item.inquestProjectContentValue = obj;
+            }
+            if (item.inquestProjectContentValue instanceof Array) {
               //是数组不处理
-            }else{
+            } else {
               //不是数组赋空数组
               item.inquestProjectContentValue = [];
             }
           }
+          itemList[i] = item;
         }
 
         that.setData({
           sourceDetail: itemList,
+          sourceObj :res.data,
         })
       },
       //请求失败回调
+      function(msg) {
+        console.log('error:' + JSON.stringify(msg));
+      }
+    )
+  },
+
+  //确认上传勘验内容接口
+  uploadContent: function () {
+
+    //组装数据
+    var selectObj = {};
+    for (let i = 0; i < selectData.length; i++) {
+      selectObj[selectData[i].inquestProjectTblId] = selectData[i].inquestProjectContentValue;
+    }
+    let enterpriseInquestProjectContent = JSON.stringify(selectObj);
+
+    console.log('enterpriseInquestProjectContent:============' + enterpriseInquestProjectContent);
+
+    this.setData({
+      sourceData: {
+        inquestProjectContentId :this.data.id,
+        inquestProjectId: this.data.sourceObj.inquestProjectId,
+        enterpriseRecordId: this.data.sourceObj.enterpriseRecordId,
+        inquestProjectCode: this.data.sourceObj.inquestProjectCode,
+        cityCode: this.data.sourceObj.cityCode,
+        inquestProjectContent: enterpriseInquestProjectContent,
+      }
+    })
+
+    app.doPost(this.data.url_commit, this.data.sourceData).then(
+
+      //请求成功code==200回调
+      function (res) {
+        wx.hideLoading();
+        console.log('提交成功！！！');
+
+      },
+      //请求失败回调
       function (msg) {
+        wx.hideLoading();
         console.log('error:' + JSON.stringify(msg));
       }
     )
@@ -102,9 +159,7 @@ Page({
     var that = this;
     let index = e.currentTarget.dataset.dex;
     let imageArray = this.data.sourceDetail[index].inquestProjectContentValue;
-    if(typeof(imageArray) === 'string'){
-      imageArray = [];
-    }
+    
     wx.chooseImage({
       count: 9 - imageArray.length, // 最多可以选择9张图片，默认9
       success: function(res) {
@@ -126,8 +181,8 @@ Page({
       }
     })
 
-    
-  
+
+
   },
   // 图片删除
   toDetalImg: function(e) {
@@ -139,20 +194,22 @@ Page({
     this.setData({
       sourceDetail: this.data.sourceDetail,
     })
-    
+
   },
 
   //选择文件
-  chooseFiles: function() {
-    var that = this,
-      chooseFile = this.data.chooseFile
+  chooseFiles: function(e) {
+    var that = this;
+    let index = e.currentTarget.dataset.dex;
+    let fileArray = this.data.sourceDetail[index].inquestProjectContentValue;
+
     wx.chooseMessageFile({
       count: 10,
       type: 'file',
       success(res) {
         console.log("选择了==" + res.tempFiles);
         let i = 0;
-        for (i = 0; i < res.tempFiles.length;i++){
+        for (i = 0; i < res.tempFiles.length; i++) {
           var filename = res.tempFiles[i].name;
           var filepath = res.tempFiles[i].path;
           console.log("选择文件名==" + filename + "选择文件路径==" + filepath);
@@ -160,23 +217,26 @@ Page({
             'filename': filename,
             'filepath': filepath,
           };
-          chooseFile = chooseFile.concat(file);
-          that.setData({
-            chooseFile: chooseFile
-          })
+          fileArray = fileArray.concat(file);
         }
+        that.data.sourceDetail[index].inquestProjectContentValue = fileArray;
+        that.setData({
+          sourceDetail: that.data.sourceDetail
+        });
       }
     })
   },
   // 文件删除
   toDetalFile: function(e) {
-    let detalIndex = e.currentTarget.dataset.delnum
-    this.data.chooseFile.splice(detalIndex, 1)
-    if (this.data.chooseFile.length >= 0) {
-      this.setData({
-        chooseFile: this.data.chooseFile,
-      })
-    }
+
+    let detalIndex = e.currentTarget.dataset.delnum;
+    let index = e.currentTarget.dataset.idex;
+    let fileArray = this.data.sourceDetail[index].inquestProjectContentValue;
+    fileArray.splice(detalIndex, 1)
+    this.data.sourceDetail[index].inquestProjectContentValue = fileArray;
+    this.setData({
+      sourceDetail: this.data.sourceDetail,
+    })
   },
 
   /* 函数描述：作为上传文件时递归上传的函数体体；
@@ -186,85 +246,168 @@ Page({
    * failUp是上传失败的个数
    * i是文件路径数组的指标
    * length是文件路径数组的长度
+   * type是文件路类型 3:图片 4:文件
    */
-  uploadImg: function(filePaths, successUp, failUp, i, length) {
+  uploadFiles: function(filePaths, successUp, failUp, i, length, index,type) {
+
     var that = this;
-    console.log("图片上传中...")
-    wx.uploadFile({
-      url: app.globalData.url + '/vmts-supervision/app/attachment/upload',
-      filePath: filePaths[i],
-      name: 'file',
-      header: {
-        'content-type': 'application/json',
-        'token': wx.getStorageSync("token"),
-      },
-      success: (res) => {
-        successUp++;
-        var data = JSON.parse(res.data);
+    var index = index;
+    if(type == '3'){
+      console.log("图片上传中..." + filePaths[i])  
+    }else{
+      console.log("文件上传中..." + filePaths[i])
+    }
 
-        var srcArr = that.data.piclist;
-        srcArr.push(data.data),
-          that.setData({
-            piclist: srcArr
-          });
-      },
-      fail: (res) => {
-        console.log("图片上传失败了" + JSON.stringify(res));
+    if (!(filePaths[i].indexOf("//tmp") != -1)){
+      var srcArr = selectData[index].fielUrl;
+      srcArr.push(filePaths[i]);
+      selectData[index].fielUrl = srcArr;
+      i++;
+      if (i == length) {
+        selectDataIndex++;
+        uploadFileIndex++;
+        that.uploadEvent(uploadFileCount);
+      } else { //递归调用uploadFiles函数
+         this.uploadFiles(filePaths, successUp, failUp, i, length, index, type);
+      }
+    }else{
+      wx.uploadFile({
+        url: app.globalData.url + '/vmts-supervision/app/attachment/upload',
+        filePath: filePaths[i],
+        name: 'file',
+        header: {
+          'content-type': 'application/json',
+          'token': wx.getStorageSync("token"),
+        },
+        success: (res) => {
+          successUp++;
+          var data = JSON.parse(res.data);
 
-        that.setData({
-          isuploaderror: 1
-        });
-        failUp++;
-      },
-      complete: () => {
-        i++;
-        if (i == length) {
-          wx.hideToast();
-          var txt = '总共' + successUp + '张上传成功,' + failUp + '张上传失败！';
-          console.log(txt);
-          // app.toastShow(0, txt, 2000, 1);
-        } else { //递归调用uploadImg函数
-          if (that.data.isuploaderror) {
-            console.log("图片上传失败，请重新选择上传");
-            // app.toastShow(0, '图片上传失败，请重新选择上传', 2000, 1);
+          var srcArr = selectData[index].fielUrl;
+          srcArr.push(data.data);
+          selectData[index].fielUrl = srcArr;
+
+
+        },
+        fail: (res) => {
+          if (type == '3') {
+            console.log("图片上传失败了" + JSON.stringify(res));
           } else {
-            this.uploadImg(filePaths, successUp, failUp, i, length);
+            console.log("文件上传失败了" + JSON.stringify(res));
+          }
+          selectData[index].fielUrl = 0;
+          that.data.isuploaderror = 1;
+          failUp++;
+        },
+        complete: () => {
+          i++;
+          if (i == length) {
+            // wx.hideToast();
+            if (type == '3') {
+              selectData[index].inquestProjectContentValue = selectData[index].fielUrl;
+              var txt = '总共' + successUp + '张上传成功,' + failUp + '张上传失败！';
+              console.log(txt);
+            } else {
+              let filePathArray = selectData[index].inquestProjectContentValue;
+              for (let k = 0; k < filePathArray.length; k++) {
+                filePathArray[k].filepath = selectData[index].fielUrl[k];
+              }
+              selectData[index].inquestProjectContentValue = filePathArray;
+              var txt = '总共' + successUp + '个文件上传成功,' + failUp + '个文件上传失败！';
+              console.log(txt);
+            }
+            selectDataIndex++;
+            uploadFileIndex++;
+            that.uploadEvent(uploadFileCount);
+          } else { //递归调用uploadFiles函数
+            if (that.data.isuploaderror) {
+              if (type == '3') {
+                console.log("图片上传失败，请重新选择上传");
+              } else {
+                console.log("文件上传失败，请重新选择上传");
+              }
+              // app.toastShow(0, '图片上传失败，请重新选择上传', 2000, 1);
+
+
+            } else {
+              this.uploadFiles(filePaths, successUp, failUp, i, length, index, type);
+            }
           }
         }
-      }
-    });
+      });
+    }
   },
   //输入监听
   bindTextAreaBlur: function(e) {
     let value = e.detail.value
     let textLen = value.length;
-    this.setData({
-      textLen: textLen,
-      textarea: value
-    });
     if (textLen > 100) {
       return;
     }
-
+    let index = e.currentTarget.dataset.dex;
+    console.log('bindTextAreaBlur index:============' + index);
+    this.data.sourceDetail[index].inquestProjectContentValue = value;
+    this.setData({
+      sourceDetail: this.data.sourceDetail
+    })
   },
 
+
+  uploadEvent: function (uploadFileCount) {
+    if (uploadFileCount == uploadFileIndex) {
+      //上传结束
+      this.uploadContent();
+      return;
+    }
+    let sourceList = this.data.sourceDetail;
+    for(let index = selectDataIndex; index < selectData.length; index++){
+      //上传到第几个文件
+      selectDataIndex = index;
+      let item = sourceList[index];
+      let selectItem = selectData[index];
+      if ((item.inquestProjectTblType == '3' || item.inquestProjectTblType == '4') && item.inquestProjectContentValue.length > 0){
+        //上传未上传的文件图片 
+        let successUp = 0; //成功个数
+        let failUp = 0; //失败个数
+        let i = 0; //第几个
+        if (item.inquestProjectTblType == '3') {
+         
+          let length = item.inquestProjectContentValue.length; //长度
+          this.uploadFiles(item.inquestProjectContentValue, successUp, failUp, i, length, index, item.inquestProjectTblType);
+        }else{
+          
+          let fileArray = [];
+          for (let j = 0; j < item.inquestProjectContentValue.length; j++){
+            let file = item.inquestProjectContentValue[j];
+            fileArray.push(file.filepath);
+          }
+          let length = fileArray.length; //长度
+          this.uploadFiles(fileArray, successUp, failUp, i, length, index, item.inquestProjectTblType);
+        }
+        
+        break;
+      }
+    }
+  },
   //提交
   submit: function(e) {
-
-    var successUp = 0; //成功个数
-    var failUp = 0; //失败个数
-    var i = 0; //第几个
-    var length = this.data.choosePhoto.length; //长度
-
-    this.uploadImg(this.data.choosePhoto, successUp, failUp, i, length);
-
-    var selectData = {};
-    for(let i = 0;i<this.data.sourceDetail.length;i++){
-      selectData[this.data.sourceDetail[i].inquestProjectTblId] = this.data.sourceDetail[i].inquestProjectContentValue;
+    wx.showLoading({
+      title: '',
+    });
+    selectData = this.data.sourceDetail;
+    selectDataIndex = 0;
+    uploadFileIndex = 0;
+    uploadFileCount = 0;
+    //组装图片或文件上传
+    for (let index = 0; index < selectData.length; index++) {
+      let item = selectData[index];
+      if ((item.inquestProjectTblType == '3' || item.inquestProjectTblType == '4') && item.inquestProjectContentValue.length > 0)       {
+        selectData[index].fielUrl = [];
+        uploadFileCount = uploadFileCount+1;
+      }
     }
-    let enterpriseInquestProjectContent = JSON.stringify(selectData);
+    this.uploadEvent(uploadFileCount);
 
-    console.log('enterpriseInquestProjectContent:'+enterpriseInquestProjectContent);
   },
 
 

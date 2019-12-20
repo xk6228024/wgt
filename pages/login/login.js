@@ -66,7 +66,7 @@ Page({
     // };
     let param = {
       data: {
-        userName: 'nnadmin',
+        userName: 'szadmin',
         password: '123456',
       }
     };
