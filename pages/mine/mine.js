@@ -26,6 +26,15 @@ Page({
 
       //请求成功code==200回调
       function (res) {
+        let roleName = '';
+        for (let i = 0; i < res.data.roleList.length;i++){
+          if(i == 0){
+            roleName = res.data.roleList[0].roleName;
+          }else{
+            roleName = roleName + ',' + res.data.roleList[i].roleName;
+          }
+        }
+        res.data.roleName = roleName;
         _this.setData({
           dataSource: res.data,
         })

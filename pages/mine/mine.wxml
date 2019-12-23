@@ -34,7 +34,7 @@
 
   <view class="v_bgColor common_v_between100">
     <text class="tv_left">角色:</text>
-    <text class="common_tv_right">{{dataSource.roleList[0].roleName}}</text>
+    <text class="common_tv_right">{{dataSource.roleName}}</text>
   </view>
   <view class="common_v_line720"></view>
 
