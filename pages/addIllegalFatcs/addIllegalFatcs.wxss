@@ -1,0 +1,41 @@
+page {
+  background: #F5F5F5;
+}
+#addIllegalFatcs .textarea {
+  height: 200rpx;
+  padding-top: 8rpx;
+}
+.images {
+  padding: 16rpx 0;
+}
+.image-upload {
+  background: #fff;
+  padding: 0 24rpx;
+  border-bottom: 1rpx solid #ebedf0;
+}
+.image-upload .van-uploader__upload {
+  margin-left: 16rpx;
+}
+.image-upload .van-uploader__preview-delete {
+  font-size: 22px;
+}
+#addIllegalFatcs .van-cell__title {
+  font-size: 32rpx;
+  color: #404D66;
+}
+#addIllegalFatcs .van-field__input {
+  font-size: 32rpx;
+  color: #666;
+}
+.result .van-cell {
+  padding: 0 var(--cell-horizontal-padding,16px) var(--cell-horizontal-padding,16px) var(--cell-horizontal-padding,16px);
+}
+.submit {
+  display: block;
+  margin: 20rpx;
+}
+.submit .van-button {
+  display: flex;
+  height: 78rpx;
+  border-radius: 12rpx;
+}

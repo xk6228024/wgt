@@ -1,0 +1,99 @@
+/* pages/noticeDetail/noticeDetail.wxss */
+
+page{
+  background: #F5F5F5;
+  display: flex;
+  flex-direction:column;
+}
+
+.tv_title{
+  font-size: 42rpx;
+  color:  #404D66;
+  display: -webkit-box;      
+  word-break: break-all;
+  text-overflow: ellipsis; 
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 30rpx;
+  overflow: hidden;    
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2; 
+}
+
+.tv_content{
+  font-size: 32rpx;
+  color:  #404D66;
+  display: -webkit-box;      
+  word-break: break-all;
+  text-overflow: ellipsis; 
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 30rpx;
+}
+
+.v_tagBg{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin-left: 39rpx;
+  margin-top: 50rpx;
+  height: 30rpx;
+}
+
+.iv_tag{
+  height: 24rpx;
+  width: 11rpx;
+}
+
+.tv_tag{
+  margin-left: 5rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #868686;
+  font-size: 24rpx;
+
+}
+
+.v_download{
+  border: 1rpx #868686 ;
+  border-radius: 6rpx;
+  display: flex;
+  margin: 10rpx 30rpx;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 330rpx;
+  height: 222rpx;
+}
+
+.iv_download{
+  margin-top: 20rpx;
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.tv_fileName{
+  font-size: 24rpx;
+  color:  #404D66;
+  display: -webkit-box;      
+  word-break: break-all;
+  text-overflow: ellipsis; 
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 30rpx;
+  overflow: hidden;    
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2;
+  text-align: center;
+}
+
+.tv_fileSize{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  height: 33rpx;
+  line-height: 33rpx;
+  color: #868686;
+  font-size: 24rpx;
+  text-align: center;
+}

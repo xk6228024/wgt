@@ -1,0 +1,21 @@
+/* pages/personInfo.wxss */
+page {
+    background: #f5f5f5;
+  }
+.v_page .van-collapse-item__content {
+    padding: 0;
+}
+.picWrap {
+    padding: 30rpx 0 30rpx 0;
+    margin-left: 20rpx;
+    border-bottom: 1px solid #f5f5f5;
+}
+.picWrap .picTittle {
+    color: #404D66;
+    font-size: 32rpx;
+    line-height:45rpx;
+}
+.picWrap image {
+    width: 218rpx;
+    height: 160rpx;
+}

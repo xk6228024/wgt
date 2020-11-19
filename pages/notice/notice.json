@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "通知公告",
+  "navigationBarBackgroundColor": "#185BBD",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

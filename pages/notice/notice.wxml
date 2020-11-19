@@ -1,0 +1,28 @@
+<!--pages/notice/notice.wxml-->
+<view class="v_bgColor common_v_search">
+  <view class="common_v_search_bg">
+    <image class='common_mar_search common_iv30' mode='scaleToFill' src='{{icon_search}}'></image>
+    <input bindinput='searchInput' placeholder="请输入公告标题" placeholder-class="placeholderStyle" maxlength='18' value="{{searchKey}}" bindconfirm='searchEvent' type='text' confirm-type='search'/>
+  </view>
+</view>
+<view class="common_v_line750"></view>
+
+<block wx:for = "{{dataSource}}">
+  <view class="v_cell" bindtap="cellTapEvent">
+  
+  <text class="tv_titleFont tv_leftTitle">{{item.title}}</text>
+  <view class="common_v_between100">
+    <text class="tv_titleFont tv_row tv_left">{{item.content}}</text>
+    <text class="tv_titleFont tv_row tv_right">{{item.date}}</text>
+  </view>   
+ </view>
+ <view class="common_v_line20"></view>
+</block>
+  
+
+
+
+
+
+
+

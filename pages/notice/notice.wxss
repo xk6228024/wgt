@@ -1,0 +1,32 @@
+/* pages/notice/notice.wxss */
+
+.tv_titleFont{
+  font-size: 32rpx;
+  color: #404d66;
+  height: 52rpx;
+  line-height: 52rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+} 
+.tv_leftTitle {
+  flex-shrink: 0;
+  margin-left: 30rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.tv_row {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  color: #868686;
+  font-size: 28rpx;
+}
+
+.tv_left{
+  width: 504rpx;
+}
+
+.tv_right{
+  width: 168rpx;
+}

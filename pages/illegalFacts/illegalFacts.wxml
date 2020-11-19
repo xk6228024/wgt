@@ -1,0 +1,8 @@
+<van-cell class="project-value" title="经调查，该单位存在下列违法事实：" />
+<view class="content">
+  <van-cell title="第1项：使用权及产权证明材料" is-link bindtap="getItem"/>
+  <van-cell title="第2项：质量管理制度" is-link bindtap="getItem"/>
+  <van-cell wx:for="{{ illegalList }}" wx:key="index" title="{{ item.illegalText }}" data-index="{{ index }}" is-link bindtap="getCustomItem"/>
+</view>
+
+<van-button color="#185BBD" icon="plus" class="submit" bindtap="addItem">新增违法事实</van-button>

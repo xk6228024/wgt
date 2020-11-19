@@ -1,0 +1,102 @@
+/* pages/verifyEnterpriseRecordItemDetail/verifyEnterpriseRecordItemDetail.wxss */
+page {
+  background: #f5f5f5;
+}
+
+.v_must_tips {
+  height: 45rpx;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  margin-left: 30rpx;
+}
+
+.iv_must_tips {
+  font-size: 30rpx;
+  color: rgba(245, 34, 45, 1);
+  margin-top: 5rpx;
+  margin-right: 10rpx;
+}
+
+.tv_must_tips {
+  height: 52rpx;
+  font-size: 32rpx;
+  color: #404d66;
+  line-height: 52rpx;
+}
+
+.iv_uploadFile {
+  width: 55rpx;
+  height: 50rpx;
+  margin-right: 30rpx;
+}
+
+.tv_num {
+  height: 52rpx;
+  font-size: 32rpx;
+  color: #404d66;
+  line-height: 52rpx;
+  margin-right: 30rpx;
+}
+
+.mar_addimg {
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+
+.v_input_tips {
+  width: 100%;
+  padding-left: 30rpx;
+  background: #fff;
+}
+
+.v_input {
+  width: 690rpx;
+  height: 170rpx;
+  background: #fff;
+}
+
+.placeholder {
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.btn_mar {
+  margin-top: 158rpx;
+  margin-left: 32rpx;
+  margin-bottom: 60rpx;
+}
+
+.v_detailBg{
+  display: flex;
+  align-items: center;
+  background: #fff;
+  justify-content: space-between;
+  height: 500rpx;
+}
+
+.tv_title {
+  height: 100rpx;
+  font-size: 32rpx;
+  color: #404d66;
+  line-height: 100rpx;
+  margin-left: 30rpx;
+}
+
+.tv_detail{
+  font-size: 32rpx;
+  color: #404d66;
+  margin-bottom: 30rpx;
+  flex-shrink: 1;
+  margin-right: 32rpx;
+  margin-left: 32rpx;
+ 
+}
+
+.iv_margin{
+  margin-left: 32rpx;
+}
+
+.iv_blank{
+  background: #f5f5f5;
+}

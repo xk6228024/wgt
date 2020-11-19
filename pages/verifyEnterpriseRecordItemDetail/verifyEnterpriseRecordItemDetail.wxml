@@ -1,0 +1,98 @@
+<!--pages/verifyEnterpriseRecordItemDetail/verifyEnterpriseRecordItemDetail.wxml-->
+<!-- 顶部分化部分 -->
+
+
+ <!-- 文本 -->
+
+<block wx:if="{{state > 0}}" >
+  <view class="common_v_between100">
+    <view class="common_tv_tips32">检查事项</view>
+    <view class="common_tv_tips32_86c">接待室</view>
+  </view>
+  <view class="common_v_line720"></view>
+
+
+ <!-- 文本 -->
+
+  <view class="common_v_between100">
+    <view class="common_tv_tips32">要求</view>
+    <view class="common_tv_tips32_86c">面积不小于80平米</view>
+  </view>
+  <view class="common_v_line720"></view>
+
+
+
+
+
+<!-- 图片上传 -->
+    <view class="common_v_between100">
+      <view class="v_must_tips">
+        <view class="tv_must_tips">图片</view>
+      </view>
+    </view>
+    <view class="common_v_upload">
+      
+       <image class='common_iv150 iv_margin' src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579175766806&di=00d8dad60064d7f947111248b491c25c&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D1256339055%2C3642150167%26fm%3D214%26gp%3D0.jpg'></image>
+
+       <image class='common_iv150 iv_margin' src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579175766806&di=00d8dad60064d7f947111248b491c25c&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D1256339055%2C3642150167%26fm%3D214%26gp%3D0.jpg'></image>
+
+       <image class='common_iv150 iv_margin' src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579175766806&di=00d8dad60064d7f947111248b491c25c&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D1256339055%2C3642150167%26fm%3D214%26gp%3D0.jpg'></image>
+      
+    </view>
+    <view class="common_v_line20"></view>
+
+  <view class="common_v_column">
+     <view class="tv_title">检查事项</view>
+
+  <view class="tv_detail">汇丰控股回家看哈防护林带几分哈伦就开始发货啦健康的护肤了解卡黑得发亮将卡号多少分了几款哈伦裤的手机发哈两节课还是地方了空间啊还是地方了空间啊还打算放了假卡还是代理反馈就回了句口号</view>
+  </view>
+</block>
+
+  
+<block wx:if="{{state == 0}}" >
+  <view class="common_v_between100">
+    <view class="common_tv_tips32">检查事项</view>
+    <view class="common_tv_tips32_86c">--</view>
+  </view>
+  <view class="common_v_line720"></view>
+
+
+ <!-- 文本 -->
+
+  <view class="common_v_between100">
+    <view class="common_tv_tips32">要求</view>
+    <view class="common_tv_tips32_86c">--</view>
+  </view>
+  <view class="common_v_line720"></view>
+
+
+
+
+
+<!-- 图片上传 -->
+    <view class="common_v_between100">
+      <view class="v_must_tips">
+        <view class="tv_must_tips">图片</view>
+      </view>
+    </view>
+    <view class="common_v_upload">
+      
+       <image class='common_iv150 iv_margin iv_blank' >无</image>
+
+    </view>
+    <view class="common_v_line20"></view>
+
+  <view class="common_v_column">
+     <view class="tv_title">检查事项</view>
+
+  <view class="tv_detail">无</view>
+  </view>
+</block>
+
+
+
+
+
+
+
+

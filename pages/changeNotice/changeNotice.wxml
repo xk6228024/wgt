@@ -1,0 +1,102 @@
+<van-collapse value="{{ activeNames }}" bind:change="collapseChange" class="project-collapse">
+
+  <view class="page-title">深圳市交通运输局责令整改通知书</view>
+
+  <wux-accordion-group default-current="{{ ['0'] }}">
+    <wux-accordion>
+      <view slot="header" class="project-title">
+        <text>当事人信息</text>
+      </view>
+      <van-field label="姓名" required input-align="right" value="{{ form.name }}" bind:change="modelInput" data-name="form.name" placeholder="默认获取单位法人" />
+      <van-field label="性别" required input-align="right" value="{{ form.genderName }}" placeholder="请选择"
+        bindtap="openSelect" data-name="genderShow" readonly right-icon="arrow"/>
+      <van-field label="身份证号" required input-align="right" value="{{ form.idCard }}" bind:change="modelInput" data-name="form.idCard" placeholder="默认获取单位法人身份证号" type="idcard"/>
+      <van-field label="住址" required input-align="right" value="{{ form.addr }}" bind:change="modelInput" data-name="form.addr" placeholder="默认获取经营地址" type="textarea" class="van-field" autosize="{{ true }}" placeholder-style="{{ textAreaColor }}" readonly="{{ textAreaColor === 'color:transparent' }}"/>
+      <van-field label="职业" required input-align="right" value="{{ form.businessType }}" bindtap="openSelect" data-name="businessTypeShow" readonly placeholder="请选择" />
+      <van-field label="法人/其他组织名称" required input-align="right" value="{{ form.organization }}" bind:change="modelInput" data-name="form.organization" placeholder="默认获取单位法人" />
+      <van-field label="法定代表人/主要负责人" required input-align="right" value="{{ form.linkName }}" bind:change="modelInput" data-name="form.linkName" placeholder="默认获取单位法人" />
+      <van-field label="地址" required input-align="right" value="{{ form.address }}" bind:change="modelInput" data-name="form.address" placeholder="默认获取经营地址" type="textarea" autosize="{{ true }}"  placeholder-style="{{ textAreaColor }}"  readonly="{{ textAreaColor === 'color:transparent' }}"/>
+      <van-field label="违法事实" required readonly input-align="right" value="{{ form.illegal }}" bind:change="modelInput" data-name="form.illegal" bindtap="toIllegalFatcs" right-icon="arrow"/>
+      <van-field label="立即整改项" readonly input-align="right" value="{{ selectChangeResult.length + '项' }}" bind:change="modelInput" data-name="selectChangeShow" bindtap="openSelect" right-icon="arrow"/>
+    </wux-accordion>
+</wux-accordion-group>
+
+  <view class="line"></view>
+
+  <wux-accordion-group default-current="{{ ['0'] }}">
+    <wux-accordion>
+      <view slot="header" class="project-title">
+        <text>执法人员签名及执法证号</text>
+      </view>
+      <van-field label="执法证号" required readonly input-align="right" value="{{ form.code }}" bind:change="modelInput" data-name="form.code" />
+      <van-field label="电子签名" required input-align="right" value="{{ form.sign ? '已签名' : '未签名' }}"
+      bindtap="signNameEvent" data-name="form.sign" readonly right-icon="arrow" url="/pages/home/home"/>
+      <van-field label="执法证号" input-align="right" value="{{ form.code }}" bind:change="modelInput" data-name="form.code" 
+      placeholder="请输入"/>
+      <van-field label="电子签名" input-align="right" value="{{ form.sign2 ? '已签名' : '未签名' }}"
+      bindtap="signNameEvent" data-name="form.sign2" readonly right-icon="arrow"/>
+    </wux-accordion>
+  </wux-accordion-group>
+
+  <view class="line"></view>
+
+  <wux-accordion-group default-current="{{ ['0'] }}">
+    <wux-accordion>
+      <view slot="header" class="project-title">
+        <text>联系信息</text>
+      </view>
+      <van-field label="联系地址" required input-align="right" value="{{ form.linkAddr }}" bind:change="modelInput" data-name="form.address" placeholder="请输入" type="textarea" autosize="{{ true }}"  placeholder-style="{{ textAreaColor }}" readonly="{{ textAreaColor === 'color:transparent' }}"/>
+      <van-field label="联系人" required input-align="right" value="{{ form.linkName }}" bind:change="modelInput" data-name="form.address" placeholder="请输入" />
+      <van-field label="联系电话" required input-align="right" value="{{ form.linkMobile }}" bind:change="modelInput" data-name="form.address" placeholder="请输入" type="number" maxlength="11"/>
+    </wux-accordion>
+  </wux-accordion-group>
+
+  <view class="line"></view>
+
+  <wux-accordion-group default-current="{{ ['0'] }}">
+    <wux-accordion>
+      <view slot="header" class="project-title">
+        <text>送达事项</text>
+      </view>
+      <van-field label="送达人" required readonly input-align="right" value="{{ form.sendUser }}" bind:change="modelInput" data-name="form.sendUser" placeholder="默认获取当前登录用户姓名" />
+      <van-field label="送达人" input-align="right" value="{{ form.sendName }}" bind:change="modelInput" data-name="form.sendName" placeholder="请输入" />
+      <van-field label="送达地点" required input-align="right" value="{{ form.sendAddr }}" bind:change="modelInput" data-name="form.sendAddr" placeholder="默认获取经营地址" type="textarea" autosize="{{ true }}"  placeholder-style="{{ textAreaColor }}" readonly="{{ textAreaColor === 'color:transparent' }}"/>
+      <van-field label="送达方式" required input-align="right" value="{{ form.sendType }}" bind:change="modelInput" data-name="form.sendType" placeholder="请输入" />
+      <van-field label="收件人" required input-align="right" value="{{ form.receiver }}" bind:change="modelInput" data-name="form.receiver" placeholder="默认获取单位法人" />
+      <van-field label="联系方式" required input-align="right" value="{{ form.receiverMobile }}" bind:change="modelInput" data-name="form.receiverMobile" placeholder="默认获取法人联系电话" type="number" maxlength="11"/>
+      <van-field label="签收时间" required input-align="right" value="{{ form.receiveDate }}" placeholder="请选择"
+        bindtap="openSelect" data-name="dateShow" data-date="form.receiveDate" readonly right-icon="arrow"/>
+    </wux-accordion>
+  </wux-accordion-group>
+
+  <view class="submit btn_mar common_button_action" bindtap="submit">提 交</view>
+</van-collapse>
+
+
+<!-- 性别选择 -->
+<van-popup show="{{ genderShow }}" position="bottom" bindtap="closeSelect" data-name="genderShow">
+  <van-picker show-toolbar columns="{{ genderList }}" bind:confirm="genderChange" bind:cancel="closeSelect" data-name="genderShow"/>
+</van-popup>
+
+<!-- 业务类型 -->
+<van-popup show="{{ businessTypeShow }}" position="bottom" bindtap="closeSelect" data-name="businessTypeShow">
+  <van-picker show-toolbar columns="{{ businessTypeList }}" bind:confirm="businessTypeChange" bind:cancel="closeSelect" data-name="businessTypeShow"/>
+</van-popup>
+
+<!-- 日期选择 -->
+<van-popup show="{{ dateShow }}" position="bottom" bindtap="closeSelect" data-name="dateShow">
+  <van-datetime-picker type="date" value="{{ nowDate }}" bind:confirm="dateChange" bind:cancel="closeSelect" data-name="dateShow" data-date="{{ currentDateType }}"/>
+</van-popup>
+
+<!-- 立即整改项选择 -->
+<van-popup show="{{ selectChangeShow }}" position="bottom" bindtap="closeSelect" data-name="selectChangeShow">
+<van-nav-bar right-text="关闭" data-name="selectChangeShow" bind:click-right="closeSelect"/>
+  <van-checkbox-group value="{{ selectChangeResultName }}" bind:change="selectChangeProjectHandle">
+    <van-cell-group>
+      <van-cell wx:for="{{ selectChangeList }}" wx:key="index" title="{{ item.name }}" value-class="value-class"
+      clickable data-index="{{ index }}" bindtap="toggle">
+        <van-checkbox class="checkboxes-{{ index }}" name="{{ item.name }}"  data-index="{{ index }}" bindtap="toggle"/>
+      </van-cell>
+    </van-cell-group>
+  </van-checkbox-group>
+</van-popup>

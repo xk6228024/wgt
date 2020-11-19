@@ -1,0 +1,22 @@
+<view id="addIllegalFatcs">
+  <van-cell-group>
+    <van-field required label="违法事实" readonly border="{{ false }}"/>
+    <van-field model:value="{{ illegalText }}" type="textarea" placeholder="请输入" input-align="left"
+    maxlength="100" show-word-limit input-class="textarea" class="result" />
+    <van-field required label="改正内容和要求" readonly border="{{ false }}" title-width="100%"/>
+    <van-field model:value="{{ changeContent }}" type="textarea" placeholder="请输入" input-align="left"
+    maxlength="100" show-word-limit input-class="textarea" class="result" />
+    <van-field label="图片" readonly border="{{ false }}"/>
+    <view class="image-upload">
+      <van-uploader file-list="{{ images }}" bind:after-read="afterRead" bind:delete="imageDelete"/>
+    </view>
+  </van-cell-group>
+
+  <!-- 提交 -->
+  <!-- <view class="submit btn_mar common_button_gray" wx:if="isDelete" bindtap="deleteItem">删除</view>
+  <view class="submit btn_mar common_button_gray" wx:else bindtap="cancel">取 消</view>
+  <view class="submit btn_mar common_button_action" bindtap="submit">保 存</view> -->
+  <van-button color="#F5222D" class="submit" bindtap="deleteItem" type="danger" wx:if="{{ isDelete }}">删 除</van-button>
+  <van-button class="submit" bindtap="cancel" type="default" wx:else>取 消</van-button>
+  <van-button color="#185BBD" class="submit" bindtap="addItem">保 存</van-button>
+</view>

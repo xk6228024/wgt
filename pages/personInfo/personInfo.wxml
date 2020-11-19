@@ -1,0 +1,20 @@
+<!--pages/personInfo.wxml-->
+<view class="v_page">
+    <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
+        <van-collapse-item title="基本信息" name="1">
+            <van-cell title="姓名" value="{{filter.moneyFormat(11)}}" />
+            <van-cell title="性别" value="内容" />
+            <van-cell title="文化程度" value="内容" />
+            <van-cell title="手机号" value="内容" />
+            <van-cell title="身份证号" value="内容" />
+            <van-cell title="所学专业" value="内容" />
+            <van-cell title="岗位" value="内容" />
+        </van-collapse-item>
+        <van-collapse-item title="证书信息" name="2">
+            <view class="picWrap" wx:for='{{picList}}' >
+                <view class="picTittle">相关专业大专及以上学历证明材料或机动车检</view>
+                <image src="../../images/icon_coupon_blue.png"></image>
+            </view>
+        </van-collapse-item>
+    </van-collapse>
+</view>

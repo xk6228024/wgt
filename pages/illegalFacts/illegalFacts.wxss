@@ -1,0 +1,15 @@
+page {
+  background: #F5F5F5;
+}
+.content {
+  min-height: 700rpx;
+}
+.submit {
+  display: block;
+  margin: 0 20rpx;
+}
+.submit .van-button {
+  display: flex;
+  height: 78rpx;
+  border-radius: 12rpx;
+}

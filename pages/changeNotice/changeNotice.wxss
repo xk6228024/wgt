@@ -1,0 +1,65 @@
+page {
+  background: #F5F5F5;
+}
+.page-title {
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #404D66;
+}
+.project-collapse .van-collapse-item__content {
+  padding: 0 16rpx;
+}
+.project-collapse .project-item .van-cell__title {
+  font-size: 32rpx;
+  color: #404D66;
+}
+.project-collapse .project-item .van-cell__value {
+  color: #666;
+}
+.project-collapse .project-item .project-value .van-cell__title {
+  color: #666;
+}
+.van-field__body .van-field__input {
+  color: #666;
+}
+.van-collapse-item__title {
+  font-weight: bold;
+}
+.line {
+  height: 32rpx;
+  background: #F5F5F5;
+}
+.submit {
+  margin: 20rpx auto;
+}
+.van-collapse-item .van-collapse-item__wrapper--transition {
+  transition: none;
+}
+.value-class {
+  flex: none !important;
+}
+.van-nav-bar {
+  padding-top: 0 !important;
+}
+.wux-accordion--current> .wux-accordion__bd {
+  padding: 0;
+}
+.van-cell__title,.van-cell__value {
+  text-indent: 0rpx;
+  font-size: 30rpx;
+  color: #404D66;
+}
+.project-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #404D66;
+}
+.van-cell .van-field__icon-container {
+  margin-right: -16rpx;
+}
+.van-field__icon-container .van-icon {
+  color: #ccc;
+  font-size: 32rpx;
+}

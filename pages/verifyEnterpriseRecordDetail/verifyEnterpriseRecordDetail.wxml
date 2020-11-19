@@ -1,0 +1,37 @@
+<!--pages/verifyEnterpriseRecordDetail/verifyEnterpriseRecordDetail.wxml-->
+
+
+<block wx:for = "{{dataSource}}">
+
+  <view class="common_v_between100" bindtap="cellTapEvent" data-index = "{{index}}">
+    <text class="tv_titleFont tv_leftTitle">{{item.title}}</text>
+    <text wx:if = "{{item.state == 0}}" class="tv_titleFont tv_rightTitle">{{item.subtitle}}</text>
+    <text wx:if = "{{item.state != 0}}" class="tv_titleFont tv_rightTitle tv_red">{{item.subtitle}}</text>
+    <image wx:if="{{item.open}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'>
+    </image>
+    <image wx:if="{{!item.open}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'>
+    </image>
+  </view>
+
+  <view class="common_v_line750"></view>
+
+  <block wx:if = "{{item.open}}" >
+    <view wx:for = "{{item.itemArray}}" class="common_v_between100" bindtap="itemTapEvent" data-state = "{{item.state}}">
+
+      <image wx:if = "{{item.state == 0}}" class='iv_left' mode='scaleToFill' src='{{icon_checkSuccess}}'>
+      </image>
+      <image wx:if = "{{item.state != 0}}" class='iv_left' mode='scaleToFill' src='{{icon_warn}}'>
+      </image>
+
+      <text class="tv_titleFont tv_leftSubTitle">{{item.title}}</text>
+      <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'>
+      </image>
+    </view>
+    <view class="common_v_line750"></view>
+  </block>
+  
+
+</block>
+
+<!-- <view class="v_submit">提交</view> -->
+

@@ -1,0 +1,18 @@
+<!--pages/noticeDetail/noticeDetail.wxml-->
+<!-- <image class="iv_noticeDetail" mode='scaleToFill' src='{{icon_noticDetail}}'></image> -->
+<text class="tv_title">{{title}}</text>
+
+<text class="tv_content">{{content}}</text>
+
+<view class="v_tagBg">
+  <image class="iv_tag" mode='scaleToFill' src='{{icon_faelTag}}'></image>
+  <text class="tv_tag">附件</text>
+</view>
+
+<view class="v_download" bindtap="downloadEvent">
+  <image class="iv_download"></image>
+  <text class="tv_fileName">{{title}}</text>
+  <text class="tv_fileSize">{{size}}</text>
+</view>
+
+

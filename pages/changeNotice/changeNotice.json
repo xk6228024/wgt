@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "现场勘验",
+  "navigationBarBackgroundColor": "#185BBD",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "wux-accordion-group": "../../wux/accordion-group/index",
+    "wux-accordion": "../../wux/accordion/index"
+  }
+}
