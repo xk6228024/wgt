@@ -4,12 +4,25 @@
     <image class='common_mar_search common_iv30' mode='scaleToFill' src='{{icon_search}}'></image>
     <input bindinput='searchInput' placeholder="请输入企业名称查询" placeholder-class="placeholderStyle" maxlength='18' value="{{search}}" />
   </view>
-  <view class="mar_l30 common_button_radius_blue" bindtap='toCreate'>新增勘验</view>
+  <!-- <view class="mar_l30 common_button_radius_blue" bindtap='toCreate'>新增勘验</view> -->
 </view>
 
 
 <!-- 选择栏 -->
 <view class="v_select">
+
+  <view class="v_select_tips" bindtap="area">
+
+    <block wx:if="{{!areaSelect}}">
+      <view class="common_tv_tips26">所属辖区</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">所属辖区</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
+
+  </view>
 
   <view class="v_select_tips" bindtap="style">
 
@@ -24,20 +37,20 @@
 
   </view>
 
-  <view class="v_select_tips" bindtap="area">
+  <view class="v_select_tips" bindtap="selectDateEvent">
 
-    <block wx:if="{{!areaSelect}}">
-      <view class="common_tv_tips26">所在区域</view>
+    <block wx:if="{{!dateSelect}}">
+      <view class="common_tv_tips26">勘验状态</view>
       <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
     </block>
     <block wx:else>
-      <view class="common_tv_tips26_blue">所在区域</view>
+      <view class="common_tv_tips26_blue">勘验状态</view>
       <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
     </block>
 
   </view>
 
-  <view class="v_select_tips" bindtap="selectDateEvent">
+  <!-- <view class="v_select_tips" bindtap="selectDateEvent">
     <block wx:if="{{!dateSelect}}">
       <view class="common_tv_tips26">勘验日期</view>
       <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
@@ -47,28 +60,38 @@
       <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
     </block>
 
-  </view>
+  </view> -->
 
 </view>
 
 
 <!-- 列表 -->
-<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" bindtap='toDetail' data-id='{{item.enterpriseRecordId}}' data-list='{{sourceList[index]}}'>
+<view class="v_list_main" wx:if="{{sourceList.length > 0}}" wx:for="{{sourceList}}" wx:key="id" data-id='{{item.enterpriseRecordId}}' data-list='{{sourceList[index]}}'>
+  
+  <view class="list-item">
 
-  <view class="common_v_line20"></view>
+    <view class="item-top">
+      <view class="item-top-right fr yellow">待勘验</view>
+      <view class="item-top-left">
+        <view class="item-enterprise-name">{{item.enterpriseName}}</view>
+        <view class="item-location">
+          <image class="item-location-icon" mode='scaleToFill' src='{{icon_location}}'></image>
+          <view class="item-location-addr gray">{{item.enterpriseProvinceText}}</view>
+        </view>
+      </view>
+    </view>
 
-  <view class="common_v_row100h">
-    <view class="common_tv_left370w">{{item.enterpriseName}}</view>
-    <view class="common_tv_center">{{item.enterpriseBusinessCategoryText}}</view>
-    <view class="common_tv_right">{{item.nickName}}</view>
-  </view>
+    <view class="common_v_line720"></view>
 
-  <view class="common_v_line720"></view>
+    <view class="item-bottom">
+      <view class="item-date">{{item.inquestTime}}</view>
+      <view class="item-surplus">剩余65天</view>
+      <view class="item-operate tar">
+        <view class="item-operate-btn" bindtap="record">勘验记录</view>
+        <view class="item-operate-btn" bindtap="toDetail">再次勘验</view>
+      </view>
+    </view>
 
-  <view class="common_v_row100h">
-    <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-    <view class="tv_ellipsis2 tv_location">{{item.enterpriseProvinceText+item.enterpriseCityText+item.enterpriseAreaText+item.enterpriseAddress}}</view>
-    <view class="marleft202 common_tv_tips26">{{item.inquestTime}}</view>
   </view>
 
 </view>
@@ -83,32 +106,30 @@
 <customPopUp hidden-pop-up="{{hiddenPopUp1}}" bindcloseTns="toClosePop" bindchooseLi="chooseLi1" all-data='{{listData1}}'></customPopUp>
 <!-- 所在区域弹窗 -->
 <customPopUp hidden-pop-up="{{hiddenPopUp2}}" bindcloseTns="toClosePop" bindchooseLi="chooseLi2" all-data='{{listData2}}'></customPopUp>
+<!-- 勘验状态 -->
+<customPopUp hidden-pop-up="{{hiddenPopUp3}}" bindcloseTns="toClosePop" bindchooseLi="chooseLi3" all-data='{{listData3}}'></customPopUp>
 <!-- 日期选择 -->
-<view class='main_box' hidden="{{hiddenPopUp3}}" bindtap='toClosePop'>
+<!-- <view class='main_box' hidden="{{hiddenPopUp3}}" bindtap='toClosePop'>
   <view class='main_box_bottom' catchtap='--'>
     <view class="common_v_line750"></view>
     <view class="common_v_row100h">
       <view class="common_tv_tips28 marright100">开始日期</view>
       <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="startDate">
-        <!-- <view class="common_tv_tips26">请选择日期</view> -->
         <input bindinput='searchInput' placeholder="请选择日期" placeholder-class="placeholder" maxlength='18' value="{{sTime}}" disabled="true"/>
       </picker>
     </view>
 
-    <!-- <view class="common_v_line720"></view> -->
     <view class="common_v_row100h">
       <view class="common_tv_tips28 marright100">结束日期</view>
       <picker mode="date" value="{{date}}" start="1949-01-01" end="2099-01-01" bindchange="endDate">
-        <!-- <view class="common_tv_tips26">请选择日期</view> -->
         <input bindinput='searchInput' placeholder="请选择日期" placeholder-class="placeholder" maxlength='18' value="{{eTime}}" disabled="true"/>
       </picker>
     </view>
 
-    <!-- <view class="common_v_line750"></view> -->
     <view class="common_v_between100">
       <view class="common_tv_tips28" catchtap="toClosePop">取消</view>
       <view class="common_tv_right tv_verify_blue" catchtap="toConfirm">确认</view>
     </view>
 
   </view>
-</view>
+</view> -->

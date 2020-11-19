@@ -23,7 +23,7 @@ Page({
     let infoObj = JSON.parse(infoStr);
     console.log("options+++++++++++infoObj==", infoObj)
     wx.setNavigationBarTitle({
-      title: infoObj.title
+      title: 'infoObj.title'
     })
 
     this.setData({

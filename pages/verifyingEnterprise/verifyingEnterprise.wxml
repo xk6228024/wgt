@@ -18,32 +18,82 @@
 </view>
 
 <!-- 勘验项目 -->
-<view class="common_v_start">
-  <view class="v_coulomn_line"></view>
-  <view class="common_tv_bold30s">勘验项目</view>
-</view>
-
-<!-- 勘验项目 动态的布局  -->
-<view wx:for="{{sourceProject}}">
-  <view class="common_v_between100" bindtap="itemSelect" data-id='{{index}}'>
-    <view class="common_tv_tips32">{{item.inquestProjectName}}</view>
-    <image wx:if="{{item.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
-    <image wx:if="{{!item.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
+<view class="common_v_between100">
+  <view>
+    <view class="v_coulomn_line inline-b"></view>
+    <view class="common_tv_bold30s inline-b">检查事项</view>
   </view>
-
-  <view class="common_v_line720"></view>
-
-  <block wx:if="{{item.select}}">
-    <view wx:for="{{item.firstContentVos}}" wx:for-item="itemVos">
-      <view class="common_v_between100_gray" bindtap='toJumpS' data-jumpway='../verifyEnterpriseUpload/verifyEnterpriseUpload' data-id='{{itemVos.contentId}}' data-title='{{item.inquestProjectName}}'>
-        <view class="common_tv_tips30_gray">{{itemVos.value}}</view>
-        <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-      </view>
-
-      <view class="common_v_line720"></view>
-    </view>
-  </block>
+  <view class="title-result fr">检查结果：<text class="blue" catchtap="openVerifyingResult">点击录入</text></view>
 </view>
+
+<!-- 勘验项目  -->
+<wux-accordion-group default-current="{{ ['0'] }}">
+    <wux-accordion name="{{ index }}" wx:for="{{ sourceProject }}" wx:for-item="i" wx:key="index">
+      <view slot="header" class="project-title">
+        <text>{{ i.inquestProjectName }}</text>
+        <text class="blue" catchtap="openVerifyingResult">（点击录入检查结果）</text>
+      </view>
+      <wux-cell class="project-value" title="{{ j.subProjecName }}" is-link url="../verifyingEnterpriseCheck/verifyingEnterpriseCheck" wx:for="{{ i.subList }}"  wx:for-item="j"></wux-cell>
+    </wux-accordion>
+</wux-accordion-group>
+
+<!-- <van-collapse value="{{ activeNames }}" bind:change="onChange" class="project-collapse">
+  <van-collapse-item name="1">
+    <view slot="title" class="project-title">
+      经营场地
+      <text class="blue" catchtap="openVerifyingResult">（点击录入检查结果）</text>
+    </view>
+    <van-cell
+      class="project-item"
+      is-link
+      title="接待室"
+      link-type="navigateTo"
+      url="/pages/verifyingEnterpriseCheck/verifyingEnterpriseCheck"
+    />
+  </van-collapse-item>
+  <van-collapse-item name="2">
+    <view slot="title" class="project-title">
+      设施设备
+      <text class="green" catchtap="openVerifyingResult">（符合）</text>
+    </view>
+    <van-cell
+      class="project-item"
+      is-link
+      title="接待室"
+      link-type="navigateTo"
+      url="/pages/verifyingEnterpriseCheck/verifyingEnterpriseCheck"
+    />
+  </van-collapse-item>
+  <van-collapse-item name="3">
+    <view slot="title" class="project-title">
+      维修技术人员
+      <text class="red" catchtap="openVerifyingResult">（不符合）</text>
+    </view>
+    <van-cell
+      class="project-item"
+      is-link
+      title="机修人员"
+      link-type="navigateTo"
+      url="/pages/verifyingEnterpriseCheck/verifyingEnterpriseCheck"
+    />
+  </van-collapse-item>
+  <van-collapse-item name="{{ index }}" wx:for="{{ sourceProject }}" wx:for-item="i" wx:key="index">
+    <view slot="title" class="project-title">
+      {{ i.inquestProjectName }}
+      <text class="blue" catchtap="openVerifyingResult">（点击录入检查结果）</text>
+    </view>
+    <van-cell class="project-item" is-link title="{{ j.subProjecName }}" link-type="navigateTo" url="/pages/verifyingEnterpriseCheck/verifyingEnterpriseCheck"
+    wx:for="{{ i.subList }}"  wx:for-item="j"/>
+  </van-collapse-item>
+</van-collapse> -->
+
+<van-action-sheet
+  show="{{ verifyingResultShow }}"
+  actions="{{ verifyingResultList }}"
+  bind:close="verifyingResultClose"
+  bind:select="verifyingResultSelect"
+  cancel-text="取消"
+/>
 
 <!-- 提交 -->
 <view class="btn_mar common_button_action" bindtap="submit">提 交</view>

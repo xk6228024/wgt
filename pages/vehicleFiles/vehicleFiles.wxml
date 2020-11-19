@@ -12,22 +12,22 @@
   <view class="v_cell" bindtap="cellTapEvent" data-vehicleinfo = "{{item}}">
     <view class="v_carInfo">
       <view class="v_carPlate">
-        <text class='tv_plate {{item.vehicleLicensePlateColor != "6"?"plateFontWhite":"plateFontBlack"}}'>{{item.vehicleNo}}
+        <text class='tv_plate {{item != "6"?"plateFontWhite":"plateFontBlack"}}'>{{item.plateNum}}
         </text>
-        <image class="iv_plate" mode='scaleToFill' src='{{plateBgImage[item.vehicleLicensePlateColor]}}'></image>
+        <image class="iv_plate" mode='scaleToFill' src='{{plateBgImage[item.plateColor]}}'></image>
       </view>
-      <text class="tv_ellipsis1 tv_middle">{{item.vehicleOwner}}</text>
-      <text class="tv_right">{{item.vehicleTelphone}}</text>
+      <text class="tv_ellipsis1 tv_right">{{item.enterprise}}</text>
+      <!-- <text class="tv_right">{{2132}}</text> -->
     </view>
     <view class="common_v_line720"></view>
     <view class="v_carBrand">
       <view class="v_brandBg">
-        <image class="iv_brand" mode='scaleToFill' src='{{item.vehicleBrandLogo.indexOf("http") > 0 ? item.vehicleBrandLogo : "http://" + (item.vehicleBrandLogo)}}'></image>
+        <image class="iv_brand" mode='scaleToFill' src='{{icon_carlogo}}'></image>
        
-        <view class="tv_ellipsis2 tv_left">{{item.vehicleBrand?item.vehicleBrand+item.vehicleSeriesName+item.vehicleModel:''}}</view>
+        <view class="tv_ellipsis2 tv_left">{{item.brand}}</view>
       </view>
-      <text class="tv_right">{{item.typeName?item.typeName:"其他"}}</text>
+      <text class="tv_right2">{{item.date}}</text>
     </view>
   </view>
 </block>
-<text class="tv_noMoreData" wx:if = "{{isLastPage}}">没有更多数据了哦!~</text>
+<!-- <text class="tv_noMoreData" wx:if = "{{isLastPage}}">没有更多数据了哦!~</text> -->

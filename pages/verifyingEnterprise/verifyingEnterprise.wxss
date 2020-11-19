@@ -46,3 +46,22 @@ page {
   margin-left: 32rpx;
   margin-bottom: 50rpx;
 }
+
+.title-result {
+  font-size: 30rpx;
+  margin-right: 30rpx;
+}
+
+.wux-accordion--current> .wux-accordion__bd {
+  padding: 0;
+}
+.project-value .wux-cell__text {
+  text-indent: 0rpx;
+  font-size: 30rpx;
+  color: #404D66;
+}
+.project-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #404D66;
+}

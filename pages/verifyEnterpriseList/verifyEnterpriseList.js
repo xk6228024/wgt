@@ -2,6 +2,7 @@
 //获取应用实例  
 const app = getApp()
 var timeFilter = require('../../utils/filterTime.js');
+
 Page({
 
   /**
@@ -20,17 +21,34 @@ Page({
     }],
 
     listData: [],
-    listData1: [{
-        regionName: "一类企业",
+    listData1: [
+      {
+        regionName: "全部",
+        optionValue: ""
+      },
+      {
+        regionName: "一类机动车维修",
         optionValue: "1"
       },
       {
-        regionName: "二类企业",
+        regionName: "二类机动车维修",
         optionValue: "2"
       },
       {
-        regionName: "三类企业",
+        regionName: "三类机动车维修",
         optionValue: "3"
+      },
+      {
+        regionName: "一类摩托车维修",
+        optionValue: "4"
+      },
+      {
+        regionName: "二类摩托车维修",
+        optionValue: "5"
+      },
+      {
+        regionName: "危险货物运输车辆维修",
+        optionValue: "6"
       }
     ],
     //装城市区域信息的数组
@@ -46,6 +64,22 @@ Page({
       {
         regionName: "已勘验",
         optionValue: "1"
+      },
+      {
+        regionName: "待整改",
+        optionValue: "2"
+      },
+      {
+        regionName: "已整改",
+        optionValue: "3"
+      },
+      {
+        regionName: "勘验超时",
+        optionValue: "4"
+      },
+      {
+        regionName: "整改超时",
+        optionValue: "5"
       }
     ],
     verify: true,
@@ -276,8 +310,26 @@ Page({
       }
     })
 
-
-    app.doPost(this.data.url, this.data.sourceData).then(
+    that.setData({
+      sourceList: [
+        {
+          id: '1',
+          enterpriseName: '深圳市益百汽车服务有限公司',
+          enterpriseBusinessCategoryText: '一类',
+          nickName: '管理员',
+          enterpriseProvinceText: '深圳市南山区南山区桂庙路阳光文体中心',
+          inquestTime: '2019-02-02'
+        },
+        {
+          id: '2',
+          enterpriseName: '深圳市益百汽车服务有限公司',
+          nickName: '管理员',
+          enterpriseProvinceText: '深圳市南山区南山区桂庙路阳光文体中心',
+          inquestTime: '2019-02-02'
+        }
+      ]
+    })
+    /*app.doPost(this.data.url, this.data.sourceData).then(
 
       //请求成功code==200回调
       function(res) {
@@ -308,7 +360,7 @@ Page({
       function(msg) {
         // console.log('error:' + JSON.stringify(msg));
       }
-    )
+    )*/
   },
   //获取城市区域信息
   getListRegion: function() {
@@ -350,7 +402,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    
   },
 
   /**

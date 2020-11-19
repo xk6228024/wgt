@@ -3,6 +3,9 @@
   "navigationBarBackgroundColor": "#185BBD",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "customDialog": "../../component/customDialog/customDialog"
+    "customDialog": "../../component/customDialog/customDialog",
+    "wux-accordion-group": "../../wux/accordion-group/index",
+    "wux-accordion": "../../wux/accordion/index",
+    "wux-cell": "../../wux/cell/index"
   }
 }

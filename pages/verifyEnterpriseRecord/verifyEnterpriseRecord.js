@@ -5,17 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: [
+    dataSource: [
       {
-        message: '专业修车100年',
-        vehicleId: '1234567'
-      }, {
-        message: '专业修车200年',
-        vehicleId: '7654321',
-      }, {
-        message: '专业修车300年',
-        vehicleId: '7654321',
-      }
+        fileName: '深交责改第00378号(电子)',
+        date: '2019-10-12',
+        confirmNum: '25',
+        rectificationNum: '3',
+        name: '张三丰',
+      },
+      {
+        fileName: '深交责改第00378号(电子)',
+        date: '2019-10-12',
+        confirmNum: '25',
+        rectificationNum: '3',
+        name: '张三',
+      },
+      {
+        fileName: '深交责改第00378号(电子)',
+        date: '2019-10-12',
+        confirmNum: '25',
+        rectificationNum: '3',
+        name: '张三',
+      },
+      
     ],
   },
   //跳转勘验详情
@@ -26,6 +38,21 @@ Page({
       url: '../verifyingEnterprise/verifyingEnterprise?id=' + id,
     })
 
+  },
+
+  cellTapEvent: function (e) {
+    // let vehicleInfo = e.currentTarget.dataset.vehicleinfo;
+    // console.log(vehicleInfo);
+    // let vehicleInfoStr = JSON.stringify(vehicleInfo);
+    wx.navigateTo({
+      url: '../verifyEnterpriseRecordDetail/verifyEnterpriseRecordDetail'
+    })
+  },
+
+  lookChangeNitice: function () {
+    wx.navigateTo({
+      url: '../changeNotice/changeNotice'
+    })
   },
 
   /**

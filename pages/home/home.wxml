@@ -11,27 +11,31 @@
 <view class="v_lineView"></view>
 
 <view class="v_menu">
-  <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../verifyEnterpriseList/verifyEnterpriseList">
-    <image class="iv_menu" mode='scaleToFill' src='{{icon_verifyEnterprise}}'></image>
-    <text class="tv_menu">现场勘验</text>
+  
+  <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../notice/notice">
+    <image class="iv_menu" mode='scaleToFill' src='{{icon_notice}}'></image>
+    <text class="tv_menu">通知公告</text>
   </view>
 
   <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../enterpriseFileRecordList/enterpriseFileRecordList">
     <image class="iv_menu" mode='scaleToFill' src='{{icon_enterpriseFileRecord}}'></image>
-    <text class="tv_menu">备案企业</text>
+    <text class="tv_menu">维修备案</text>
   </view>
 
-  <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../fileRecordAuditList/fileRecordAuditList">
+  <!-- <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../fileRecordAuditList/fileRecordAuditList">
     <image class="iv_menu" mode='scaleToFill' src='{{icon_fileRecordAudit}}'></image>
     <text class="tv_menu">备案审核</text>
-  </view>
+  </view> -->
+
+  <view class="v_item" bindtap="pageJumpEvent" data-pageurl="../vehicleFiles/vehicleFiles">
+  <image class="iv_menu" mode='scaleToFill' src='{{icon_vehicleFiles}}'></image>
+  <text class="tv_menu">维修档案</text>
+</view>
 </view>
 
 <view class="v_line2px"></view>
 
-<view class="v_item" bindtap="pageJumpEvent" data-pageurl="../vehicleFiles/vehicleFiles">
-  <image class="iv_menu" mode='scaleToFill' src='{{icon_vehicleFiles}}'></image>
-  <text class="tv_menu">车辆档案</text>
-</view>
-
-<!-- <button bindtap="navigationTestEvent" data-address="深圳市 南山区 南头街道 创新大厦">导航</button> -->
+<view class="v_item" bindtap="pageJumpEvent" data-pageurl="../verifyEnterpriseList/verifyEnterpriseList">
+    <image class="iv_menu" mode='scaleToFill' src='{{icon_verifyEnterprise}}'></image>
+    <text class="tv_menu">现场勘验</text>
+ </view>

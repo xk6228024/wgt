@@ -1,6 +1,6 @@
 
 <!--pages/vehicleRepairRecord/vehicleRepairRecord.wxml-->
-<view class="common_v_column">
+<!-- <view class="common_v_column">
   <view class="common_v_between100">
     <text class="tv_titleFont tv_leftTitle">故障信息</text>
     <text class="tv_subTitleFont tv_row">{{dataSource.vehicleFix.vehicleFixDescription}}</text>
@@ -32,42 +32,142 @@
   </view>
   <view class="common_v_line750"></view>
 </view>
-<view class="common_v_line20"></view>
+<view class="common_v_line720"></view> -->
 <!-- <view class="common_v_line750"></view> -->
-<!-- 维修项目 -->
-<block wx:if = "{{dataSource.fixProjectList.length != 0}}">
-  <view class="common_v_between100" bindtap="openRepairItem">
-    <text class="tv_titleFont tv_leftTitle">维修项目({{dataSource.fixProjectList.length}})</text>
+
+
+<view class="common_v_between100" bindtap="openRepairInfo">
+    <text class="tv_titleFont tv_leftTitle">维修信息</text>
+    <image wx:if="{{openRepairInfo}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'>
+    </image>
+    <image wx:if="{{!openRepairInfo}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'>
+    </image>
+</view>
+<view class="common_v_line750"></view>
+<block wx:if = "{{openRepairInfo}}">
+  <!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">车牌号码</text>
+  <text class="tv_titleFont tv_row">粤B-92367</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">车牌颜色</text>
+  <text class="tv_titleFont tv_row">蓝色</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">VIN码</text>
+  <text class="tv_titleFont tv_row">LVRHDCAC4GN219269</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">送修日期</text>
+  <text class="tv_titleFont tv_row">2019-12-12</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">送修里程</text>
+  <text class="tv_titleFont tv_row">123849km</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">结算日期</text>
+  <text class="tv_titleFont tv_row">2020-12-09</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">结算清单编号</text>
+  <text class="tv_titleFont tv_row">513029199403293356</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">故障信息</text>
+  <text class="tv_titleFont tv_row">发动机</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">维修企业名称</text>
+  <text class="tv_titleFont tv_row">深圳市益百汽车服务有限公司</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">企业联系人</text>
+  <text class="tv_titleFont tv_row">张三</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">企业联系电话</text>
+  <text class="tv_titleFont tv_row">133****4147</text>
+</view>
+<view class="common_v_line720"></view>
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">维修企业地址</text>
+  <text class="tv_titleFont tv_row">深圳市南山区南山区桂庙路阳光文体中心</text>
+</view>
+<view class="common_v_line750"></view>
+</block>
+
+
+<view class="common_v_between100" bindtap="openRepairItem">
+    <text class="tv_titleFont tv_leftTitle">维修项目</text>
     <image wx:if="{{openRepairItem}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'>
     </image>
     <image wx:if="{{!openRepairItem}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'>
     </image>
-  </view>
-  <view class="common_v_line750"></view>
-  <block wx:if = "{{openRepairItem == true}}" wx:for = "{{dataSource.fixProjectList}}">
-    <view class="common_v_between100_gray">
-      <text class="tv_titleFont tv_row">{{item.vehicleFixProjectName}}</text>
-      <text class="tv_titleFont tv_row">{{item.vehicleFixWorkingHours}}</text>
-    </view>
-    <view class="v_line"></view>
-  </block>
+</view>
+<view class="common_v_line750"></view>
+<block wx:if = "{{openRepairItem}}" wx:for = "{{repairItems}}">
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">项目名称</text>
+  <text class="tv_titleFont tv_row">{{item.name}}</text>
+</view>
+<view class="common_v_line720"></view>
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">工时</text>
+  <text class="tv_titleFont tv_row">{{item.time}}</text>
+</view>
+<view class="common_v_line750"></view>
 </block>
-<!-- 维修配件 -->
-<block wx:if = "{{dataSource.partList.length != 0}}">
-  <view class="common_v_between100" bindtap="openRepairParts">
-    <text class="tv_titleFont tv_leftTitle">维修配件({{dataSource.partList.length}})</text>
+
+
+<view class="common_v_between100" bindtap="openRepairParts">
+    <text class="tv_titleFont tv_leftTitle">使用配件</text>
     <image wx:if="{{openRepairParts}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'>
     </image>
     <image wx:if="{{!openRepairParts}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'>
     </image>
-  </view>
-  <view class="common_v_line750"></view>
-  <block wx:if = "{{openRepairParts == true}}" wx:for = "{{dataSource.partList}}">
-    <view class="common_v_between100_gray">
-      <text class="tv_titleFont tv_row">{{item.vehiclePartsName}}</text>
-      <text class="tv_titleFont tv_row tv_mid">{{item.vehiclePartsNumber}}</text>
-      <text class="tv_titleFont tv_row">{{item.vehiclePartsNum}}</text>
-    </view>
-    <view class="v_line"></view>
-  </block>
+</view>
+<view class="common_v_line750"></view>
+<block wx:if = "{{openRepairParts}}" wx:for = "{{repairItemsInfo}}">
+<!--  -->
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">配件名称</text>
+  <text class="tv_titleFont tv_row">{{item.name}}</text>
+</view>
+<view class="common_v_line720"></view>
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">配件编号</text>
+  <text class="tv_titleFont tv_row">{{item.code}}</text>
+</view>
+<view class="common_v_line720"></view>
+
+<view class="common_v_between100">
+  <text class="tv_titleFont tv_row">使用数量</text>
+  <text class="tv_titleFont tv_row">{{item.num}}</text>
+</view>
+<view class="common_v_line750"></view>
 </block>
+

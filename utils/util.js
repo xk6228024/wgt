@@ -1,3 +1,8 @@
+var QQMapWX = require('../component/qqmap-wx-jssdk1/qqmap-wx-jssdk.js');
+var qqmapsdk = new QQMapWX({
+  key: 'R2ABZ-JMQE4-GDRUR-XIDJW-U7U5O-QOB7B' // 必填
+});
+
 const formatDate = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -129,6 +134,30 @@ function clear() {
   wx.clearStorageSync();
 }
 
+function map (address) {
+  //调用地址解析接口
+  qqmapsdk.geocoder({
+    address: address || '深圳市 南山区 南头街道 创新大厦', //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'
+    success: function (res) {
+      var lat = res.result.location.lat;
+      var lng = res.result.location.lng;
+      wx.openLocation({
+        latitude: Number(lat),
+        longitude: Number(lng),
+        name: '创新大厦',
+        address: '深圳市 南山区 南头街道 创新大厦',
+        scale: 16
+      })
+    },
+    fail: function (error) {
+      console.error(error);
+    },
+    complete: function (res) {
+      console.log(res);
+    }
+  })
+}
+
 
 module.exports = {
   formatDate: formatDate,
@@ -140,4 +169,5 @@ module.exports = {
   get: get,
   remove: remove,
   clear: clear,
+  map
 }

@@ -1,7 +1,21 @@
-<view  wx:if="{{array.length > 0}}" wx:for="{{array}}" data-id='{{array.vehicleId}}'>
-  <view class="common_v_between100">
-    <view class="common_tv_left370w">2019-10-12</view>
-    <view class="mar_r30 common_button_radius_blue" bindtap='toDetail' >修改勘验</view>
+
+<block wx:for = "{{dataSource}}">
+  <view class="v_cell" bindtap="cellTapEvent" data-vehicleinfo = "{{item}}">
+
+    <view class="common_v_between100">
+      <text class="tv_titleFont tv_row tv_bold">勘验信息</text>
+      <text class="tv_titleFont tv_row">{{item.date}}</text>
+    </view>
+
+    <view class="common_v_line720"></view>
+
+    <view class="common_v_between100">
+      <text class="tv_titleFont tv_row">满足要求（{{item.confirmNum}}）</text>
+      <text class="tv_titleFont tv_row tv_mid">待整改（{{item.rectificationNum}}）</text>
+      <text class="tv_titleFont tv_row">勘验人（{{item.name}})</text>
+    </view>
+
   </view>
-  <view class="common_v_line720"></view>
-</view>
+  <view class="common_v_line20"></view>
+</block>
+

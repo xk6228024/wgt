@@ -71,7 +71,28 @@ Page({
     pageNum: 1,
     pageSize: 10,
     //列表数据源
-    sourceList: '',
+    sourceList: [
+      {
+        enterpriseName: '马达加斯加汽车复用有限公司',
+        enterpriseBusinessCategoryText: 'sasd',
+        inquestStatusText: '已勘验',
+        enterpriseProvinceText: '深圳',
+        enterpriseCityText: '把那',
+        enterpriseAreaText: 'asdasd',
+        enterpriseAddress: 'asdasd',
+        recordCoding: '421087199111111'
+      },
+      {
+        enterpriseName: '马达加斯加汽车复用有限公司',
+        enterpriseBusinessCategoryText: 'sasd',
+        inquestStatusText: '已勘验',
+        enterpriseProvinceText: '深圳',
+        enterpriseCityText: '把那',
+        enterpriseAreaText: 'asdasd',
+        enterpriseAddress: 'asdasd',
+        recordCoding: '421087199111111'
+      }
+    ],
     //列表接口
     url: app.globalData.url + '/vmts-supervision/app/record/findEntList',
     //区域接口

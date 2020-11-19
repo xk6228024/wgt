@@ -65,7 +65,17 @@ page{
   text-overflow: ellipsis;
   overflow: hidden;
   flex-wrap: nowrap;
-  width: 176rpx;
+  width: 510rpx;
+  font-size: 28rpx;
+  color:  #404D66;
+}
+.tv_right2{
+  margin-right: 30rpx;
+  text-align: right;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  width: 160rpx;
   font-size: 28rpx;
   color:  #404D66;
 }
@@ -78,6 +88,7 @@ page{
   line-clamp: 2;
   font-size: 28rpx;
   color:  #404D66;
+  width: 460rpx;
 }
 .v_carBrand{
   height: 100rpx;

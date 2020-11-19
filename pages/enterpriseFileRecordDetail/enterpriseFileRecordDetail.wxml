@@ -1,9 +1,28 @@
+<wxs src="../../utils/filter.wxs" module="filter" />
+<!-- 企业信息 -->
 <!-- 企业信息 -->
 <view class="v_list_info">
 
   <view class="common_v_between100">
-    <view class="common_tv_left370w">{{sourceList.enterpriseName}}</view>
-    <view class="common_tv_right">{{sourceList.enterpriseBusinessCategoryStr}}企业</view>
+    <view class="common_tv_left370w">{{sourceDetail.enterpriseName}}</view>
+    <view class="common_tv_right">{{sourceDetail.enterpriseBusinessCategoryStr}}企业</view>
+  </view>
+
+  <view class="common_v_line720"></view>
+
+  <view class="common_v_row100h">
+    <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
+    <view class="tv_ellipsis2 tv_location">{{sourceDetail.enterpriseProvinceText+sourceDetail.enterpriseCityText+sourceDetail.enterpriseAreaText+sourceDetail.enterpriseDetailedAddress}}</view>
+    <image class='marleft267 iv_navigation' mode='scaleToFill' src='{{icon_navigation}}' bindtap="navigationTestEvent" data-address="{{sourceDetail.enterpriseProvinceText+sourceDetail.enterpriseCityText+sourceDetail.enterpriseAreaText+sourceDetail.enterpriseAddress}}"></image>
+  </view>
+
+  <view class="common_v_line20"></view>
+</view>
+<!-- <view class="v_list_info">
+
+  <view class="common_v_between100">
+    <view class="common_tv_left370w">{{sourceList.enterpriseName||'asdasasd'}}</view>
+    <view class="common_tv_right">{{sourceList.enterpriseBusinessCategoryStr||'asdasd'}}企业</view>
   </view>
 
   <view class="common_v_line720"></view>
@@ -14,7 +33,7 @@
   </view>
 
   <view class="common_v_line20"></view>
-</view>
+</view> -->
 
 <!-- 选项卡 -->
 <view class="v_tabs">
@@ -25,12 +44,12 @@
   </view>
 
   <view class="v_tabs_colunm">
-    <view class='v_tabs_items {{currentIndex==2?"active":""}}' bindtap='changeCurrent' data-indexs='2'>备案资料</view>
+    <view class='v_tabs_items {{currentIndex==2?"active":""}}' bindtap='changeCurrent' data-indexs='2'>人员信息</view>
     <view class='{{currentIndex==2?"tabs_line":""}}'></view>
   </view>
 
   <view class="v_tabs_colunm">
-    <view class='v_tabs_items {{currentIndex==3?"active":""}}' bindtap='changeCurrent' data-indexs='3'>设备</view>
+    <view class='v_tabs_items {{currentIndex==3?"active":""}}' bindtap='changeCurrent' data-indexs='3'>文件信息</view>
     <view class='{{currentIndex==3?"tabs_line":""}}'></view>
   </view>
 
@@ -38,211 +57,124 @@
 
 <!-- 基本信息 -->
 <view class="v_base" wx:if='{{currentIndex==1}}'>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">企业名称</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseName}}</view>
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">所在区域</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseProvinceText+sourceList.enterpriseCityText+sourceList.enterpriseAreaText}}</view>
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">企业法人代表</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseLegalRepresentative}}</view>
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">统一社会信用代码</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseCreditIdentifier}}</view>
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">主要负责人姓名</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOwner}}</view>
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">经办人联系电话</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseLinkName}}</view>
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">主要负责人身份证号</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOwnerIdcardnumber}}</view>
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">主要负责人邮箱/传真</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOwnerEmail}}</view>
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">经营方式</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseLegalRepresentative?'企业经营':'个体经营'}}</view>
-  </view>
-
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">企业性质</view>
-
-    <!-- 企业性质 1，国有 2，集体 3，私营 4，外资 11,其他 -->
-    <block wx:if='{{sourceList.enterpriseEconomicCategory==1}}'>
-      <view class="common_tv_tips32_86c">国有</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseEconomicCategory==2}}'>
-      <view class="common_tv_tips32_86c">集体</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseEconomicCategory==3}}'>
-      <view class="common_tv_tips32_86c">私营</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseEconomicCategory==4}}'>
-      <view class="common_tv_tips32_86c">外资</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseEconomicCategory==11}}'>
-      <view class="common_tv_tips32_86c">其他</view>
-    </block>
-
-  </view>
+  <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
+    <van-collapse-item title="备案信息" name="1">
+      <!-- <van-cell-group> -->
+        <van-cell title="所属辖区局" value="{{filter.moneyFormat(11)}}" />
+        <van-cell title="备案类型" value="内容" />
+        <van-cell title="备案编号" value="内容" />
+        <van-cell title="录入时间" value="内容" />
+        <van-cell title="录入人姓名" value="内容" />
+        <van-cell title="状态" value="内容" />
+        <van-cell title="审核时间" value="内容" />
+        <van-cell title="审核人姓名" value="内容" />
+        <van-cell title="审核状态" value="内容" border="{{ false }}"/>
+      <!-- </van-cell-group> -->
+    </van-collapse-item>
+    <van-collapse-item title="企业信息" name="2">
+      <van-cell title="单位名称" value="{{sourceList.enterpriseName}}" />
+      <van-cell title="统一社会信用代码" value="{{sourceList.enterpriseCreditIdentifier}}" />
+      <van-cell title="企业性质" value="内容" />
+      <van-cell title="单位法人" value="{{sourceList.enterpriseLegalRepresentative}}" />
+      <van-cell title="法人证件号码" value="{{sourceList.enterpriseOwnerIdcardnumber}}"/>
+      <van-cell title="联系电话" value="{{sourceList.enterpriseLinkName}}"/>
+      <van-cell title="业户类别" value="很长的内容"/>
+      <van-cell title="经营类型" value="很长的内容"/>
+      <van-cell title="业务类型" value="很长的内容"/>
+      <van-cell title="是否从事燃气汽车维修" value="很长的内容"/>
+      <van-cell title="是否从事新能源汽车维修" value="很长的内容"/>
+      <van-cell title="是否连锁经营" value="{{sourceList.enterpriseLegalRepresentative?'企业经营':'个体经营'}}"/>
+      <van-cell title="经营项目种类" value="很长的内容"/>
+      <van-cell title="注册地址" value="{{sourceList.enterpriseProvinceText+sourceList.enterpriseCityText+sourceList.enterpriseAreaText}}"/>
+      <van-cell title="经营地址" value="{{sourceList.enterpriseProvinceText+sourceList.enterpriseCityText+sourceList.enterpriseAreaText}}"  border="{{ false }}"/>
+    </van-collapse-item>
+    <!-- <van-collapse-item title="经营场地" name="3">
+      线上拓客，随时预约，贴心顺手的开单收银
+    </van-collapse-item> -->
+    <van-collapse-item title="安全制度" name="4">
+      <van-cell title="质量管理制度" value="很长的内容"/>
+      <van-cell title="安全生产管理制度" value="很长的内容"/>
+      <van-cell title="车辆维修档案管理" value="很长的内容"/>
+      <van-cell title="人员培训制度" value="很长的内容"/>
+      <van-cell title="设备管理制度" value="很长的内容"/>
+      <van-cell title="配件管理制度" value="很长的内容"/>
+      <van-cell title="突发事件应急预案" value="很长的内容"/>
+      <van-cell title="安全操作规程材料" value="很长的内容"/>
+    </van-collapse-item>
+    <van-collapse-item title="设施设备" name="5">
+      <van-cell title="仪表工具" value="很长的内容"/>
+      <van-cell title="检测设备" value="很长的内容"/>
+    </van-collapse-item>
+    <van-collapse-item title="环保信息" name="6">
+      <van-cell title="应具有费油,废液,废气,废水(一下水道阿斯顿阿斯顿按时按时按时按时啊按时大师啊大师大师大师大大是大)" value="很长的内容"/>
+    </van-collapse-item>
+  </van-collapse>
 
 
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">经营类别</view>
+
 
     <!-- 经营类别 1:单店/总店 2:连锁 -->
-    <block wx:if='{{sourceList.enterpriseChainOrGroupIs==1}}'>
-      <view class="common_tv_tips32_86c">单店/总店</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseChainOrGroupIs==2}}'>
-      <view class="common_tv_tips32_86c">连锁</view>
-    </block>
-
-  </view>
-
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">经营类型</view>
 
     <!-- 经营类型 1：综合修理 2：机动车生产、进口企业授权维修 3：其他 -->
-    <block wx:if='{{sourceList.enterpriseOperatingType==1}}'>
-      <view class="common_tv_tips32_86c">综合修理</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseOperatingType==2}}'>
-      <view class="common_tv_tips32_86c">机动车生产、进口企业授权维修</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseOperatingType==3}}'>
-      <view class="common_tv_tips32_86c">其他</view>
-    </block>
-
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">机动车维修标志牌制作方式</view>
 
     <!-- 机动车维修标志牌制作方式 0,自行制作；1,协会统一制作 -->
-    <block wx:if='{{sourceList.signboardProductMethod==0}}'>
-      <view class="common_tv_tips32_86c">自行制作</view>
-    </block>
-    <block wx:if='{{sourceList.signboardProductMethod==1}}'>
-      <view class="common_tv_tips32_86c">协会统一制作</view>
-    </block>
 
-  </view>
 
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">业务类型</view>
 
     <!-- 业务类型 1:汽车维修 2:摩托车维修 3:其他机动车维修 -->
-    <block wx:if='{{sourceList.enterpriseBusinessType==1}}'>
-      <view class="common_tv_tips32_86c">汽车维修</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseBusinessType==2}}'>
-      <view class="common_tv_tips32_86c">摩托车维修</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseBusinessType==3}}'>
-      <view class="common_tv_tips32_86c">其他机动车维修</view>
-    </block>
-
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">业户类别</view>
 
     <!-- 业户类别（经营类别） 1、一类 2、二类 3、三类 -->
-    <block wx:if='{{sourceList.enterpriseBusinessCategory==1}}'>
-      <view class="common_tv_tips32_86c">一类</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseBusinessCategory==2}}'>
-      <view class="common_tv_tips32_86c">二类</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseBusinessCategory==3}}'>
-      <view class="common_tv_tips32_86c">三类</view>
-    </block>
 
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">漆房类型</view>
 
     <!-- 漆房类型 //1：自有漆房 2：外协漆房 默认为0 表是没有油漆房 -->
-    <block wx:if='{{sourceList.enterpriseIsOwnerPaintRoom==0}}'>
-      <view class="common_tv_tips32_86c">没有油漆房</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseIsOwnerPaintRoom==1}}'>
-      <view class="common_tv_tips32_86c">自有漆房</view>
-    </block>
-    <block wx:if='{{sourceList.enterpriseIsOwnerPaintRoom==2}}'>
-      <view class="common_tv_tips32_86c">外协漆房</view>
-    </block>
 
-  </view>
-
-  <view class="common_v_between100h_720w">
-    <view class="common_tv_tips32_nomargin">项目种类</view>
-    <view class="common_tv_tips32_86c">{{sourceList.enterpriseOperationArea}}</view>
-  </view>
 
 </view>
 
 
 <!-- 备案资料 -->
 <view class="v_base" wx:if='{{currentIndex==2}}'>
-
-  <view wx:for='{{basEnterpriseMaterialsList}}'>
+  <view class="personWrap" wx:for='{{basEnterpriseMaterialsList}}' bindtap='toJumpS' data-jumpway='../personInfo/personInfo' data-info='{{item}}'>
+    <van-cell title="{{item.name}}" value="{{item.value}}" />
+    <van-cell title="{{item.name}}" value="{{item.value}}" />
+  </view>
+  <!-- <view wx:for='{{basEnterpriseMaterialsList}}'>
     <view class="common_v_between100" bindtap='toJumpS' data-jumpway='../fileRecordAuditInfo/fileRecordAuditInfo' data-info='{{item}}'>
       <view class="tv_ellipsis2 tv_record_info">{{item.title}}</view>
       <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
     </view>
     <view class="common_v_line720"></view>
-  </view>
+  </view> -->
 
 </view>
 
 
 <!-- 设备 -->
 <view class="v_base" wx:if='{{currentIndex==3}}'>
-  <!-- 设备 动态的布局  -->
-  <view wx:for="{{array}}">
-    <view class="common_v_between100" bindtap="itemSelect" data-id='{{index}}'>
-      <view class="common_tv_tips32">{{item.message}}</view>
-      <image wx:if="{{item.select}}" class='common_iv_up' mode='scaleToFill' src='{{icon_arrow_up_gray}}'></image>
-      <image wx:if="{{!item.select}}" class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image>
-    </view>
-
-    <view class="common_v_line720"></view>
-
-    <block wx:if="{{item.select}}">
-      <view wx:for="{{item.son}}">
-        <view class="common_v_between100_gray">
-          <view class="common_tv_tips30_gray">{{item.itemName}}</view>
-          <view class="common_tv_right">{{item.orderNumber}}</view>
-          <!-- <image class='common_iv_next' mode='scaleToFill' src='{{icon_arrow_next_gray}}'></image> -->
-        </view>
-
-        <view class="common_v_line720"></view>
+  <van-collapse value="{{ activeNames2 }}" bind:change="onChange2" accordion>
+    <van-collapse-item title="企业备案" name="1">
+      <view class="picWrap" wx:for='{{picList}}' >
+          <view class="picTittle">法人身份证</view>
+          <image src="../../images/icon_coupon_blue.png"></image>
       </view>
-    </block>
-  </view>
+    </van-collapse-item>
+    <van-collapse-item title="经营场地" name="11">
+      <view class="picWrap" wx:for='{{picList}}' >
+          <view class="picTittle">法人身份证</view>
+          <image src="../../images/icon_coupon_blue.png"></image>
+      </view>
+    </van-collapse-item>
+    <van-collapse-item title="安全制度" name="111">
+      <view class="picWrap" wx:for='{{picList}}' >
+          <view class="picTittle">法人身份证</view>
+          <image src="../../images/icon_coupon_blue.png"></image>
+      </view>
+    </van-collapse-item>
+    <van-collapse-item title="设施设备" name="1111">
+      <view class="picWrap" wx:for='{{picList}}' >
+          <view class="picTittle">法人身份证</view>
+          <image src="../../images/icon_coupon_blue.png"></image>
+      </view>
+    </van-collapse-item>
+  </van-collapse>
 </view>

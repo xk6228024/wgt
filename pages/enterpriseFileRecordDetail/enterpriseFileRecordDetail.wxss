@@ -1,7 +1,58 @@
 page {
   background: #f5f5f5;
 }
+.v_list_info {
+  width: 100%;
+  height: 220rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
 
+.iv_location {
+  width: 28rpx;
+  height: 36rpx;
+  margin-left: 30rpx;
+}
+
+.tv_location {
+  width: 300rpx;
+  font-size: 26rpx;
+  color: rgba(64, 77, 102, 1);
+  line-height: 37rpx;
+  margin-left: 20rpx;
+}
+
+.iv_navigation {
+  width: 40rpx;
+  height: 52rpx;
+}
+.v_base .van-collapse-item__content {
+  padding: 0;
+}
+.personWrap {
+  border-bottom: 20rpx solid #f5f5f5;
+}
+.personWrap .van-cell__value {
+  color: #404D66
+}
+.personWrap .van-cell__title {
+  color: #404D66
+}
+.picWrap {
+  padding: 30rpx 0 30rpx 0;
+  margin-left: 20rpx;
+  border-bottom: 1px solid #f5f5f5;
+}
+.picWrap .picTittle {
+  color: #404D66;
+  font-size: 32rpx;
+  line-height:45rpx;
+}
+.picWrap image {
+  width: 218rpx;
+  height: 160rpx;
+}
 /* 企业信息 */
 
 .v_list_info {
@@ -19,7 +70,7 @@ page {
 }
 
 .tv_location {
-  width: 650rpx;
+  width: 580rpx;
   font-size: 26rpx;
   color: rgba(64, 77, 102, 1);
   line-height: 37rpx;

@@ -4,7 +4,7 @@ page {
 
 /* 设置搜索栏宽度 */
 .v_search_width{
-  width: 530rpx;
+  width: 680rpx;
 }
 
 /* 选择栏 样式 */
@@ -40,7 +40,6 @@ page {
 
 .v_list_main {
   width: 100%;
-  height: 220rpx;
   display: flex;
   flex-direction: column;
 }
@@ -116,4 +115,59 @@ page {
 
 .marright100{
   margin-right: 100rpx;
+}
+
+.list-item {
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.item-top {
+  padding: 30rpx;
+  font-size: 30rpx;
+  color: #404D66;
+}
+.item-top-left {
+  margin-right: 200rpx;
+}
+.item-location {
+  margin-top: 14rpx;
+}
+.item-location-icon {
+  width: 28rpx;
+  height: 36rpx;
+  float: left;
+  margin-top: 6rpx;
+}
+.item-location-addr {
+  margin-left: 40rpx;
+}
+.item-location-icon, .item-location-addr {
+  vertical-align: middle;
+}
+.item-bottom {
+  padding: 30rpx;
+  display: flex;
+  font-size: 28rpx;
+  color: #404D66;
+}
+.item-date {
+  flex: 2;
+}
+.item-surplus {
+  flex: 1;
+}
+.item-operate {
+  flex: 3;
+}
+.item-operate-btn {
+  display: inline-block;
+  vertical-align: middle;
+  height: 42rpx;
+  border-radius:23rpx;
+  border: 1rpx solid #185BBD;
+  color: #185BBD;
+  font-size: 26rpx;
+  margin-left: 22rpx;
+  padding: 0 20rpx;
 }

@@ -10,18 +10,7 @@
 <!-- 选择栏 -->
 <view class="v_select" >
 
-  <view class="v_select_tips" bindtap="style">
-
-    <block wx:if="{{!styleSelect}}">
-      <view class="common_tv_tips26">业户类别</view>
-      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
-    </block>
-    <block wx:else>
-      <view class="common_tv_tips26_blue">业户类别</view>
-      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
-    </block>
-
-  </view>
+  
 
   <view class="v_select_tips" bindtap="area">
 
@@ -35,7 +24,18 @@
     </block>
 
   </view>
+  <view class="v_select_tips" bindtap="style">
 
+    <block wx:if="{{!styleSelect}}">
+      <view class="common_tv_tips26">业户类别</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_down_gray}}'></image>
+    </block>
+    <block wx:else>
+      <view class="common_tv_tips26_blue">业户类别</view>
+      <image class='common_iv_arrow' mode='scaleToFill' src='{{icon_arrow_up_blue}}'></image>
+    </block>
+
+  </view>
 
   <view class="v_select_tips" bindtap="state">
 
@@ -57,36 +57,39 @@
 
   <view class="common_v_line20"></view>
 
-  <view class="common_v_row100h">
-    <view class="common_tv_left370w">{{item.enterpriseName}}</view>
-    <view class="common_tv_center">{{item.enterpriseBusinessCategoryText}}</view>
+  <view class="item_box">
+    <view class="item_name">{{item.enterpriseName}}</view>
+    <view class="v_location">
+      <image class='iv_location' mode='scaleToFill' src='../../images/location.png'></image>
+      <view class="tv_ellipsis2 tv_location">{{item.enterpriseProvinceText+item.enterpriseCityText+item.enterpriseAreaText+item.enterpriseAddress}}</view>
+    </view>
+    <view class="common_v_line720 item_line"></view>
+    <!-- <view class="common_tv_center">{{item.enterpriseBusinessCategoryText}}</view> -->
 
-    <block wx:if="{{item.inquestStatusText==='已勘验'}}">
+    <!-- <block wx:if="{{item.inquestStatusText==='已勘验'}}">
       <view class='tv_verify_green'>已勘验</view>
     </block>
     <block wx:else>
       <view class='tv_verify_yellow'>待勘验</view>
-    </block>
-
+    </block> -->
+    <view class="item_bottom">
+        <view class="item_flex_s">{{item.enterpriseBusinessCategoryText}}</view>
+        <view class="item_flex_s">{{item.recordCoding}}</view>
+        <view class="item_flex_s">2019-10-15</view>
+    </view>
   </view>
 
-  <view class="common_v_line720"></view>
+  <!-- <view class="common_v_line720"></view> -->
 
 
-  <view class="common_v_between100">
-
-    <view class="v_location">
-      <image class='iv_location' mode='scaleToFill' src='{{icon_location}}'></image>
-      <view class="tv_ellipsis2 tv_location">{{item.enterpriseProvinceText+item.enterpriseCityText+item.enterpriseAreaText+item.enterpriseAddress}}</view>
-    </view>
-
+  <!-- <view class="">
 
     <view class="v_num">
       <view class="tv_num common_tv_tips26">备案编号</view>
       <view class="common_tv_tips26">{{item.recordCoding}}</view>
     </view>
 
-  </view>
+  </view> -->
 
 </view>
 

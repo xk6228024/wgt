@@ -1,8 +1,5 @@
 const app = getApp()
-var QQMapWX = require('../../component/qqmap-wx-jssdk1/qqmap-wx-jssdk.js');
-var qqmapsdk = new QQMapWX({
-  key: 'R2ABZ-JMQE4-GDRUR-XIDJW-U7U5O-QOB7B' // 必填
-});
+var { map } = require('../../utils/util.js');
 
 Page({
 
@@ -51,14 +48,37 @@ Page({
     listStr:'',
     //列表传过来的list
     list:'',
+    // 检查结果选择弹窗
+    verifyingResultShow: false,
+    // 检查结果选项
+    verifyingResultList: [
+      {
+        name: '符合',
+        color: '#52C41A',
+        value: 1
+      },
+      {
+        name: '不符合',
+        color: '#F5222D',
+        value: 0
+      }
+    ],
     //企业详情接口 
     url_detail: app.globalData.url + '/vmts-supervision/app/record/info',
     //企业详情数据
-    sourceDetail: '',
+    sourceDetail: {
+      enterpriseName: '测试企业名称',
+      enterpriseBusinessCategoryStr: '一类',
+      enterpriseProvinceText: '广东省',
+      enterpriseCityText: '深圳市',
+      enterpriseAreaText: '南山区',
+      enterpriseDetailedAddress: '大新路98号',
+    },
     //勘验项目接口
-    url_project: app.globalData.url + '/vmts-supervision/app/inquest/project',
+    url_project: app.globalData.url + '/dcvmts/bus-enterprise-inquest-project-tmpl/findEnterpriseInquestProjectTmplByType',
     //勘验数据
     sourceProject: '',
+    activeNames: '',
     //确认提交
     url_confirm: app.globalData.url + '/vmts-supervision/app/inquest/status',
     icon_location: app.globalData.picUrl + '/icon_location.png',
@@ -125,42 +145,33 @@ Page({
     })
   },
   toConfirm: function (e) {
-    console.log("===data===确认");
-    this.confirmProject();
+    wx.navigateTo({
+      url: '../changeNotice/changeNotice'
+    })
+    // this.confirmProject();
   },
   //导航
   navigationTestEvent(e) {
-    var _this = this;
-    //调用地址解析接口
-    qqmapsdk.geocoder({
-      //获取表单传入地址
-      address: '深圳市 南山区 南头街道 创新大厦', //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'
-      success: function (res) { //成功后的回调
-        console.log(res);
-        var res = res.result;
-        var latitude = res.location.lat;
-        var longitude = res.location.lng;
-        _this.toGps(latitude, longitude);
-      },
-      fail: function (error) {
-        console.error(error);
-      },
-      complete: function (res) {
-        console.log(res);
-      }
+    map()
+  },
+  // 项目折叠展开
+  onChange (event) {
+    this.setData({
+      activeNames: event.detail,
     })
   },
-  toGps: function (lat, log) {
-    let that = this
-    wx.openLocation({
-      latitude: Number(lat),
-      longitude: Number(log),
-      name: '创新大厦',
-      address: '深圳市 南山区 南头街道 创新大厦',
-      scale: 16
-    })
+  // 检查结果选择弹窗打开
+  openVerifyingResult () {
+    this.setData({ verifyingResultShow: true })
   },
-
+  // 检查结果选择弹窗关闭
+  verifyingResultClose () {
+    this.setData({ verifyingResultShow: false })
+  },
+  // 检查结果选择
+  verifyingResultSelect (event) {
+    console.log(event.detail)
+  },
   //获取企业详情
   getDetail: function () {
     var that = this;
@@ -188,24 +199,128 @@ Page({
 
     //获取勘验项目
     getProject: function () {
-      var that = this;
-      let list = JSON.parse(this.data.listStr);
+      // var that = this;
+      // let list = JSON.parse(this.data.listStr);
 
-      that.setData({
-        sourceData: {
-          inquestRecordId: list.inquestRecordId,
-          enterpriseRecordId: this.data.id,
-          businessCategoryName: list.enterpriseBusinessCategoryText,
-          cityCode: list.enterpriseCity
-        }
-      })
+      // that.setData({
+      //   sourceData: {
+      //     inquestRecordId: list.inquestRecordId,
+      //     enterpriseRecordId: this.data.id,
+      //     businessCategoryName: list.enterpriseBusinessCategoryText,
+      //     cityCode: list.enterpriseCity
+      //   }
+      // })
   
-      app.doPost(this.data.url_project, this.data.sourceData).then(
+      app.doPost(this.data.url_project, {
+        enterpriseBusinessCategory: '04'
+      }).then(
   
         //请求成功code==200回调
-        function (res) {
-          that.setData({
-            sourceProject: res.data,
+        res => {
+          var data = res.data
+          data.forEach(i => {
+            i.subList = []
+            // 环境保护措施
+            i.enterpriseInquestProjectConditionTmplVoList.forEach(j => {
+              j.enterpriseInquestProjectEnvironmentProdectTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectEnvironmentProdectName
+                k.subProjecCondition = k.inquestProjectEnvironmentProdectCondition
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectEnvironmentProdectId
+                i.subList.push(k)
+              })
+              // 设施设备-检测设备
+              j.enterpriseInquestProjectEquipmentDetectTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectEquipmentDetectName
+                k.subProjecCondition = k.inquestProjectEquipmentDetectQuantity
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectEquipmentDetectId
+                i.subList.push(k)
+              })
+              // 设施设备-认证信息检查表
+              j.enterpriseInquestProjectEquipmentMeasuringTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectEquipmentMeasuringVerificationCertificate
+                k.subProjecCondition = ''
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectEquipmentMeasuringId
+                i.subList.push(k)
+              })
+              // 摩托车-设施设备备案条件符合性检查表
+              j.enterpriseInquestProjectEquipmentMotorcycleTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectEquipmentMotorcycleName
+                k.subProjecCondition = k.inquestProjectEquipmentMotorcycleQuantity
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectEquipmentMotorcycleId
+                i.subList.push(k)
+              })
+              // 设施设备-外协产品的外协合同及证书符合性检查表
+              j.enterpriseInquestProjectEquipmentOutsourcedTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectEquipmentOutsourcedName
+                k.subProjecCondition = k.inquestProjectEquipmentOutsourcedCondition
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectEquipmentOutsourcedId
+                i.subList.push(k)
+              })
+              // 设施设备-专用设备
+              j.enterpriseInquestProjectEquipmentSpecialTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectEquipmentSpecialName
+                k.subProjecCondition = k.inquestProjectEquipmentSpecialQuantity
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectEquipmentSpecialId
+                i.subList.push(k)
+              })
+              // 设施设备-仪表工具
+              j.enterpriseInquestProjectEquipmentToolTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectEquipmentToolName
+                k.subProjecCondition = k.inquestProjectEquipmentToolQuantity
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectEquipmentToolId
+                i.subList.push(k)
+              })
+              j.enterpriseInquestProjectEquipmentTrafficCertTmplVoList.map(k => i.subList.push(k))
+              // 设施设备-通用设备
+              j.enterpriseInquestProjectEquipmentUniversalTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectEquipmentUniversalName
+                k.subProjecCondition = k.inquestProjectEquipmentUniversalQuantity
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectEquipmentUniversalId
+                i.subList.push(k)
+              })
+              // 维修管理制度
+              j.enterpriseInquestProjectInstitutionTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectInstitutionSubName
+                k.subProjecCondition = k.inquestProjectInstitutionCondition
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectInstitutionId
+                i.subList.push(k)
+              })
+              // 维修技术人员
+              j.enterpriseInquestProjectTechnicalPersonTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectTechnicalPersonPositionName
+                if (k.inquestProjectTechnicalPersonPositionSubName) {
+                  k.subProjecName = k.inquestProjectTechnicalPersonPositionSubName
+                }
+                k.subProjecCondition = k.inquestProjectTechnicalPersonPositionMarterial
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectTechnicalPersonId
+                i.subList.push(k)
+              })
+              // 经营场地
+              j.enterpriseInquestProjectWorkgroundTmplVoList.forEach(k => {
+                k.subProjecName = k.inquestProjectWorkgroundName
+                if (k.inquestProjectWorkgroundName === '公示信息') {
+                  k.subProjecName = k.inquestProjectWorkgroundCondition
+                }
+                k.subProjecCondition = k.inquestProjectWorkgroundCondition
+                k.subProjecConditionId = k.inquestProjectConditionId
+                k.subProjectId = k.inquestProjectWorkgroundId
+                i.subList.push(k)
+              })
+            })
+          })
+          console.log(data)
+          this.setData({
+            sourceProject: data,
           })
         },
         //请求失败回调
@@ -265,7 +380,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getDetail();
+    // this.getDetail();
     this.getProject();
   },
 

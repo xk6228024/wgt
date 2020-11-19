@@ -1,50 +1,76 @@
 {
+  "usingComponents": {
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-panel": "@vant/weapp/panel/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index"
+  },
   "pages": [
     "pages/home/home",
+    "pages/changeNotice/changeNotice",
+    "pages/verifyingEnterprise/verifyingEnterprise",
+    "pages/illegalFacts/illegalFacts",
+    "pages/addIllegalFatcs/addIllegalFatcs",
+    "pages/enterpriseFileRecordDetail/enterpriseFileRecordDetail",
+    "pages/enterpriseFileRecordList/enterpriseFileRecordList",
+    "pages/verifyingEnterpriseCheck/verifyingEnterpriseCheck",
+    "pages/verifyEnterpriseList/verifyEnterpriseList",
     "pages/mine/mine",
     "pages/login/login",
     "pages/personalData/personalData",
     "pages/vehicleFiles/vehicleFiles",
     "pages/vehicleDetailInfo/vehicleDetailInfo",
     "pages/vehicleRepairRecord/vehicleRepairRecord",
-    "pages/verifyEnterpriseList/verifyEnterpriseList",
-    "pages/verifyingEnterprise/verifyingEnterprise",
-    "pages/enterpriseFileRecordList/enterpriseFileRecordList",
-    "pages/enterpriseFileRecordDetail/enterpriseFileRecordDetail",
     "pages/fileRecordAuditList/fileRecordAuditList",
     "pages/fileRecordAuditDetail/fileRecordAuditDetail",
     "pages/verifyEnterpriseUpload/verifyEnterpriseUpload",
     "pages/fileRecordAuditInfo/fileRecordAuditInfo",
     "pages/verifyEnterpriseRecord/verifyEnterpriseRecord",
     "pages/verifyCreate/verifyCreate",
-    
+    "pages/notice/notice",
+    "pages/noticeDetail/noticeDetail",
+    "pages/verifyEnterpriseRecordDetail/verifyEnterpriseRecordDetail",
+    "pages/verifyEnterpriseRecordItemDetail/verifyEnterpriseRecordItemDetail",
+    "pages/signName/signName",
     "pages/logs/logs",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/personInfo/personInfo"
   ],
-"window": {
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "WeChat",
-  "navigationBarTextStyle": "black"
-},
-"tabBar": {
-  "color": "#333333",
-  "selectedColor": "#007AFF",
-  "list": [
-    {
-      "pagePath": "pages/home/home",
-      "text": "首页",
-      "iconPath": "/images/icon_coupon_gray.png",
-      "selectedIconPath": "/images/icon_coupon_blue.png"
-    },
-    {
-      "pagePath": "pages/mine/mine",
-      "text": "我的",
-      "iconPath": "/images/icon_mine_gray.png",
-      "selectedIconPath": "/images/icon_mine_blue.png"
-    }
-  ]
-},
-  "style": "v2",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#007AFF",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/images/icon_coupon_gray.png",
+        "selectedIconPath": "/images/icon_coupon_blue.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/icon_mine_gray.png",
+        "selectedIconPath": "/images/icon_mine_blue.png"
+      }
+    ]
+  },
   "sitemapLocation": "sitemap.json"
 }

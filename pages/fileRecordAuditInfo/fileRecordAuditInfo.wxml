@@ -1,6 +1,6 @@
 <!-- t信息 -->
 <view class="v_main" wx:for="{{sourceList}}">
-
+1
   <view class="common_v_start80">
     <view class="common_tv_bold30s">{{item.text}}</view>
   </view>

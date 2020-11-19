@@ -8,44 +8,48 @@ Page({
    * 页面的初始数据
    */
   data: {
+    icon_navigation: app.globalData.picUrl + '/icon_navigation.png',
+    picList: [{},{}],
+    activeNames: '',
+    activeNames2: '',
     array: [
-    //   {
-    //   message: '专用设备',
-    //   // select: false,
-    //   son: [{
-    //     messageson: '专用设备的儿子1',
-    //   }, {
-    //     messageson: '专用设备的儿子2',
-    //   }, {
-    //     messageson: '专用设备的儿子3',
-    //   }]
-    // }, {
-    //   message: '检测设备',
-    //   vehicleId: '7654321',
-    //   // select: false,
-    //   son: [{
-    //     messageson: '检测设备的儿子1',
-    //   }, {
-    //     messageson: '检测设备的儿子2',
-    //   }, {
-    //     messageson: '检测设备的儿子3',
-    //   }]
-    // }, {
-    //   message: '通用设备',
-    //   vehicleId: '7654321',
-    //   // select: false,
-    //   son: [{
-    //     messageson: '通用设备的儿子1',
-    //   }, {
-    //     messageson: '通用设备的儿子2',
-    //   }, {
-    //     messageson: '通用设备的儿子3',
-    //   }]
-    // }
+      {
+      message: '专用设备',
+      // select: false,
+      son: [{
+        messageson: '专用设备的儿子1',
+      }, {
+        messageson: '专用设备的儿子2',
+      }, {
+        messageson: '专用设备的儿子3',
+      }]
+    }, {
+      message: '检测设备',
+      vehicleId: '7654321',
+      // select: false,
+      son: [{
+        messageson: '检测设备的儿子1',
+      }, {
+        messageson: '检测设备的儿子2',
+      }, {
+        messageson: '检测设备的儿子3',
+      }]
+    }, {
+      message: '通用设备',
+      vehicleId: '7654321',
+      // select: false,
+      son: [{
+        messageson: '通用设备的儿子1',
+      }, {
+        messageson: '通用设备的儿子2',
+      }, {
+        messageson: '通用设备的儿子3',
+      }]
+    }
     ],
     materialType: {
       '1': '营业执照复印件',
-      '2': '经营场地、停车场面积、土地使用权及产权证明等相关材料',
+      '2': '经营场地、停车场面积、土地使用权及产权证明等相关材料aaaa',
       '3': '技术人员汇总表，以及各相关人员的学历、技术职称或职业资格证明等相关材料',
       '4': '维修管理制度等相关材料',
       '5': '环境保护措施等相关材料',
@@ -63,7 +67,16 @@ Page({
     icon_location: app.globalData.picUrl + '/icon_location.png',
     icon_arrow_next_gray: app.globalData.picUrl + '/icon_arrow_next_gray.png',
     icon_arrow_up_gray: app.globalData.picUrl + '/icon_arrow_up_gray.png',
-    basEnterpriseMaterialsList: [],
+    basEnterpriseMaterialsList: [
+      {
+        name: '小米',
+        value: '1111111111111'
+      },
+      {
+        name: '小米',
+        value: '1111111111111'
+      }
+    ],
     itemList: [
       {
         type: 1,
@@ -362,7 +375,16 @@ Page({
       },
     ],
   },
-
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail,
+    });
+  },
+  onChange2(event) {
+    this.setData({
+      activeNames2: event.detail,
+    });
+  },
   // 设备选择
   itemSelect: function(e) {
     var id = e.currentTarget.dataset.id;

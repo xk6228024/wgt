@@ -662,3 +662,60 @@
 .mar_b15 {
   margin-bottom: 15rpx;
 }
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix:after{
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+
+.clearfix{
+  zoom:1;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+.inline-b {
+  display: inline-block;
+}
+
+/* 通用字体样式 */
+.yellow {
+  color: #FAAD14
+}
+
+.red {
+  color: #F5222D
+}
+
+.gray {
+  color: #868686
+}
+
+.green {
+  color: #52C41A
+}
+
+.blue {
+  color: #185BBD;
+}

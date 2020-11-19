@@ -10,6 +10,7 @@ Page({
    */
   data: {
     icon_search: app.globalData.picUrl + '/icon_search.png',
+    icon_carlogo: app.globalData.picUrl + '/icon_carlogo.png',
     vehicleFileListUrl: app.globalData.url + '/vmts-supervision/app/vehicle/list',
     // 车牌颜色,1:蓝色,2:黄色,3:农黄,4:绿色,5:黑色,6:白色,7:渐变绿,8:黄绿
     plateBgImage: {
@@ -22,9 +23,58 @@ Page({
       '8': app.globalData.picUrl + '/icon_plateOrangeGreen.png',
       '6': app.globalData.picUrl + '/icon_plateWhite.png',
     },
-   
 
-    dataSource: [],
+
+    dataSource: [
+        {
+        plateColor: '1',
+        plateNum: '粤B12345',
+        carLogo: app.globalData.picUrl + '/icon_carlogo.png',
+        enterprise: '深圳市益百汽车服务有限公司',
+        date: '2019-12-25',
+        brand: '13213',
+      },
+      {
+        plateColor: '2',
+        plateNum: '粤B12345',
+        carLogo: app.globalData.picUrl + '/icon_carlogo.png',
+        enterprise: '深圳市益百汽车服务有限公司',
+        date: '2019-12-25',
+        brand: '13213',
+      },
+      {
+        plateColor: '2',
+        plateNum: '粤B12345',
+        carLogo: app.globalData.picUrl + '/icon_carlogo.png',
+        enterprise: '深圳市益百汽车服务有限公司',
+        date: '2019-12-25',
+        brand: '13213',
+      },
+      {
+        plateColor: '2',
+        plateNum: '粤B12345',
+        carLogo: app.globalData.picUrl + '/icon_carlogo.png',
+        enterprise: '深圳市益百汽车服务有限公司',
+        date: '2019-12-25',
+        brand: '13213',
+      },
+      {
+        plateColor: '2',
+        plateNum: '粤B12345',
+        carLogo: app.globalData.picUrl + '/icon_carlogo.png',
+        enterprise: '深圳市益百汽车服务有限公司',
+        date: '2019-12-25',
+        brand: '13213',
+      },
+      {
+        plateColor: '2',
+        plateNum: '粤B12345',
+        carLogo: app.globalData.picUrl + '/icon_carlogo.png',
+        enterprise: '深圳市益百汽车服务有限公司',
+        date: '2019-12-25',
+        brand: '13213',
+      },
+    ],
     isLastPage: false,
   },
   /**
@@ -60,6 +110,7 @@ Page({
     this.getVehicleFileListData(true);
   },
   getVehicleFileListData: function (isNextPage) {
+    return;
     if (!isNextPage) {
       currentPage = 1;
     }
@@ -111,7 +162,7 @@ Page({
     console.log(vehicleInfo);
     let vehicleInfoStr = JSON.stringify(vehicleInfo);
     wx.navigateTo({
-      url: '../vehicleDetailInfo/vehicleDetailInfo?vehicleInfoStr=' + vehicleInfoStr,
+      url: '../vehicleRepairRecord/vehicleRepairRecord'
     })
   }
 })
